@@ -4,191 +4,259 @@ namespace nsfxr
 {
     public class SynthParams
     {
-
-        public bool paramsDirty;
-
-        private uint	_waveType				= 	0;		// Shape of the wave (0:square, 1:saw, 2:sin or 3:noise)
-
-        private float	_masterVolume			=	0.5f;	// Overall volume of the sound (0 to 1)
-
-        private float	_attackTime				=	0.0f;	// Length of the volume envelope attack (0 to 1)
-        private float	_sustainTime			=	0.0f;	// Length of the volume envelope sustain (0 to 1)
-        private float	_sustainPunch			=	0.0f;	// Tilts the sustain envelope for more 'pop' (0 to 1)
-        private float	_decayTime				=	0.0f;	// Length of the volume envelope decay (yes, I know it's called release) (0 to 1)
-
-        private float	_startFrequency			=	0.0f;	// Base note of the sound (0 to 1)
-        private float	_minFrequency			=	0.0f;	// If sliding, the sound will stop at this frequency, to prevent really low notes (0 to 1)
-
-        private float	_slide					=	0.0f;	// Slides the note up or down (-1 to 1)
-        private float	_deltaSlide				=	0.0f;	// Accelerates the slide (-1 to 1)
-
-        private float	_vibratoDepth			=	0.0f;	// Strength of the vibrato effect (0 to 1)
-        private float	_vibratoSpeed			=	0.0f;	// Speed of the vibrato effect (i.e. frequency) (0 to 1)
-
-        private float	_changeAmount			=	0.0f;	// Shift in note, either up or down (-1 to 1)
-        private float	_changeSpeed			=	0.0f;	// How fast the note shift happens (only happens once) (0 to 1)
-
-        private float	_squareDuty				=	0.0f;	// Controls the ratio between the up and down states of the square wave, changing the tibre (0 to 1)
-        private float	_dutySweep				=	0.0f;	// Sweeps the duty up or down (-1 to 1)
-
-        private float	_repeatSpeed			=	0.0f;	// Speed of the note repeating - certain variables are reset each time (0 to 1)
-
-        private float	_phaserOffset			=	0.0f;	// Offsets a second copy of the wave by a small phase, changing the tibre (-1 to 1)
-        private float	_phaserSweep			=	0.0f;	// Sweeps the phase up or down (-1 to 1)
-
-        private float	_lpFilterCutoff			=	0.0f;	// Frequency at which the low-pass filter starts attenuating higher frequencies (0 to 1)
-        private float	_lpFilterCutoffSweep	=	0.0f;	// Sweeps the low-pass cutoff up or down (-1 to 1)
-        private float	_lpFilterResonance		=	0.0f;	// Changes the attenuation rate for the low-pass filter, changing the timbre (0 to 1)
-
-        private float	_hpFilterCutoff			=	0.0f;	// Frequency at which the high-pass filter starts attenuating lower frequencies (0 to 1)
-        private float	_hpFilterCutoffSweep	=	0.0f;	// Sweeps the high-pass cutoff up or down (-1 to 1)
-	
-
-        // ================================================================================================================
-        // ACCESSOR INTERFACE ---------------------------------------------------------------------------------------------
-
-        /** Shape of the wave (0:square, 1:saw, 2:sin or 3:noise) */
-        public uint waveType {
-            get { return _waveType; }
-            set { _waveType = value > 3 ? 0 : value; paramsDirty = true; }
+        public enum WaveShapeEnum
+        {
+            Square = 0,
+            Saw = 1,
+            Sin = 2,
+            Noise = 3,
         }
 
-        /** Overall volume of the sound (0 to 1) */
-        public float masterVolume {
-            get { return _masterVolume; }
-            set { _masterVolume = Clamp1(value); paramsDirty = true; }
+        public SynthParams()
+        {
+            _masterVolume = 0.5f;
+            attackTime = 0;
         }
+
+        public WaveShapeEnum WaveShape { get; set; }
+        /// <summary>
+        /// 0 to 1
+        /// </summary>
+        public float _masterVolume { get; set; }
+
+        /// <summary>
+        /// 0 to 1
+        /// </summary>
+        public float _attackTime{ get; set; }
+
+        /// <summary>
+        /// 0 to 1
+        /// </summary>
+        public float _sustainTime{ get; set; }
+
+        /// <summary>
+        /// 0 to 1
+        /// </summary>
+        public float _sustainPunch{ get; set; }
+
+        // TODO ??
+        public float _decayTime{ get; set; }
+
+        /// <summary>
+        /// 0 to 1
+        /// </summary>
+        public float _startFrequency{ get; set; }
+
+        // TODO: ??
+        public float _minFrequency{ get; set; }
+
+        /// <summary>
+        /// -1 to 1
+        /// </summary>
+        public float _slide{ get; set; }
+
+        /// <summary>
+        /// -1 to 1
+        /// </summary>
+        public float _deltaSlide{ get; set; }
+
+        /// <summary>
+        /// 0 to 1
+        /// </summary>
+        public float _vibratoDepth{ get; set; }
+
+        /// <summary>
+        /// 0 to 1
+        /// </summary>
+        public float _vibratoSpeed{ get; set; }
+
+        /// <summary>
+        /// -1 to 1
+        /// </summary>
+        public float _changeAmount{ get; set; }
+
+        /// <summary>
+        /// 0 to 1
+        /// </summary>
+        public float _changeSpeed{ get; set; }
+
+        // TODO ??
+        public float _squareDuty{ get; set; }
+
+        /// <summary>
+        /// -1 to 1
+        /// </summary>
+        public float _dutySweep{ get; set; }
+
+        // TODO ??
+        public float _repeatSpeed{ get; set; }
+
+        //TODO: ??
+        public float _phaserOffset{ get; set; }
+
+        /// <summary>
+        /// -1 to 1
+        /// </summary>
+        public float _phaserSweep{ get; set; }
+
+        // TODO: ??
+        public float _lpFilterCutoff{ get; set; }
+
+        /// <summary>
+        /// -1 to 1
+        /// </summary>
+        public float _lpFilterCutoffSweep{ get; set; }
+
+        // TODO: ??
+        public float _lpFilterResonance{ get; set; }
+
+        // TODO: ??
+        public float _hpFilterCutoff{ get; set; }
+
+        /// <summary>
+        /// -1 to 1
+        /// </summary>
+        public float _hpFilterCutoffSweep{ get; set; }        
+
+        public void Clean()
+        {
+            /*
+             * Clamp mastervolume 0:1
+             * 
+             */
+        }
+
 
         /** Length of the volume envelope attack (0 to 1) */
         public float attackTime {
             get { return _attackTime; }
-            set { _attackTime = Clamp1(value); paramsDirty = true; }
+            set { _attackTime = Clamp1(value); }
         }
 
         /** Length of the volume envelope sustain (0 to 1) */
         public float sustainTime {
             get { return _sustainTime; }
-            set { _sustainTime = Clamp1(value); paramsDirty = true; }
+            set { _sustainTime = Clamp1(value); }
         }
 
         /** Tilts the sustain envelope for more 'pop' (0 to 1) */
         public float sustainPunch {
             get { return _sustainPunch; }
-            set { _sustainPunch = Clamp1(value); paramsDirty = true; }
+            set { _sustainPunch = Clamp1(value); }
         }
 
         /** Length of the volume envelope decay (yes, I know it's called release) (0 to 1) */
         public float decayTime {
             get { return _decayTime; }
-            set { _decayTime = Clamp1(value); paramsDirty = true; }
+            set { _decayTime = Clamp1(value); }
         }
 
         /** Base note of the sound (0 to 1) */
         public float startFrequency {
             get { return _startFrequency; }
-            set { _startFrequency = Clamp1(value); paramsDirty = true; }
+            set { _startFrequency = Clamp1(value); }
         }
 
         /** If sliding, the sound will stop at this frequency, to prevent really low notes (0 to 1) */
         public float minFrequency {
             get { return _minFrequency; }
-            set { _minFrequency = Clamp1(value); paramsDirty = true; }
+            set { _minFrequency = Clamp1(value); }
         }
 
         /** Slides the note up or down (-1 to 1) */
         public float slide {
             get { return _slide; }
-            set { _slide = Clamp2(value); paramsDirty = true; }
+            set { _slide = Clamp2(value); }
         }
 
         /** Accelerates the slide (-1 to 1) */
         public float deltaSlide {
             get { return _deltaSlide; }
-            set { _deltaSlide = Clamp2(value); paramsDirty = true; }
+            set { _deltaSlide = Clamp2(value); }
         }
 
         /** Strength of the vibrato effect (0 to 1) */
         public float vibratoDepth {
             get { return _vibratoDepth; }
-            set { _vibratoDepth = Clamp1(value); paramsDirty = true; }
+            set { _vibratoDepth = Clamp1(value); }
         }
 
         /** Speed of the vibrato effect (i.e. frequency) (0 to 1) */
         public float vibratoSpeed {
             get { return _vibratoSpeed; }
-            set { _vibratoSpeed = Clamp1(value); paramsDirty = true; }
+            set { _vibratoSpeed = Clamp1(value); }
         }
 
         /** Shift in note, either up or down (-1 to 1) */
         public float changeAmount {
             get { return _changeAmount; }
-            set { _changeAmount = Clamp2(value); paramsDirty = true; }
+            set { _changeAmount = Clamp2(value); }
         }
 
         /** How fast the note shift happens (only happens once) (0 to 1) */
         public float changeSpeed {
             get { return _changeSpeed; }
-            set { _changeSpeed = Clamp1(value); paramsDirty = true; }
+            set { _changeSpeed = Clamp1(value); }
         }
 
         /** Controls the ratio between the up and down states of the square wave, changing the tibre (0 to 1) */
         public float squareDuty {
             get { return _squareDuty; }
-            set { _squareDuty = Clamp1(value); paramsDirty = true; }
+            set { _squareDuty = Clamp1(value); }
         }
 
         /** Sweeps the duty up or down (-1 to 1) */
         public float dutySweep {
             get { return _dutySweep; }
-            set { _dutySweep = Clamp2(value); paramsDirty = true; }
+            set { _dutySweep = Clamp2(value); }
         }
 
         /** Speed of the note repeating - certain variables are reset each time (0 to 1) */
         public float repeatSpeed {
             get { return _repeatSpeed; }
-            set { _repeatSpeed = Clamp1(value); paramsDirty = true; }
+            set { _repeatSpeed = Clamp1(value); }
         }
 
         /** Offsets a second copy of the wave by a small phase, changing the tibre (-1 to 1) */
         public float phaserOffset {
             get { return _phaserOffset; }
-            set { _phaserOffset = Clamp2(value); paramsDirty = true; }
+            set { _phaserOffset = Clamp2(value); }
         }
 
         /** Sweeps the phase up or down (-1 to 1) */
         public float phaserSweep {
             get { return _phaserSweep; }
-            set { _phaserSweep = Clamp2(value); paramsDirty = true; }
+            set { _phaserSweep = Clamp2(value); }
         }
 
         /** Frequency at which the low-pass filter starts attenuating higher frequencies (0 to 1) */
         public float lpFilterCutoff {
             get { return _lpFilterCutoff; }
-            set { _lpFilterCutoff = Clamp1(value); paramsDirty = true; }
+            set { _lpFilterCutoff = Clamp1(value); }
         }
 
         /** Sweeps the low-pass cutoff up or down (-1 to 1) */
         public float lpFilterCutoffSweep {
             get { return _lpFilterCutoffSweep; }
-            set { _lpFilterCutoffSweep = Clamp2(value); paramsDirty = true; }
+            set { _lpFilterCutoffSweep = Clamp2(value); }
         }
 
         /** Changes the attenuation rate for the low-pass filter, changing the timbre (0 to 1) */
         public float lpFilterResonance {
             get { return _lpFilterResonance; }
-            set { _lpFilterResonance = Clamp1(value); paramsDirty = true; }
+            set { _lpFilterResonance = Clamp1(value); }
         }
 
         /** Frequency at which the high-pass filter starts attenuating lower frequencies (0 to 1) */
         public float hpFilterCutoff {
             get { return _hpFilterCutoff; }
-            set { _hpFilterCutoff = Clamp1(value); paramsDirty = true; }
+            set { _hpFilterCutoff = Clamp1(value); }
         }
 
         /** Sweeps the high-pass cutoff up or down (-1 to 1) */
         public float hpFilterCutoffSweep {
             get { return _hpFilterCutoffSweep; }
-            set { _hpFilterCutoffSweep = Clamp2(value); paramsDirty = true; }
+            set { _hpFilterCutoffSweep = Clamp2(value); }
         }
 
 
