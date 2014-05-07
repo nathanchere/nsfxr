@@ -1,0 +1,5 @@
+D:\source\usfxr\nsfxr\bin\Debug\nsfxr.dll
+D:\source\usfxr\nsfxr\bin\Debug\nsfxr.pdb
+D:\source\usfxr\nsfxr\obj\Debug\nsfxr.csprojResolveAssemblyReference.cache
+D:\source\usfxr\nsfxr\obj\Debug\nsfxr.dll
+D:\source\usfxr\nsfxr\obj\Debug\nsfxr.pdb
