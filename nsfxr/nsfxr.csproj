@@ -37,7 +37,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SfxrCacheSurrogate.cs" />
     <Compile Include="SynthParams.cs" />
     <Compile Include="Synth.cs" />
   </ItemGroup>
