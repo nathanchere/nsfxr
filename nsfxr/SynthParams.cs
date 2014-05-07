@@ -20,8 +20,9 @@ namespace nsfxr
         public WaveShapeEnum WaveShape { get; set; }
 
         /// <summary>
-        /// 0 to 1
+        /// Master volume (ORLY?)
         /// </summary>
+        /// /// <remarks>Valid range: 0 to 1</remarks>
         public float MasterVolume { get; set; }
 
         /// <summary>
