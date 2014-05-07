@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace nsfxr
 {
@@ -473,28 +474,50 @@ namespace nsfxr
 
         public void Mutate(float mutation = 0.05f)
         {
-            if (getRandom() < 0.5f) StartFrequency += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) MinFrequency += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) Slide += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) DeltaSlide += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) SquareDuty += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) DutySweep += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) VibratoDepth += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) VibratoSpeed += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) AttackTime += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) SustainTime += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) DecayTime += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) SustainPunch += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) LowPassFilterCutoff += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) LowPassFilterCutoffSweep += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) LowPassFilterResonance += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) HighPassFilterCutoff += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) HighPassFilterCutoffSweep += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) PhaserOffset += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) PhaserSweep += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) RepeatSpeed += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) ChangeSpeed += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f) ChangeAmount += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                StartFrequency += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                MinFrequency += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                Slide += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                DeltaSlide += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                SquareDuty += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                DutySweep += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                VibratoDepth += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                VibratoSpeed += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                AttackTime += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                SustainTime += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                DecayTime += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                SustainPunch += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                LowPassFilterCutoff += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                LowPassFilterCutoffSweep += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                LowPassFilterResonance += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                HighPassFilterCutoff += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                HighPassFilterCutoffSweep += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                PhaserOffset += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                PhaserSweep += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                RepeatSpeed += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                ChangeSpeed += getRandom() * mutation * 2f - mutation;
+            if (getRandom() < 0.5f)
+                ChangeAmount += getRandom() * mutation * 2f - mutation;
         }
 
         /**
@@ -549,61 +572,6 @@ namespace nsfxr
                 LowPassFilterCutoffSweep = -LowPassFilterCutoffSweep;
             }
         }
-
-        public string GetSettingsString()
-        {
-            string str = waveType.ToString();
-            str += "," + To4DP(_attackTime) + "," + To4DP(_sustainTime)
-                   + "," + To4DP(_sustainPunch) + "," + To4DP(_decayTime)
-                   + "," + To4DP(_startFrequency) + "," + To4DP(_minFrequency)
-                   + "," + To4DP(_slide) + "," + To4DP(_deltaSlide)
-                   + "," + To4DP(_vibratoDepth) + "," + To4DP(_vibratoSpeed)
-                   + "," + To4DP(_changeAmount) + "," + To4DP(_changeSpeed)
-                   + "," + To4DP(_squareDuty) + "," + To4DP(_dutySweep)
-                   + "," + To4DP(_repeatSpeed) + "," + To4DP(_phaserOffset)
-                   + "," + To4DP(_phaserSweep) + "," + To4DP(_lpFilterCutoff)
-                   + "," + To4DP(_lpFilterCutoffSweep) + "," + To4DP(_lpFilterResonance)
-                   + "," + To4DP(_hpFilterCutoff) + "," + To4DP(_hpFilterCutoffSweep)
-                   + "," + To4DP(_masterVolume);
-
-            return str;
-        }
-
-        public bool SetSettingsString(string __string)
-        {
-            string[] values = __string.Split(new char[] { ',' });
-
-            if (values.Length != 24)
-                return false;
-
-            waveType = UInt32.Parse(values[0]);
-            attackTime = float.Parse(values[1]);
-            sustainTime = float.Parse(values[2]);
-            sustainPunch = float.Parse(values[3]);
-            decayTime = float.Parse(values[4]);
-            startFrequency = float.Parse(values[5]);
-            minFrequency = float.Parse(values[6]);
-            slide = float.Parse(values[7]);
-            deltaSlide = float.Parse(values[8]);
-            vibratoDepth = float.Parse(values[9]);
-            vibratoSpeed = float.Parse(values[10]);
-            changeAmount = float.Parse(values[11]);
-            changeSpeed = float.Parse(values[12]);
-            squareDuty = float.Parse(values[13]);
-            dutySweep = float.Parse(values[14]);
-            repeatSpeed = float.Parse(values[15]);
-            phaserOffset = float.Parse(values[16]);
-            phaserSweep = float.Parse(values[17]);
-            lpFilterCutoff = float.Parse(values[18]);
-            lpFilterCutoffSweep = float.Parse(values[19]);
-            lpFilterResonance = float.Parse(values[20]);
-            hpFilterCutoff = float.Parse(values[21]);
-            hpFilterCutoffSweep = float.Parse(values[22]);
-            masterVolume = float.Parse(values[23]);
-
-            return true;
-        }
-
 
         // Copying methods
 
@@ -712,5 +680,95 @@ namespace nsfxr
         }
 
         private Random _random = new Random();
+
+
+        public string Serialize(SynthParams input)
+        {
+            var result = new StringBuilder();
+            result.Append((int)input.WaveShape);
+            result.Append(",");
+            result.Append(AttackTime.ToString("0.0000"));
+            result.Append(",");
+            result.Append(SustainTime.ToString("0.0000"));
+            result.Append(",");
+            result.Append(SustainPunch.ToString("0.0000"));
+            result.Append(",");
+            result.Append(DecayTime.ToString("0.0000"));
+            result.Append(",");
+            result.Append(StartFrequency.ToString("0.0000"));
+            result.Append(",");
+            result.Append(MinFrequency.ToString("0.0000"));
+            result.Append(",");
+            result.Append(Slide.ToString("0.0000"));
+            result.Append(",");
+            result.Append(DeltaSlide.ToString("0.0000"));
+            result.Append(",");
+            result.Append(VibratoDepth.ToString("0.0000"));
+            result.Append(",");
+            result.Append(VibratoSpeed.ToString("0.0000"));
+            result.Append(",");
+            result.Append(ChangeAmount.ToString("0.0000"));
+            result.Append(",");
+            result.Append(ChangeSpeed.ToString("0.0000"));
+            result.Append(",");
+            result.Append(SquareDuty.ToString("0.0000"));
+            result.Append(",");
+            result.Append(DutySweep.ToString("0.0000"));
+            result.Append(",");
+            result.Append(RepeatSpeed.ToString("0.0000"));
+            result.Append(",");
+            result.Append(PhaserOffset.ToString("0.0000"));
+            result.Append(",");
+            result.Append(PhaserSweep.ToString("0.0000"));
+            result.Append(",");
+            result.Append(LowPassFilterCutoff.ToString("0.0000"));
+            result.Append(",");
+            result.Append(LowPassFilterCutoffSweep.ToString("0.0000"));
+            result.Append(",");
+            result.Append(LowPassFilterResonance.ToString("0.0000"));
+            result.Append(",");
+            result.Append(HighPassFilterCutoff.ToString("0.0000"));
+            result.Append(",");
+            result.Append(HighPassFilterCutoffSweep.ToString("0.0000"));
+            result.Append(",");
+            result.Append(MasterVolume.ToString("0.0000"));
+
+            return result.ToString();
+        }
+
+        public static SynthParams Deserialize(string input)
+        {
+            var values = input.Split(new[] { ',' });
+
+            if (values.Length != 24) return null;
+
+            return new SynthParams
+            {
+                WaveShape = (WaveShapeEnum)UInt32.Parse(values[0]),
+                AttackTime = float.Parse(values[1]),
+                SustainTime = float.Parse(values[2]),
+                SustainPunch = float.Parse(values[3]),
+                DecayTime = float.Parse(values[4]),
+                StartFrequency = float.Parse(values[5]),
+                MinFrequency = float.Parse(values[6]),
+                Slide = float.Parse(values[7]),
+                DeltaSlide = float.Parse(values[8]),
+                VibratoDepth = float.Parse(values[9]),
+                VibratoSpeed = float.Parse(values[10]),
+                ChangeAmount = float.Parse(values[11]),
+                ChangeSpeed = float.Parse(values[12]),
+                SquareDuty = float.Parse(values[13]),
+                DutySweep = float.Parse(values[14]),
+                RepeatSpeed = float.Parse(values[15]),
+                PhaserOffset = float.Parse(values[16]),
+                PhaserSweep = float.Parse(values[17]),
+                LowPassFilterCutoff = float.Parse(values[18]),
+                LowPassFilterCutoffSweep = float.Parse(values[19]),
+                LowPassFilterResonance = float.Parse(values[20]),
+                HighPassFilterCutoff = float.Parse(values[21]),
+                HighPassFilterCutoffSweep = float.Parse(values[22]),
+                MasterVolume = float.Parse(values[23]),
+            };
+        }
     }
 }
