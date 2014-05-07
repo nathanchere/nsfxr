@@ -2,9 +2,9 @@ using System;
 
 namespace nsfxr
 {
-    public class SfxrAudioPlayer : IDisposable
+    public class AudioPlayer : IDisposable
     {
-        public SfxrSynth Synth { get; set; }
+        public Synth Synth { get; set; }
     ;
 	
         void Start() {
