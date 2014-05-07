@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>nFMOD</id>
+    <version>0.6</version>
+    <title>nFMOD</title>
+    <authors>Nathan Chere</authors>
+    <owners>Nathan Chere</owners>
+    <projectUrl>http://github.com/nathanchere/nfmod</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A managed wrapper for Firelight Studio's FMOD audio library.</description>
+    <summary>A managed wrapper for Firelight Studio's FMOD audio library.</summary>
+    <releaseNotes>See the readme at http://github.com/nathanchere/nFMOD for the release notes.</releaseNotes>
+    <language>en-US</language>
+    <tags>audio fmod mp3</tags>
+  </metadata>
+</package>
