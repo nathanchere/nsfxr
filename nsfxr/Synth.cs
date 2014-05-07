@@ -4,23 +4,10 @@ namespace nsfxr
 {
     public class Synth
     {
-        private SynthParams _params = new SynthParams();		// Params instance
-        private AudioPlayer _audioPlayer;					// Audio player script that will be attached to a GameObject to play the sound
+        private SynthParams Parameters { get; set; }
 
+        #region crap
         private bool _mutation;						// If the current sound playing or caching is a mutation
-
-        private float[] _cachedWave;					// Cached wave data from a cacheSound() call
-        private uint _cachedWavePos;					// Equivalent to _cachedWave.position in the old code
-        private bool _cachingNormal;					// If the synth is caching a normal sound
-
-        private int _cachingMutation;				// Current caching ID
-        private float[] _cachedMutation;				// Current caching wave data for mutation
-        private uint _cachedMutationPos;				// Equivalent to _cachedMutation.position in the old code
-        private float[][] _cachedMutations;				// Cached mutated wave data
-        private uint _cachedMutationsNum;			// Number of cached mutations
-        private float _cachedMutationAmount;			// Amount to mutate during cache
-
-        private bool _cachingAsync;					// If the synth is currently caching asynchronously
 
         private float[] _waveData;						// Full wave, read out in chuncks by the onSampleData method
         private uint _waveDataPos;					// Current position in the waveData
@@ -97,276 +84,38 @@ namespace nsfxr
         private float _superSample;						// Actual sample writen to the wave
         private float _sample;							// Sub-sample calculated 8 times per actual sample, averaged out to get the super sample
 
-        private Random _random = new System.Random();
-
-
-        // ================================================================================================================
-        // ACCESSOR INTERFACE ---------------------------------------------------------------------------------------------
-
-        /** The sound parameters */
-        public SynthParams parameters
-        {
-            get
-            {
-                return _params;
-            }
-            set
-            {
-                _params = value;
-                _params.paramsDirty = true;
-            }
+        #endregion
+        private Random _random = new Random();
+                
+        public void Mutate(float __mutationAmount = 0.05f, uint __mutationsNum = 15)
+        {                        
+                Parameters.Mutate(__mutationAmount);          
         }
 
-        public void Play()
+        private IntPtr WriteSamples(float[] __originSamples, int __originPos, float[] __targetSamples, int __targetChannels)
         {
-            if (_cachingAsync)
-                return;
-
-            Stop();
-
-            _mutation = false;
-
-            if (_params.paramsDirty || _cachingNormal || _cachedWave == null) {
-                // Needs to cache new data
-                _cachedWavePos = 0;
-                _cachingNormal = true;
-                _waveData = null;
-                Reset(true);
-                _cachedWave = new float[_envelopeFullLength];
-            } else {
-                // Play from cached data
-                _waveData = _cachedWave;
-                _waveDataPos = 0;
-            }
-
-        }
-        
-        public void PlayMutated(float __mutationAmount = 0.05f, uint __mutationsNum = 15)
-        {
-            Stop();
-
-            if (_cachingAsync)
-                return;
-
-            _mutation = true;
-
-            _cachedMutationsNum = __mutationsNum;
-
-            if (_params.paramsDirty || _cachedMutations == null) {
-                // New set of mutations
-                _cachedMutations = new float[_cachedMutationsNum][];
-                _cachingMutation = 0;
-            }
-
-            if (_cachingMutation != -1) {
-                // Continuing caching new mutations
-                Reset(true); // To get _envelopeFullLength
-
-                _cachedMutation = new float[_envelopeFullLength];
-                _cachedMutationPos = 0;
-                _cachedMutations[_cachingMutation] = _cachedMutation;
-                _waveData = null;
-
-                _original = _params.Clone();
-                _params.Mutate(__mutationAmount);
-
-                Reset(true);
-            } else {
-                // Play from random cached mutation
-                _waveData = _cachedMutations[(uint)(_cachedMutations.Length * getRandom())];
-                _waveDataPos = 0;
-            }
+            // Write samples to fMod format
+            // TODO
+            return new IntPtr();
         }
 
-        /**
-	 * Stops the currently playing sound
-	 */
-        public void Stop()
+        public bool GenerateAudioFilterData(float[] _data, int _channels)
         {
-            if (_audioPlayer != null) {
-                _audioPlayer.Dispose();
-                _audioPlayer = null;
-            }
+            bool endOfSamples = false;                                                                        
+            int samplesNeeded = _data.Length / _channels;
 
-            if (_original != null) {
-                _params.CopyFrom(_original);
-                _original = null;
-            }
+            //if (SynthWave(_cachedMutation, (int) _cachedMutationPos, (uint) samplesNeeded) || samplesNeeded == 0)
+            //{
+
+            //    WriteSamples(_cachedMutation, (int) _waveDataPos, _data, _channels);
+            //}
+            return true;
         }
 
-        private int WriteSamples(float[] __originSamples, int __originPos, float[] __targetSamples, int __targetChannels)
-        {
-            // Writes raw samples to Unity's format and return number of samples actually written
-            int samplesToWrite = __targetSamples.Length / __targetChannels;
-
-            if (__originPos + samplesToWrite > __originSamples.Length)
-                samplesToWrite = __originSamples.Length - __originPos;
-
-            if (samplesToWrite > 0) {
-                // Interlaced filling of sample datas (faster?)
-                int i, j;
-                for (i = 0; i < __targetChannels; i++) {
-                    for (j = 0; j < samplesToWrite; j++) {
-                        __targetSamples[(j * __targetChannels) + i] = __originSamples[j + __originPos];
-                    }
-                }
-            }
-
-            return samplesToWrite;
-        }
-
-        /**
-	 * If there is a cached sound to play, reads out of the data.
-	 * If there isn't, synthesises new chunch of data, caching it as it goes.
-	 * @param	data		Float[] to write data to
-	 * @param	channels	Number of channels used
-	 * @return	Whether it needs to continue (there are samples left) or not
-	 */
-        public bool GenerateAudioFilterData(float[] __data, int __channels)
-        {
-            bool endOfSamples = false;
-
-            if (_waveData != null) {
-                int samplesWritten = WriteSamples(_waveData, (int)_waveDataPos, __data, __channels);
-                _waveDataPos += (uint)samplesWritten;
-                if (samplesWritten == 0)
-                    endOfSamples = true;
-            } else {
-                if (_mutation) {
-                    if (_original != null) {
-                        _waveDataPos = _cachedMutationPos;
-
-                        int samplesNeeded = (int)Math.Min((__data.Length / __channels), _cachedMutation.Length - _cachedMutationPos);
-
-                        if (SynthWave(_cachedMutation, (int)_cachedMutationPos, (uint)samplesNeeded) || samplesNeeded == 0) {
-                            // Finished
-                            _params.CopyFrom(_original);
-                            _original = null;
-
-                            _cachingMutation++;
-
-                            endOfSamples = true;
-
-                            if (_cachingMutation >= _cachedMutationsNum)
-                                _cachingMutation = -1;
-                        } else {
-                            _cachedMutationPos += (uint)samplesNeeded;
-                        }
-
-                        WriteSamples(_cachedMutation, (int)_waveDataPos, __data, __channels);
-                    }
-                } else {
-                    if (_cachingNormal) {
-                        _waveDataPos = _cachedWavePos;
-
-                        int samplesNeeded = (int)Math.Min((__data.Length / __channels), _cachedWave.Length - _cachedWavePos);
-
-                        if (SynthWave(_cachedWave, (int)_cachedWavePos, (uint)samplesNeeded) || samplesNeeded == 0) {
-                            _cachingNormal = false;
-                            endOfSamples = true;
-                        } else {
-                            _cachedWavePos += (uint)samplesNeeded;
-                        }
-
-                        WriteSamples(_cachedWave, (int)_waveDataPos, __data, __channels);
-                    }
-                }
-            }
-
-            return !endOfSamples;
-        }
-
-
-        // Cache sound methods
-
-        /**
-	 * Cache the sound for speedy playback.
-	 * If a callback is passed in, the caching will be done asynchronously, taking maxTimePerFrame milliseconds
-	 * per frame to cache, them calling the callback when it's done.
-	 * If not, the whole sound is cached immediately - can freeze the player for a few seconds, especially in debug mode.
-	 * @param	callback			Function to call when the caching is complete
-	 * @param	maxTimePerFrame		Maximum time in milliseconds the caching will use per frame
-	 */
-        public void CacheSound(Action __callback = null, bool __isFromCoroutine = false)
-        {
-            Stop();
-
-            if (_cachingAsync && !__isFromCoroutine)
-                return;
-
-            if (__callback != null) {
-                _mutation = false;
-                _cachingNormal = true;
-                _cachingAsync = true;
-
-                //GameObject _surrogateObj = new GameObject("SfxrGameObjectSurrogate-" + (Time.realtimeSinceStartup));
-                //SfxrCacheSurrogate _surrogate = _surrogateObj.AddComponent<SfxrCacheSurrogate>();
-                //_surrogate.CacheSound(this, __callback);
-            } else {
-                Reset(true);
-
-                _cachedWave = new float[_envelopeFullLength];
-
-                SynthWave(_cachedWave, 0, _envelopeFullLength);
-
-                _cachingNormal = false;
-                _cachingAsync = false;
-            }
-        }
-
-        /**
-	 * Caches a series of mutations on the source sound.
-	 * If a callback is passed in, the caching will be done asynchronously, taking maxTimePerFrame milliseconds
-	 * per frame to cache, them calling the callback when it's done.
-	 * If not, the whole sound is cached immediately - can freeze the player for a few seconds, especially in debug mode.
-	 * @param	mutationsNum		Number of mutations to cache
-	 * @param	mutationAmount		Amount of mutation
-	 * @param	callback			Function to call when the caching is complete
-	 * @param	maxTimePerFrame		Maximum time in milliseconds the caching will use per frame
-	 */
-        public void CacheMutations(uint __mutationsNum = 15, float __mutationAmount = 0.05f, Action __callback = null, bool __isFromCoroutine = false)
-        {
-            Stop();
-
-            if (_cachingAsync && !__isFromCoroutine)
-                return;
-
-            _cachedMutationsNum = __mutationsNum;
-            _cachedMutations = new float[_cachedMutationsNum][];
-
-            if (__callback != null) {
-                _mutation = true;
-                _cachingAsync = true;
-
-                //GameObject _surrogateObj = new GameObject("SfxrGameObjectSurrogate-" + (Time.realtimeSinceStartup));
-                //SfxrCacheSurrogate _surrogate = _surrogateObj.AddComponent<SfxrCacheSurrogate>();
-                //_surrogate.CacheMutations(this, __mutationsNum, __mutationAmount, __callback);
-            } else {
-                Reset(true);
-
-                SynthParams original = _params.Clone();
-
-                for (uint i = 0; i < _cachedMutationsNum; i++) {
-                    _params.Mutate(__mutationAmount);
-                    CacheSound();
-                    _cachedMutations[i] = _cachedWave;
-                    _params.CopyFrom(original);
-                }
-
-                _cachingAsync = false;
-                _cachingMutation = -1;
-            }
-        }
-
-        /**
-	 * Resets the runing variables from the params
-	 * Used once at the start (total reset) and for the repeat effect (partial reset)
-	 * @param	totalReset	If the reset is total
-	 */
         private void Reset(bool __totalReset)
         {
             // Shorter reference
-            SynthParams p = _params;
+            var p = Parameters;
 
             _period = 100.0f / (p.startFrequency * p.startFrequency + 0.001f);
             _maxPeriod = 100.0f / (p.minFrequency * p.minFrequency + 0.001f);
