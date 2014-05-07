@@ -156,9 +156,170 @@ namespace nsfxr
         public float HighPassFilterCutoffSweep { get; set; }
         #endregion
 
+        /// <summary>
+        /// Initialise with defaut values
+        /// </summary>
+        public void Reset()
+        {         
+            WaveShape = WaveShapeEnum.Square;
+            StartFrequency = 0.3f;
+            MinFrequency = 0.0f;
+            Slide = 0.0f;
+            DeltaSlide = 0.0f;
+            SquareDuty = 0.0f;
+            DutySweep = 0.0f;
+
+            VibratoDepth = 0.0f;
+            VibratoSpeed = 0.0f;
+
+            AttackTime = 0.0f;
+            SustainTime = 0.3f;
+            DecayTime = 0.4f;
+            SustainPunch = 0.0f;
+
+            LowPassFilterResonance = 0.0f;
+            LowPassFilterCutoff = 1.0f;
+            LowPassFilterCutoffSweep = 0.0f;
+            HighPassFilterCutoff = 0.0f;
+            HighPassFilterCutoffSweep = 0.0f;
+
+            PhaserOffset = 0.0f;
+            PhaserSweep = 0.0f;
+
+            RepeatSpeed = 0.0f;
+
+            ChangeSpeed = 0.0f;
+            ChangeAmount = 0.0f;
+        }
+
+        /// <summary>
+        /// Apply slight variation to existing synth parameters
+        /// </summary>
+        /// <param name="mutation">Maximum intensity of the variation</param>
+        public void Mutate(float mutation = 0.05f)
+        {
+            if (GetRandom.Float() < 0.5f) StartFrequency += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) MinFrequency += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) Slide += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) DeltaSlide += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) SquareDuty += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) DutySweep += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) VibratoDepth += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) VibratoSpeed += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) AttackTime += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) SustainTime += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) DecayTime += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) SustainPunch += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) LowPassFilterCutoff += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) LowPassFilterCutoffSweep += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) LowPassFilterResonance += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) HighPassFilterCutoff += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) HighPassFilterCutoffSweep += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f)  PhaserOffset += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) PhaserSweep += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) RepeatSpeed += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) ChangeSpeed += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) ChangeAmount += GetRandom.Float(-mutation, mutation);
+        }       
+        
+        public string Serialize(SynthParams input)
+        {
+            var result = new StringBuilder();
+            result.Append((int)input.WaveShape);
+            result.Append(",");
+            result.Append(AttackTime.ToString("0.0000"));
+            result.Append(",");
+            result.Append(SustainTime.ToString("0.0000"));
+            result.Append(",");
+            result.Append(SustainPunch.ToString("0.0000"));
+            result.Append(",");
+            result.Append(DecayTime.ToString("0.0000"));
+            result.Append(",");
+            result.Append(StartFrequency.ToString("0.0000"));
+            result.Append(",");
+            result.Append(MinFrequency.ToString("0.0000"));
+            result.Append(",");
+            result.Append(Slide.ToString("0.0000"));
+            result.Append(",");
+            result.Append(DeltaSlide.ToString("0.0000"));
+            result.Append(",");
+            result.Append(VibratoDepth.ToString("0.0000"));
+            result.Append(",");
+            result.Append(VibratoSpeed.ToString("0.0000"));
+            result.Append(",");
+            result.Append(ChangeAmount.ToString("0.0000"));
+            result.Append(",");
+            result.Append(ChangeSpeed.ToString("0.0000"));
+            result.Append(",");
+            result.Append(SquareDuty.ToString("0.0000"));
+            result.Append(",");
+            result.Append(DutySweep.ToString("0.0000"));
+            result.Append(",");
+            result.Append(RepeatSpeed.ToString("0.0000"));
+            result.Append(",");
+            result.Append(PhaserOffset.ToString("0.0000"));
+            result.Append(",");
+            result.Append(PhaserSweep.ToString("0.0000"));
+            result.Append(",");
+            result.Append(LowPassFilterCutoff.ToString("0.0000"));
+            result.Append(",");
+            result.Append(LowPassFilterCutoffSweep.ToString("0.0000"));
+            result.Append(",");
+            result.Append(LowPassFilterResonance.ToString("0.0000"));
+            result.Append(",");
+            result.Append(HighPassFilterCutoff.ToString("0.0000"));
+            result.Append(",");
+            result.Append(HighPassFilterCutoffSweep.ToString("0.0000"));
+            result.Append(",");
+            result.Append(MasterVolume.ToString("0.0000"));
+
+            return result.ToString();
+        }
+
+        public static SynthParams Deserialize(string input)
+        {
+            var values = input.Split(new[] { ',' });
+
+            if (values.Length != 24)
+                throw new SerializationException("Expected 24 properties; found " + values.Length);
+
+            return new SynthParams {
+                WaveShape = (WaveShapeEnum)UInt32.Parse(values[0]),
+                AttackTime = float.Parse(values[1]),
+                SustainTime = float.Parse(values[2]),
+                SustainPunch = float.Parse(values[3]),
+                DecayTime = float.Parse(values[4]),
+                StartFrequency = float.Parse(values[5]),
+                MinFrequency = float.Parse(values[6]),
+                Slide = float.Parse(values[7]),
+                DeltaSlide = float.Parse(values[8]),
+                VibratoDepth = float.Parse(values[9]),
+                VibratoSpeed = float.Parse(values[10]),
+                ChangeAmount = float.Parse(values[11]),
+                ChangeSpeed = float.Parse(values[12]),
+                SquareDuty = float.Parse(values[13]),
+                DutySweep = float.Parse(values[14]),
+                RepeatSpeed = float.Parse(values[15]),
+                PhaserOffset = float.Parse(values[16]),
+                PhaserSweep = float.Parse(values[17]),
+                LowPassFilterCutoff = float.Parse(values[18]),
+                LowPassFilterCutoffSweep = float.Parse(values[19]),
+                LowPassFilterResonance = float.Parse(values[20]),
+                HighPassFilterCutoff = float.Parse(values[21]),
+                HighPassFilterCutoffSweep = float.Parse(values[22]),
+                MasterVolume = float.Parse(values[23]),
+            };
+        }
 
         public static class Preset
         {
+            public static SynthParams Default()
+            {
+                var result = new SynthParams();
+                result.Reset();
+                return result;
+            }
+
             public static SynthParams Random()
             {
                 var result = new SynthParams
@@ -401,162 +562,5 @@ namespace nsfxr
                 return result;
             }                  
         }
-
-        #region Helpers
-        /// <summary>
-        /// Initialise with defaut values
-        /// </summary>
-        public void Reset()
-        {         
-            WaveShape = WaveShapeEnum.Square;
-            StartFrequency = 0.3f;
-            MinFrequency = 0.0f;
-            Slide = 0.0f;
-            DeltaSlide = 0.0f;
-            SquareDuty = 0.0f;
-            DutySweep = 0.0f;
-
-            VibratoDepth = 0.0f;
-            VibratoSpeed = 0.0f;
-
-            AttackTime = 0.0f;
-            SustainTime = 0.3f;
-            DecayTime = 0.4f;
-            SustainPunch = 0.0f;
-
-            LowPassFilterResonance = 0.0f;
-            LowPassFilterCutoff = 1.0f;
-            LowPassFilterCutoffSweep = 0.0f;
-            HighPassFilterCutoff = 0.0f;
-            HighPassFilterCutoffSweep = 0.0f;
-
-            PhaserOffset = 0.0f;
-            PhaserSweep = 0.0f;
-
-            RepeatSpeed = 0.0f;
-
-            ChangeSpeed = 0.0f;
-            ChangeAmount = 0.0f;
-        }
-
-        /// <summary>
-        /// Apply slight variation to existing synth parameters
-        /// </summary>
-        /// <param name="mutation">Maximum intensity of the variation</param>
-        public void Mutate(float mutation = 0.05f)
-        {
-            if (GetRandom.Float() < 0.5f) StartFrequency += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) MinFrequency += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) Slide += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) DeltaSlide += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) SquareDuty += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) DutySweep += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) VibratoDepth += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) VibratoSpeed += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) AttackTime += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) SustainTime += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) DecayTime += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) SustainPunch += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) LowPassFilterCutoff += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) LowPassFilterCutoffSweep += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) LowPassFilterResonance += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) HighPassFilterCutoff += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) HighPassFilterCutoffSweep += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f)  PhaserOffset += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) PhaserSweep += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) RepeatSpeed += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) ChangeSpeed += GetRandom.Float(-mutation, mutation);
-            if (GetRandom.Float() < 0.5f) ChangeAmount += GetRandom.Float(-mutation, mutation);
-        }       
-        
-        public string Serialize(SynthParams input)
-        {
-            var result = new StringBuilder();
-            result.Append((int)input.WaveShape);
-            result.Append(",");
-            result.Append(AttackTime.ToString("0.0000"));
-            result.Append(",");
-            result.Append(SustainTime.ToString("0.0000"));
-            result.Append(",");
-            result.Append(SustainPunch.ToString("0.0000"));
-            result.Append(",");
-            result.Append(DecayTime.ToString("0.0000"));
-            result.Append(",");
-            result.Append(StartFrequency.ToString("0.0000"));
-            result.Append(",");
-            result.Append(MinFrequency.ToString("0.0000"));
-            result.Append(",");
-            result.Append(Slide.ToString("0.0000"));
-            result.Append(",");
-            result.Append(DeltaSlide.ToString("0.0000"));
-            result.Append(",");
-            result.Append(VibratoDepth.ToString("0.0000"));
-            result.Append(",");
-            result.Append(VibratoSpeed.ToString("0.0000"));
-            result.Append(",");
-            result.Append(ChangeAmount.ToString("0.0000"));
-            result.Append(",");
-            result.Append(ChangeSpeed.ToString("0.0000"));
-            result.Append(",");
-            result.Append(SquareDuty.ToString("0.0000"));
-            result.Append(",");
-            result.Append(DutySweep.ToString("0.0000"));
-            result.Append(",");
-            result.Append(RepeatSpeed.ToString("0.0000"));
-            result.Append(",");
-            result.Append(PhaserOffset.ToString("0.0000"));
-            result.Append(",");
-            result.Append(PhaserSweep.ToString("0.0000"));
-            result.Append(",");
-            result.Append(LowPassFilterCutoff.ToString("0.0000"));
-            result.Append(",");
-            result.Append(LowPassFilterCutoffSweep.ToString("0.0000"));
-            result.Append(",");
-            result.Append(LowPassFilterResonance.ToString("0.0000"));
-            result.Append(",");
-            result.Append(HighPassFilterCutoff.ToString("0.0000"));
-            result.Append(",");
-            result.Append(HighPassFilterCutoffSweep.ToString("0.0000"));
-            result.Append(",");
-            result.Append(MasterVolume.ToString("0.0000"));
-
-            return result.ToString();
-        }
-
-        public static SynthParams Deserialize(string input)
-        {
-            var values = input.Split(new[] { ',' });
-
-            if (values.Length != 24)
-                throw new SerializationException("Expected 24 properties; found " + values.Length);
-
-            return new SynthParams {
-                WaveShape = (WaveShapeEnum)UInt32.Parse(values[0]),
-                AttackTime = float.Parse(values[1]),
-                SustainTime = float.Parse(values[2]),
-                SustainPunch = float.Parse(values[3]),
-                DecayTime = float.Parse(values[4]),
-                StartFrequency = float.Parse(values[5]),
-                MinFrequency = float.Parse(values[6]),
-                Slide = float.Parse(values[7]),
-                DeltaSlide = float.Parse(values[8]),
-                VibratoDepth = float.Parse(values[9]),
-                VibratoSpeed = float.Parse(values[10]),
-                ChangeAmount = float.Parse(values[11]),
-                ChangeSpeed = float.Parse(values[12]),
-                SquareDuty = float.Parse(values[13]),
-                DutySweep = float.Parse(values[14]),
-                RepeatSpeed = float.Parse(values[15]),
-                PhaserOffset = float.Parse(values[16]),
-                PhaserSweep = float.Parse(values[17]),
-                LowPassFilterCutoff = float.Parse(values[18]),
-                LowPassFilterCutoffSweep = float.Parse(values[19]),
-                LowPassFilterResonance = float.Parse(values[20]),
-                HighPassFilterCutoff = float.Parse(values[21]),
-                HighPassFilterCutoffSweep = float.Parse(values[22]),
-                MasterVolume = float.Parse(values[23]),
-            };
-        }
-        #endregion
     }
 }
