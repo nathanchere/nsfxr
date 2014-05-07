@@ -4,6 +4,8 @@ namespace nsfxr
 {
     public class Synth
     {
+        private const float TOLERANCE = 0.00001f;
+
         private SynthParams Parameters { get; set; }
 
         #region crap
@@ -117,81 +119,81 @@ namespace nsfxr
             // Shorter reference
             var p = Parameters;
 
-            _period = 100.0f / (p.startFrequency * p.startFrequency + 0.001f);
-            _maxPeriod = 100.0f / (p.minFrequency * p.minFrequency + 0.001f);
+            _period = 100.0f / (p.StartFrequency * p.StartFrequency + 0.001f);
+            _maxPeriod = 100.0f / (p.MinFrequency * p.MinFrequency + 0.001f);
 
-            _slide = 1.0f - p.slide * p.slide * p.slide * 0.01f;
-            _deltaSlide = -p.deltaSlide * p.deltaSlide * p.deltaSlide * 0.000001f;
+            _slide = 1.0f - p.Slide * p.Slide * p.Slide * 0.01f;
+            _deltaSlide = -p.DeltaSlide * p.DeltaSlide * p.DeltaSlide * 0.000001f;
 
-            if (p.waveType == 0) {
-                _squareDuty = 0.5f - p.squareDuty * 0.5f;
-                _dutySweep = -p.dutySweep * 0.00005f;
+            if (p.WaveShape == 0) {
+                _squareDuty = 0.5f - p.SquareDuty * 0.5f;
+                _dutySweep = -p.DutySweep * 0.00005f;
             }
 
-            if (p.changeAmount > 0.0) {
-                _changeAmount = 1.0f - p.changeAmount * p.changeAmount * 0.9f;
+            if (p.ChangeAmount > 0.0) {
+                _changeAmount = 1.0f - p.ChangeAmount * p.ChangeAmount * 0.9f;
             } else {
-                _changeAmount = 1.0f + p.changeAmount * p.changeAmount * 10.0f;
+                _changeAmount = 1.0f + p.ChangeAmount * p.ChangeAmount * 10.0f;
             }
 
             _changeTime = 0;
 
-            if (p.changeSpeed == 1.0f) {
+            if (p.ChangeSpeed == 1.0f) {
                 _changeLimit = 0;
             } else {
-                _changeLimit = (int)((1f - p.changeSpeed) * (1f - p.changeSpeed) * 20000f + 32f);
+                _changeLimit = (int)((1f - p.ChangeSpeed) * (1f - p.ChangeSpeed) * 20000f + 32f);
             }
 
             if (__totalReset) {
-                p.paramsDirty = false;
+                //p.paramsDirty = false;
 
-                _masterVolume = p.masterVolume * p.masterVolume;
+                _masterVolume = p.MasterVolume * p.MasterVolume;
 
-                _waveType = p.waveType;
+                _waveType = (uint)p.WaveShape;
 
-                if (p.sustainTime < 0.01)
-                    p.sustainTime = 0.01f;
+                if (p.SustainTime < 0.01)
+                    p.SustainTime = 0.01f;
 
-                float totalTime = p.attackTime + p.sustainTime + p.decayTime;
+                float totalTime = p.AttackTime + p.SustainTime + p.DecayTime;
                 if (totalTime < 0.18f) {
                     float multiplier = 0.18f / totalTime;
-                    p.attackTime *= multiplier;
-                    p.sustainTime *= multiplier;
-                    p.decayTime *= multiplier;
+                    p.AttackTime *= multiplier;
+                    p.SustainTime *= multiplier;
+                    p.DecayTime *= multiplier;
                 }
 
-                _sustainPunch = p.sustainPunch;
+                _sustainPunch = p.SustainPunch;
 
                 _phase = 0;
 
-                _minFrequency = p.minFrequency;
+                _minFrequency = p.MinFrequency;
 
-                _filters = p.lpFilterCutoff != 1.0 || p.hpFilterCutoff != 0.0;
+                _filters = p.LowPassFilterCutoff != 1.0 || p.HighPassFilterCutoff != 0.0;
 
                 _lpFilterPos = 0.0f;
                 _lpFilterDeltaPos = 0.0f;
-                _lpFilterCutoff = p.lpFilterCutoff * p.lpFilterCutoff * p.lpFilterCutoff * 0.1f;
-                _lpFilterDeltaCutoff = 1.0f + p.lpFilterCutoffSweep * 0.0001f;
-                _lpFilterDamping = 5.0f / (1.0f + p.lpFilterResonance * p.lpFilterResonance * 20.0f) * (0.01f + _lpFilterCutoff);
+                _lpFilterCutoff = p.LowPassFilterCutoff * p.LowPassFilterCutoff * p.LowPassFilterCutoff * 0.1f;
+                _lpFilterDeltaCutoff = 1.0f + p.LowPassFilterCutoffSweep * 0.0001f;
+                _lpFilterDamping = 5.0f / (1.0f + p.LowPassFilterResonance * p.LowPassFilterResonance * 20.0f) * (0.01f + _lpFilterCutoff);
                 if (_lpFilterDamping > 0.8f)
                     _lpFilterDamping = 0.8f;
                 _lpFilterDamping = 1.0f - _lpFilterDamping;
-                _lpFilterOn = p.lpFilterCutoff != 1.0f;
+                _lpFilterOn = p.LowPassFilterCutoff != 1.0f;
 
                 _hpFilterPos = 0.0f;
-                _hpFilterCutoff = p.hpFilterCutoff * p.hpFilterCutoff * 0.1f;
-                _hpFilterDeltaCutoff = 1.0f + p.hpFilterCutoffSweep * 0.0003f;
+                _hpFilterCutoff = p.HighPassFilterCutoff * p.HighPassFilterCutoff * 0.1f;
+                _hpFilterDeltaCutoff = 1.0f + p.HighPassFilterCutoffSweep * 0.0003f;
 
                 _vibratoPhase = 0.0f;
-                _vibratoSpeed = p.vibratoSpeed * p.vibratoSpeed * 0.01f;
-                _vibratoAmplitude = p.vibratoDepth * 0.5f;
+                _vibratoSpeed = p.VibratoSpeed * p.VibratoSpeed * 0.01f;
+                _vibratoAmplitude = p.VibratoDepth * 0.5f;
 
                 _envelopeVolume = 0.0f;
                 _envelopeStage = 0;
                 _envelopeTime = 0;
-                _envelopeLength0 = p.attackTime * p.attackTime * 100000.0f;
-                _envelopeLength1 = p.sustainTime * p.sustainTime * 100000.0f;
-                _envelopeLength2 = p.decayTime * p.decayTime * 100000.0f + 10f;
+                _envelopeLength0 = p.AttackTime * p.AttackTime * 100000.0f;
+                _envelopeLength1 = p.SustainTime * p.SustainTime * 100000.0f;
+                _envelopeLength2 = p.DecayTime * p.DecayTime * 100000.0f + 10f;
                 _envelopeLength = _envelopeLength0;
                 _envelopeFullLength = (uint)(_envelopeLength0 + _envelopeLength1 + _envelopeLength2);
 
@@ -199,12 +201,11 @@ namespace nsfxr
                 _envelopeOverLength1 = 1.0f / _envelopeLength1;
                 _envelopeOverLength2 = 1.0f / _envelopeLength2;
 
-                _phaser = p.phaserOffset != 0.0f || p.phaserSweep != 0.0f;
+                _phaser = p.PhaserOffset != 0.0f || p.PhaserSweep != 0.0f;
 
-                _phaserOffset = p.phaserOffset * p.phaserOffset * 1020.0f;
-                if (p.phaserOffset < 0.0f)
-                    _phaserOffset = -_phaserOffset;
-                _phaserDeltaOffset = p.phaserSweep * p.phaserSweep * p.phaserSweep * 0.2f;
+                _phaserOffset = p.PhaserOffset * p.PhaserOffset * 1020.0f;
+                if (p.PhaserOffset < 0.0f) _phaserOffset = -_phaserOffset;
+                _phaserDeltaOffset = p.PhaserSweep * p.PhaserSweep * p.PhaserSweep * 0.2f;
                 _phaserPos = 0;
 
                 if (_phaserBuffer == null)
@@ -213,20 +214,17 @@ namespace nsfxr
                     _noiseBuffer = new float[32];
 
                 uint i;
-                for (i = 0; i < 1024; i++)
-                    _phaserBuffer[i] = 0.0f;
-                for (i = 0; i < 32; i++)
-                    _noiseBuffer[i] = getRandom() * 2.0f - 1.0f;
+                for (i = 0; i < 1024; i++) _phaserBuffer[i] = 0.0f;
+                for (i = 0; i < 32; i++) _noiseBuffer[i] = getRandom() * 2.0f - 1.0f;
 
                 _repeatTime = 0;
 
-                if (p.repeatSpeed == 0.0) {
-                    _repeatLimit = 0;
-                } else {
-                    _repeatLimit = (int)((1.0 - p.repeatSpeed) * (1.0 - p.repeatSpeed) * 20000) + 32;
+                 _repeatLimit = Math.Abs(p.RepeatSpeed) < TOLERANCE
+                     ? 0
+                     : (int)((1.0 - p.RepeatSpeed) * (1.0 - p.RepeatSpeed) * 20000) + 32;
                 }
             }
-        }
+        
 
         /**
 	 * Writes the wave to the supplied buffer array of floats (it'll contain the mono audio)
