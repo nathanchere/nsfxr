@@ -4,8 +4,7 @@ namespace nsfxr
 {
     public class AudioPlayer : IDisposable
     {
-        public Synth Synth { get; set; }
-    ;
+        public Synth Synth { get; set; }    
 	
         void Start() {
             //// TODO: create audio source
