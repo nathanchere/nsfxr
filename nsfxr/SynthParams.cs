@@ -6,15 +6,13 @@ namespace nsfxr
 {
     public struct SynthParams
     {
-        private static Random _random = new Random();
-
         public enum WaveShapeEnum
         {
             Square = 0,
             Saw = 1,
             Sin = 2,
             Noise = 3,
-        }
+        }        
 
           #region Properties
         public WaveShapeEnum WaveShape { get; set; }
@@ -161,44 +159,102 @@ namespace nsfxr
 
         public static class Preset
         {
-            public static SynthParams GenerateLaserShoot()
+            public static SynthParams Random()
+            {
+                var result = new SynthParams
+                {
+                    WaveShape = (WaveShapeEnum) (GetRandom.Float()*4f),
+
+                    AttackTime = (float) Math.Pow(GetRandom.Float()*2f - 1f, 4),
+                    SustainTime = (float) Math.Pow(GetRandom.Float()*2f - 1f, 2),
+                    SustainPunch = (float) Math.Pow(GetRandom.Float()*0.8f, 2),
+                    DecayTime = GetRandom.Float(),
+
+                    StartFrequency = (GetRandom.Float() < 0.5f) ? (float) Math.Pow(GetRandom.Float()*2f - 1f, 2) : ((float) Math.Pow(GetRandom.Float()*0.5f, 3) + 0.5f),
+                    MinFrequency = 0.0f,
+
+                    Slide = (float) Math.Pow(GetRandom.Float()*2f - 1f, 5),
+                    DeltaSlide = (float) Math.Pow(GetRandom.Float()*2f - 1f, 3),
+
+                    VibratoDepth = (float) Math.Pow(GetRandom.Float()*2f - 1f, 3),
+                    VibratoSpeed = GetRandom.Float()*2f - 1f,
+
+                    ChangeAmount = GetRandom.Float()*2f - 1f,
+                    ChangeSpeed = GetRandom.Float()*2f - 1f,
+
+                    SquareDuty = GetRandom.Float()*2f - 1f,
+                    DutySweep = (float) Math.Pow(GetRandom.Float()*2f - 1f, 3),
+
+                    RepeatSpeed = GetRandom.Float()*2f - 1f,
+
+                    PhaserOffset = (float) Math.Pow(GetRandom.Float()*2f - 1f, 3),
+                    PhaserSweep = (float) Math.Pow(GetRandom.Float()*2f - 1f, 3),
+
+                    LowPassFilterCutoff = 1f - (float) Math.Pow(GetRandom.Float(), 3),
+                    LowPassFilterCutoffSweep = (float) Math.Pow(GetRandom.Float()*2f - 1f, 3),
+                    LowPassFilterResonance = GetRandom.Float()*2f - 1f,
+                    HighPassFilterCutoff = (float) Math.Pow(GetRandom.Float(), 5),
+                    HighPassFilterCutoffSweep = (float) Math.Pow(GetRandom.Float()*2f - 1f, 5),
+                };
+
+
+                if (result.AttackTime + result.SustainTime + result.DecayTime < 0.2f)
+                {
+                    result.SustainTime = 0.2f + GetRandom.Float(0.3f);
+                    result.DecayTime = 0.2f + GetRandom.Float(0.3f);
+                }
+
+                if ((result.StartFrequency > 0.7f && result.Slide > 0.2) || (result.StartFrequency < 0.2 && result.Slide < -0.05))
+                {
+                    result.Slide = -result.Slide;
+                }
+
+                if (result.LowPassFilterCutoff < 0.1f && result.LowPassFilterCutoffSweep < -0.05f)
+                {
+                    result.LowPassFilterCutoffSweep = -result.LowPassFilterCutoffSweep;
+                }
+                
+                return result;
+            }
+
+            public static SynthParams LaserShoot()
             {
                 var result = new SynthParams();
 
-                result.WaveShape = (WaveShapeEnum)(getRandom() * 3);
-                if (result.WaveShape == WaveShapeEnum.Sin && getRandom() < 0.5f)
-                    result.WaveShape = (WaveShapeEnum)(getRandom() * 2f);
+                result.WaveShape = (WaveShapeEnum)(GetRandom.Float() * 3);
+                if (result.WaveShape == WaveShapeEnum.Sin && GetRandom.Float() < 0.5f)
+                    result.WaveShape = (WaveShapeEnum)(GetRandom.Float() * 2f);
 
-                result.StartFrequency = 0.5f + getRandom() * 0.5f;
-                result.MinFrequency = result.StartFrequency - 0.2f - getRandom() * 0.6f;
+                result.StartFrequency = 0.5f + GetRandom.Float() * 0.5f;
+                result.MinFrequency = result.StartFrequency - 0.2f - GetRandom.Float() * 0.6f;
                 if (result.MinFrequency < 0.2f) result.MinFrequency = 0.2f;
 
-                result.Slide = -0.15f - getRandom() * 0.2f;
+                result.Slide = -0.15f - GetRandom.Float() * 0.2f;
 
-                if (getRandom() < 0.33f) {
-                    result.StartFrequency = 0.3f + getRandom() * 0.6f;
-                    result.MinFrequency = getRandom() * 0.1f;
-                    result.Slide = -0.35f - getRandom() * 0.3f;
+                if (GetRandom.Float() < 0.33f) {
+                    result.StartFrequency = 0.3f + GetRandom.Float() * 0.6f;
+                    result.MinFrequency = GetRandom.Float() * 0.1f;
+                    result.Slide = -0.35f - GetRandom.Float() * 0.3f;
                 }
 
-                if (getRandom() < 0.5f) {
-                    result.SquareDuty = getRandom() * 0.5f;
-                    result.DutySweep = getRandom() * 0.2f;
+                if (GetRandom.Float() < 0.5f) {
+                    result.SquareDuty = GetRandom.Float() * 0.5f;
+                    result.DutySweep = GetRandom.Float() * 0.2f;
                 } else {
-                    result.SquareDuty = 0.4f + getRandom() * 0.5f;
-                    result.DutySweep = -getRandom() * 0.7f;
+                    result.SquareDuty = 0.4f + GetRandom.Float() * 0.5f;
+                    result.DutySweep = -GetRandom.Float() * 0.7f;
                 }
 
-                result.SustainTime = 0.1f + getRandom() * 0.2f;
-                result.DecayTime = getRandom() * 0.4f;
-                if (getRandom() < 0.5f) result.SustainPunch = getRandom() * 0.3f;
+                result.SustainTime = 0.1f + GetRandom.Float() * 0.2f;
+                result.DecayTime = GetRandom.Float() * 0.4f;
+                if (GetRandom.Float() < 0.5f) result.SustainPunch = GetRandom.Float() * 0.3f;
 
-                if (getRandom() < 0.33f) {
-                    result.PhaserOffset = getRandom() * 0.2f;
-                    result.PhaserSweep = -getRandom() * 0.2f;
+                if (GetRandom.Float() < 0.33f) {
+                    result.PhaserOffset = GetRandom.Float() * 0.2f;
+                    result.PhaserSweep = -GetRandom.Float() * 0.2f;
                 }
 
-                if (getRandom() < 0.5f) result.HighPassFilterCutoff = getRandom() * 0.3f;
+                if (GetRandom.Float() < 0.5f) result.HighPassFilterCutoff = GetRandom.Float() * 0.3f;
 
                 return result;
             }
@@ -208,31 +264,31 @@ namespace nsfxr
                 var result = new SynthParams();
                 result.WaveShape = WaveShapeEnum.Noise;
 
-                if (getRandom() < 0.5f) {
-                    result.StartFrequency = 0.1f + getRandom() * 0.4f;
-                    result.Slide = -0.1f + getRandom() * 0.4f;
+                if (GetRandom.Float() < 0.5f) {
+                    result.StartFrequency = 0.1f + GetRandom.Float() * 0.4f;
+                    result.Slide = -0.1f + GetRandom.Float() * 0.4f;
                 } else {
-                    result.StartFrequency = 0.2f + getRandom() * 0.7f;
-                    result.Slide = -0.2f - getRandom() * 0.2f;
+                    result.StartFrequency = 0.2f + GetRandom.Float() * 0.7f;
+                    result.Slide = -0.2f - GetRandom.Float() * 0.2f;
                 }
 
                 result.StartFrequency *= result.StartFrequency;
 
-                if (getRandom() < 0.2f) result.Slide = 0.0f;
-                if (getRandom() < 0.33f) result.RepeatSpeed = 0.3f + getRandom() * 0.5f;
+                if (GetRandom.Float() < 0.2f) result.Slide = 0.0f;
+                if (GetRandom.Float() < 0.33f) result.RepeatSpeed = 0.3f + GetRandom.Float() * 0.5f;
 
-                result.SustainTime = 0.1f + getRandom() * 0.3f;
-                result.DecayTime = getRandom() * 0.5f;
-                result.SustainPunch = 0.2f + getRandom() * 0.6f;
+                result.SustainTime = 0.1f + GetRandom.Float() * 0.3f;
+                result.DecayTime = GetRandom.Float() * 0.5f;
+                result.SustainPunch = 0.2f + GetRandom.Float() * 0.6f;
 
-                if (getRandom() < 0.5f) {
-                    result.PhaserOffset = -0.3f + getRandom() * 0.9f;
-                    result.PhaserSweep = -getRandom() * 0.3f;
+                if (GetRandom.Float() < 0.5f) {
+                    result.PhaserOffset = -0.3f + GetRandom.Float() * 0.9f;
+                    result.PhaserSweep = -GetRandom.Float() * 0.3f;
                 }
 
-                if (getRandom() < 0.33f) {
-                    result.ChangeSpeed = 0.6f + getRandom() * 0.3f;
-                    result.ChangeAmount = 0.8f - getRandom() * 1.6f;
+                if (GetRandom.Float() < 0.33f) {
+                    result.ChangeSpeed = 0.6f + GetRandom.Float() * 0.3f;
+                    result.ChangeAmount = 0.8f - GetRandom.Float() * 1.6f;
                 }
 
                 return result;
@@ -242,28 +298,28 @@ namespace nsfxr
             {
                 var result = new SynthParams();
 
-                if (getRandom() < 0.5f) {
+                if (GetRandom.Float() < 0.5f) {
                     result.WaveShape = WaveShapeEnum.Saw;
                 } else {
-                    result.SquareDuty = getRandom() * 0.6f;
+                    result.SquareDuty = GetRandom.Float() * 0.6f;
                 }
 
-                if (getRandom() < 0.5f) {
-                    result.StartFrequency = 0.2f + getRandom() * 0.3f;
-                    result.Slide = 0.1f + getRandom() * 0.4f;
-                    result.RepeatSpeed = 0.4f + getRandom() * 0.4f;
+                if (GetRandom.Float() < 0.5f) {
+                    result.StartFrequency = 0.2f + GetRandom.Float() * 0.3f;
+                    result.Slide = 0.1f + GetRandom.Float() * 0.4f;
+                    result.RepeatSpeed = 0.4f + GetRandom.Float() * 0.4f;
                 } else {
-                    result.StartFrequency = 0.2f + getRandom() * 0.3f;
-                    result.Slide = 0.05f + getRandom() * 0.2f;
+                    result.StartFrequency = 0.2f + GetRandom.Float() * 0.3f;
+                    result.Slide = 0.05f + GetRandom.Float() * 0.2f;
 
-                    if (getRandom() < 0.5f) {
-                        result.VibratoDepth = getRandom() * 0.7f;
-                        result.VibratoSpeed = getRandom() * 0.6f;
+                    if (GetRandom.Float() < 0.5f) {
+                        result.VibratoDepth = GetRandom.Float() * 0.7f;
+                        result.VibratoSpeed = GetRandom.Float() * 0.6f;
                     }
                 }
 
-                result.SustainTime = getRandom() * 0.4f;
-                result.DecayTime = 0.1f + getRandom() * 0.4f;
+                result.SustainTime = GetRandom.Float() * 0.4f;
+                result.DecayTime = 0.1f + GetRandom.Float() * 0.4f;
 
                 return result;
             }
@@ -272,17 +328,17 @@ namespace nsfxr
             {
                 var result = new SynthParams();
 
-                result.WaveShape = (WaveShapeEnum)(getRandom() * 3f);
+                result.WaveShape = (WaveShapeEnum)(GetRandom.Float() * 3f);
                 if (result.WaveShape == WaveShapeEnum.Sin) result.WaveShape = WaveShapeEnum.Noise;
-                if (result.WaveShape == WaveShapeEnum.Square) result.SquareDuty = getRandom() * 0.6f;
+                if (result.WaveShape == WaveShapeEnum.Square) result.SquareDuty = GetRandom.Float() * 0.6f;
 
-                result.StartFrequency = 0.2f + getRandom() * 0.6f;
-                result.Slide = -0.3f - getRandom() * 0.4f;
+                result.StartFrequency = 0.2f + GetRandom.Float() * 0.6f;
+                result.Slide = -0.3f - GetRandom.Float() * 0.4f;
 
-                result.SustainTime = getRandom() * 0.1f;
-                result.DecayTime = 0.1f + getRandom() * 0.2f;
+                result.SustainTime = GetRandom.Float() * 0.1f;
+                result.DecayTime = 0.1f + GetRandom.Float() * 0.2f;
 
-                if (getRandom() < 0.5f) result.HighPassFilterCutoff = getRandom() * 0.3f;
+                if (GetRandom.Float() < 0.5f) result.HighPassFilterCutoff = GetRandom.Float() * 0.3f;
 
                 return result;
             }
@@ -292,15 +348,15 @@ namespace nsfxr
                 var result = new SynthParams();
 
                 result.WaveShape = WaveShapeEnum.Square;
-                result.SquareDuty = getRandom() * 0.6f;
-                result.StartFrequency = 0.3f + getRandom() * 0.3f;
-                result.Slide = 0.1f + getRandom() * 0.2f;
+                result.SquareDuty = GetRandom.Float() * 0.6f;
+                result.StartFrequency = 0.3f + GetRandom.Float() * 0.3f;
+                result.Slide = 0.1f + GetRandom.Float() * 0.2f;
 
-                result.SustainTime = 0.1f + getRandom() * 0.3f;
-                result.DecayTime = 0.1f + getRandom() * 0.2f;
+                result.SustainTime = 0.1f + GetRandom.Float() * 0.3f;
+                result.DecayTime = 0.1f + GetRandom.Float() * 0.2f;
 
-                if (getRandom() < 0.5f) result.HighPassFilterCutoff = getRandom() * 0.3f;
-                if (getRandom() < 0.5f) result.LowPassFilterCutoff = 1.0f - getRandom() * 0.6f;
+                if (GetRandom.Float() < 0.5f) result.HighPassFilterCutoff = GetRandom.Float() * 0.3f;
+                if (GetRandom.Float() < 0.5f) result.LowPassFilterCutoff = 1.0f - GetRandom.Float() * 0.6f;
 
                 return result;
             }
@@ -309,14 +365,14 @@ namespace nsfxr
             {
                 var result = new SynthParams();
 
-                result.WaveShape = (WaveShapeEnum)(getRandom() * 2f);
+                result.WaveShape = (WaveShapeEnum)(GetRandom.Float() * 2f);
                 if (result.WaveShape == WaveShapeEnum.Square)
-                    result.SquareDuty = getRandom() * 0.6f;
+                    result.SquareDuty = GetRandom.Float() * 0.6f;
 
-                result.StartFrequency = 0.2f + getRandom() * 0.4f;
+                result.StartFrequency = 0.2f + GetRandom.Float() * 0.4f;
 
-                result.SustainTime = 0.1f + getRandom() * 0.1f;
-                result.DecayTime = getRandom() * 0.2f;
+                result.SustainTime = 0.1f + GetRandom.Float() * 0.1f;
+                result.DecayTime = GetRandom.Float() * 0.2f;
                 result.HighPassFilterCutoff = 0.1f;
 
                 return result;
@@ -326,15 +382,15 @@ namespace nsfxr
             {
                 var result = new SynthParams();
 
-                result.StartFrequency = 0.4f + getRandom() * 0.5f;
+                result.StartFrequency = 0.4f + GetRandom.Float() * 0.5f;
 
-                result.SustainTime = getRandom() * 0.1f;
-                result.DecayTime = 0.1f + getRandom() * 0.4f;
-                result.SustainPunch = 0.3f + getRandom() * 0.3f;
+                result.SustainTime = GetRandom.Float() * 0.1f;
+                result.DecayTime = 0.1f + GetRandom.Float() * 0.4f;
+                result.SustainPunch = 0.3f + GetRandom.Float() * 0.3f;
 
-                if (getRandom() < 0.5f) {
-                    result.ChangeSpeed = 0.5f + getRandom() * 0.2f;
-                    result.ChangeAmount = 0.2f + getRandom() * 0.4f;
+                if (GetRandom.Float() < 0.5f) {
+                    result.ChangeSpeed = 0.5f + GetRandom.Float() * 0.2f;
+                    result.ChangeAmount = 0.2f + GetRandom.Float() * 0.4f;
                 }
 
                 return result;
@@ -344,39 +400,39 @@ namespace nsfxr
             {
                 var result = new SynthParams();
 
-                result.WaveShape = (WaveShapeEnum)(getRandom() * 3);
-                if (result.WaveShape == WaveShapeEnum.Sin && getRandom() < 0.5f) result.WaveShape = (WaveShapeEnum)(getRandom() * 2f);
+                result.WaveShape = (WaveShapeEnum)(GetRandom.Float() * 3);
+                if (result.WaveShape == WaveShapeEnum.Sin && GetRandom.Float() < 0.5f) result.WaveShape = (WaveShapeEnum)(GetRandom.Float() * 2f);
 
-                result.StartFrequency = 0.5f + getRandom() * 0.5f;
-                result.MinFrequency = result.StartFrequency - 0.2f - getRandom() * 0.6f;
+                result.StartFrequency = 0.5f + GetRandom.Float() * 0.5f;
+                result.MinFrequency = result.StartFrequency - 0.2f - GetRandom.Float() * 0.6f;
                 if (result.MinFrequency < 0.2f) result.MinFrequency = 0.2f;
 
-                result.Slide = -0.15f - getRandom() * 0.2f;
+                result.Slide = -0.15f - GetRandom.Float() * 0.2f;
 
-                if (getRandom() < 0.33f) {
-                    result.StartFrequency = 0.3f + getRandom() * 0.6f;
-                    result.MinFrequency = getRandom() * 0.1f;
-                    result.Slide = -0.35f - getRandom() * 0.3f;
+                if (GetRandom.Float() < 0.33f) {
+                    result.StartFrequency = 0.3f + GetRandom.Float() * 0.6f;
+                    result.MinFrequency = GetRandom.Float() * 0.1f;
+                    result.Slide = -0.35f - GetRandom.Float() * 0.3f;
                 }
 
-                if (getRandom() < 0.5f) {
-                    result.SquareDuty = getRandom() * 0.5f;
-                    result.DutySweep = getRandom() * 0.2f;
+                if (GetRandom.Float() < 0.5f) {
+                    result.SquareDuty = GetRandom.Float() * 0.5f;
+                    result.DutySweep = GetRandom.Float() * 0.2f;
                 } else {
-                    result.SquareDuty = 0.4f + getRandom() * 0.5f;
-                    result.DutySweep = -getRandom() * 0.7f;
+                    result.SquareDuty = 0.4f + GetRandom.Float() * 0.5f;
+                    result.DutySweep = -GetRandom.Float() * 0.7f;
                 }
 
-                result.SustainTime = 0.1f + getRandom() * 0.2f;
-                result.DecayTime = getRandom() * 0.4f;
-                if (getRandom() < 0.5f) result.SustainPunch = getRandom() * 0.3f;
+                result.SustainTime = 0.1f + GetRandom.Float() * 0.2f;
+                result.DecayTime = GetRandom.Float() * 0.4f;
+                if (GetRandom.Float() < 0.5f) result.SustainPunch = GetRandom.Float() * 0.3f;
 
-                if (getRandom() < 0.33f) {
-                    result.PhaserOffset = getRandom() * 0.2f;
-                    result.PhaserSweep = -getRandom() * 0.2f;
+                if (GetRandom.Float() < 0.33f) {
+                    result.PhaserOffset = GetRandom.Float() * 0.2f;
+                    result.PhaserSweep = -GetRandom.Float() * 0.2f;
                 }
 
-                if (getRandom() < 0.5f) result.HighPassFilterCutoff = getRandom() * 0.3f;
+                if (GetRandom.Float() < 0.5f) result.HighPassFilterCutoff = GetRandom.Float() * 0.3f;
 
                 return result;
             }
@@ -386,31 +442,31 @@ namespace nsfxr
                 var result = new SynthParams();
                 result.WaveShape = WaveShapeEnum.Noise;
 
-                if (getRandom() < 0.5f) {
-                    result.StartFrequency = 0.1f + getRandom() * 0.4f;
-                    result.Slide = -0.1f + getRandom() * 0.4f;
+                if (GetRandom.Float() < 0.5f) {
+                    result.StartFrequency = 0.1f + GetRandom.Float() * 0.4f;
+                    result.Slide = -0.1f + GetRandom.Float() * 0.4f;
                 } else {
-                    result.StartFrequency = 0.2f + getRandom() * 0.7f;
-                    result.Slide = -0.2f - getRandom() * 0.2f;
+                    result.StartFrequency = 0.2f + GetRandom.Float() * 0.7f;
+                    result.Slide = -0.2f - GetRandom.Float() * 0.2f;
                 }
 
                 result.StartFrequency *= result.StartFrequency;
 
-                if (getRandom() < 0.2f) result.Slide = 0.0f;
-                if (getRandom() < 0.33f) result.RepeatSpeed = 0.3f + getRandom() * 0.5f;
+                if (GetRandom.Float() < 0.2f) result.Slide = 0.0f;
+                if (GetRandom.Float() < 0.33f) result.RepeatSpeed = 0.3f + GetRandom.Float() * 0.5f;
 
-                result.SustainTime = 0.1f + getRandom() * 0.3f;
-                result.DecayTime = getRandom() * 0.5f;
-                result.SustainPunch = 0.2f + getRandom() * 0.6f;
+                result.SustainTime = 0.1f + GetRandom.Float() * 0.3f;
+                result.DecayTime = GetRandom.Float() * 0.5f;
+                result.SustainPunch = 0.2f + GetRandom.Float() * 0.6f;
 
-                if (getRandom() < 0.5f) {
-                    result.PhaserOffset = -0.3f + getRandom() * 0.9f;
-                    result.PhaserSweep = -getRandom() * 0.3f;
+                if (GetRandom.Float() < 0.5f) {
+                    result.PhaserOffset = -0.3f + GetRandom.Float() * 0.9f;
+                    result.PhaserSweep = -GetRandom.Float() * 0.3f;
                 }
 
-                if (getRandom() < 0.33f) {
-                    result.ChangeSpeed = 0.6f + getRandom() * 0.3f;
-                    result.ChangeAmount = 0.8f - getRandom() * 1.6f;
+                if (GetRandom.Float() < 0.33f) {
+                    result.ChangeSpeed = 0.6f + GetRandom.Float() * 0.3f;
+                    result.ChangeAmount = 0.8f - GetRandom.Float() * 1.6f;
                 }
 
                 return result;
@@ -420,28 +476,28 @@ namespace nsfxr
             {
                 var result = new SynthParams();
 
-                if (getRandom() < 0.5f) {
+                if (GetRandom.Float() < 0.5f) {
                     result.WaveShape = WaveShapeEnum.Saw;
                 } else {
-                    result.SquareDuty = getRandom() * 0.6f;
+                    result.SquareDuty = GetRandom.Float() * 0.6f;
                 }
 
-                if (getRandom() < 0.5f) {
-                    result.StartFrequency = 0.2f + getRandom() * 0.3f;
-                    result.Slide = 0.1f + getRandom() * 0.4f;
-                    result.RepeatSpeed = 0.4f + getRandom() * 0.4f;
+                if (GetRandom.Float() < 0.5f) {
+                    result.StartFrequency = 0.2f + GetRandom.Float() * 0.3f;
+                    result.Slide = 0.1f + GetRandom.Float() * 0.4f;
+                    result.RepeatSpeed = 0.4f + GetRandom.Float() * 0.4f;
                 } else {
-                    result.StartFrequency = 0.2f + getRandom() * 0.3f;
-                    result.Slide = 0.05f + getRandom() * 0.2f;
+                    result.StartFrequency = 0.2f + GetRandom.Float() * 0.3f;
+                    result.Slide = 0.05f + GetRandom.Float() * 0.2f;
 
-                    if (getRandom() < 0.5f) {
-                        result.VibratoDepth = getRandom() * 0.7f;
-                        result.VibratoSpeed = getRandom() * 0.6f;
+                    if (GetRandom.Float() < 0.5f) {
+                        result.VibratoDepth = GetRandom.Float() * 0.7f;
+                        result.VibratoSpeed = GetRandom.Float() * 0.6f;
                     }
                 }
 
-                result.SustainTime = getRandom() * 0.4f;
-                result.DecayTime = 0.1f + getRandom() * 0.4f;
+                result.SustainTime = GetRandom.Float() * 0.4f;
+                result.DecayTime = 0.1f + GetRandom.Float() * 0.4f;
 
                 return result;
             }
@@ -450,17 +506,17 @@ namespace nsfxr
             {
                 var result = new SynthParams();
 
-                result.WaveShape = (WaveShapeEnum)(getRandom() * 3f);
+                result.WaveShape = (WaveShapeEnum)(GetRandom.Float() * 3f);
                 if (result.WaveShape == WaveShapeEnum.Sin) result.WaveShape = WaveShapeEnum.Noise;
-                if (result.WaveShape == WaveShapeEnum.Square) result.SquareDuty = getRandom() * 0.6f;
+                if (result.WaveShape == WaveShapeEnum.Square) result.SquareDuty = GetRandom.Float() * 0.6f;
 
-                result.StartFrequency = 0.2f + getRandom() * 0.6f;
-                result.Slide = -0.3f - getRandom() * 0.4f;
+                result.StartFrequency = 0.2f + GetRandom.Float() * 0.6f;
+                result.Slide = -0.3f - GetRandom.Float() * 0.4f;
 
-                result.SustainTime = getRandom() * 0.1f;
-                result.DecayTime = 0.1f + getRandom() * 0.2f;
+                result.SustainTime = GetRandom.Float() * 0.1f;
+                result.DecayTime = 0.1f + GetRandom.Float() * 0.2f;
 
-                if (getRandom() < 0.5f) result.HighPassFilterCutoff = getRandom() * 0.3f;
+                if (GetRandom.Float() < 0.5f) result.HighPassFilterCutoff = GetRandom.Float() * 0.3f;
 
                 return result;
             }
@@ -470,15 +526,15 @@ namespace nsfxr
                 var result = new SynthParams();
 
                 result.WaveShape = WaveShapeEnum.Square;
-                result.SquareDuty = getRandom() * 0.6f;
-                result.StartFrequency = 0.3f + getRandom() * 0.3f;
-                result.Slide = 0.1f + getRandom() * 0.2f;
+                result.SquareDuty = GetRandom.Float() * 0.6f;
+                result.StartFrequency = 0.3f + GetRandom.Float() * 0.3f;
+                result.Slide = 0.1f + GetRandom.Float() * 0.2f;
 
-                result.SustainTime = 0.1f + getRandom() * 0.3f;
-                result.DecayTime = 0.1f + getRandom() * 0.2f;
+                result.SustainTime = 0.1f + GetRandom.Float() * 0.3f;
+                result.DecayTime = 0.1f + GetRandom.Float() * 0.2f;
 
-                if (getRandom() < 0.5f) result.HighPassFilterCutoff = getRandom() * 0.3f;
-                if (getRandom() < 0.5f) result.LowPassFilterCutoff = 1.0f - getRandom() * 0.6f;
+                if (GetRandom.Float() < 0.5f) result.HighPassFilterCutoff = GetRandom.Float() * 0.3f;
+                if (GetRandom.Float() < 0.5f) result.LowPassFilterCutoff = 1.0f - GetRandom.Float() * 0.6f;
 
                 return result;
             }
@@ -487,27 +543,25 @@ namespace nsfxr
             {
                 var result = new SynthParams();
 
-                result.WaveShape = (WaveShapeEnum)(getRandom() * 2f);
-                if (result.WaveShape == WaveShapeEnum.Square) result.SquareDuty = getRandom() * 0.6f;
+                result.WaveShape = (WaveShapeEnum)(GetRandom.Float() * 2f);
+                if (result.WaveShape == WaveShapeEnum.Square) result.SquareDuty = GetRandom.Float() * 0.6f;
 
-                result.StartFrequency = 0.2f + getRandom() * 0.4f;
+                result.StartFrequency = 0.2f + GetRandom.Float() * 0.4f;
 
-                result.SustainTime = 0.1f + getRandom() * 0.1f;
-                result.DecayTime = getRandom() * 0.2f;
+                result.SustainTime = 0.1f + GetRandom.Float() * 0.1f;
+                result.DecayTime = GetRandom.Float() * 0.2f;
                 result.HighPassFilterCutoff = 0.1f;
 
                 return result;
-            }
-
-            private static float getRandom()
-            {
-                return (float)(_random.NextDouble());
-            }
+            }            
         }
 
         #region Helpers
+        /// <summary>
+        /// Initialise with defaut values
+        /// </summary>
         public void Reset()
-        {
+        {         
             WaveShape = WaveShapeEnum.Square;
             StartFrequency = 0.3f;
             MinFrequency = 0.0f;
@@ -539,109 +593,36 @@ namespace nsfxr
             ChangeAmount = 0.0f;
         }
 
+        /// <summary>
+        /// Apply slight variation to existing synth parameters
+        /// </summary>
+        /// <param name="mutation">Maximum intensity of the variation</param>
         public void Mutate(float mutation = 0.05f)
         {
-            if (getRandom() < 0.5f)
-                StartFrequency += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                MinFrequency += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                Slide += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                DeltaSlide += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                SquareDuty += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                DutySweep += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                VibratoDepth += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                VibratoSpeed += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                AttackTime += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                SustainTime += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                DecayTime += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                SustainPunch += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                LowPassFilterCutoff += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                LowPassFilterCutoffSweep += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                LowPassFilterResonance += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                HighPassFilterCutoff += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                HighPassFilterCutoffSweep += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                PhaserOffset += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                PhaserSweep += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                RepeatSpeed += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                ChangeSpeed += getRandom() * mutation * 2f - mutation;
-            if (getRandom() < 0.5f)
-                ChangeAmount += getRandom() * mutation * 2f - mutation;
-        }
-
-        public void Randomize()
-        {
-            WaveShape = (WaveShapeEnum)(getRandom() * 4f);
-
-            AttackTime = (float)Math.Pow(getRandom() * 2f - 1f, 4);
-            SustainTime = (float)Math.Pow(getRandom() * 2f - 1f, 2);
-            SustainPunch = (float)Math.Pow(getRandom() * 0.8f, 2);
-            DecayTime = getRandom();
-
-            StartFrequency = (getRandom() < 0.5f) ? (float)Math.Pow(getRandom() * 2f - 1f, 2) : ((float)Math.Pow(getRandom() * 0.5f, 3) + 0.5f);
-            MinFrequency = 0.0f;
-
-            Slide = (float)Math.Pow(getRandom() * 2f - 1f, 5);
-            DeltaSlide = (float)Math.Pow(getRandom() * 2f - 1f, 3);
-
-            VibratoDepth = (float)Math.Pow(getRandom() * 2f - 1f, 3);
-            VibratoSpeed = getRandom() * 2f - 1f;
-
-            ChangeAmount = getRandom() * 2f - 1f;
-            ChangeSpeed = getRandom() * 2f - 1f;
-
-            SquareDuty = getRandom() * 2f - 1f;
-            DutySweep = (float)Math.Pow(getRandom() * 2f - 1f, 3);
-
-            RepeatSpeed = getRandom() * 2f - 1f;
-
-            PhaserOffset = (float)Math.Pow(getRandom() * 2f - 1f, 3);
-            PhaserSweep = (float)Math.Pow(getRandom() * 2f - 1f, 3);
-
-            LowPassFilterCutoff = 1f - (float)Math.Pow(getRandom(), 3);
-            LowPassFilterCutoffSweep = (float)Math.Pow(getRandom() * 2f - 1f, 3);
-            LowPassFilterResonance = getRandom() * 2f - 1f;
-
-            HighPassFilterCutoff = (float)Math.Pow(getRandom(), 5);
-            HighPassFilterCutoffSweep = (float)Math.Pow(getRandom() * 2f - 1f, 5);
-
-            if (AttackTime + SustainTime + DecayTime < 0.2f) {
-                SustainTime = 0.2f + getRandom() * 0.3f;
-                DecayTime = 0.2f + getRandom() * 0.3f;
-            }
-
-            if ((StartFrequency > 0.7f && Slide > 0.2) || (StartFrequency < 0.2 && Slide < -0.05)) {
-                Slide = -Slide;
-            }
-
-            if (LowPassFilterCutoff < 0.1f && LowPassFilterCutoffSweep < -0.05f) {
-                LowPassFilterCutoffSweep = -LowPassFilterCutoffSweep;
-            }
-        }
-
-        private float getRandom()
-        {
-            return (float)(_random.NextDouble());
-        }
-
+            if (GetRandom.Float() < 0.5f) StartFrequency += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) MinFrequency += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) Slide += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) DeltaSlide += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) SquareDuty += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) DutySweep += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) VibratoDepth += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) VibratoSpeed += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) AttackTime += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) SustainTime += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) DecayTime += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) SustainPunch += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) LowPassFilterCutoff += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) LowPassFilterCutoffSweep += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) LowPassFilterResonance += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) HighPassFilterCutoff += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) HighPassFilterCutoffSweep += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f)  PhaserOffset += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) PhaserSweep += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) RepeatSpeed += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) ChangeSpeed += GetRandom.Float(-mutation, mutation);
+            if (GetRandom.Float() < 0.5f) ChangeAmount += GetRandom.Float(-mutation, mutation);
+        }       
+        
         public string Serialize(SynthParams input)
         {
             var result = new StringBuilder();

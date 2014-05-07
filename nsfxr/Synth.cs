@@ -215,7 +215,7 @@ namespace nsfxr
 
                 uint i;
                 for (i = 0; i < 1024; i++) _phaserBuffer[i] = 0.0f;
-                for (i = 0; i < 32; i++) _noiseBuffer[i] = getRandom() * 2.0f - 1.0f;
+                for (i = 0; i < 32; i++) _noiseBuffer[i] = GetRandom.Float() * 2.0f - 1.0f;
 
                 _repeatTime = 0;
 
@@ -353,7 +353,7 @@ namespace nsfxr
                         // Generates new random noise for this period
                         if (_waveType == 3) {
                             for (n = 0; n < 32; n++)
-                                _noiseBuffer[n] = getRandom() * 2.0f - 1.0f;
+                                _noiseBuffer[n] = GetRandom.Float() * 2.0f - 1.0f;
                         }
                     }
 
@@ -426,13 +426,7 @@ namespace nsfxr
             }
 
             return false;
-        }
-
-        private float getRandom()
-        {
-            return (float)(_random.NextDouble());
-        }
-
+        }       
     }
 }
 

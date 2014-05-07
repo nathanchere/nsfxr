@@ -36,6 +36,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetRandom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynthParams.cs" />
     <Compile Include="Synth.cs" />
