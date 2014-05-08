@@ -18,7 +18,12 @@ namespace nsfxr.UI
 
         private void valueSlider1_ValueUpdated(object sender, EventArgs args)
         {
-            Text = valueSlider1.Value.ToString();
+            Text = valAttackTime.Value.ToString();
+        }
+
+        private void inputValueUpdated(object sender, EventArgs args)
+        {
+
         }
     }
 }
