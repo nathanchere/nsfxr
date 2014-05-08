@@ -22,7 +22,7 @@ namespace nsfxr.UI
             InitializeComponent();
             MinValue = 0;
             MaxValue = 1;
-            Precision = 3;
+            Precision = 4;
             Value = 0.5f;
             _isUpdating = false;
             UpdateUI();
@@ -40,6 +40,7 @@ namespace nsfxr.UI
             get
             {
                 if(Math.Abs(MaxValue - _value) < TOLERANCE) return MaxValue;
+                if(Math.Abs(_value - MinValue) < TOLERANCE) return MinValue;
                 return (float) Math.Round(_value, Precision, MidpointRounding.ToEven);
             }
 
@@ -107,11 +108,11 @@ namespace nsfxr.UI
         private void txtValue_TextChanged(object sender, EventArgs e)
         {
             float val;
-            if(float.TryParse(txtValue.Text, out val))
-                Value = val;
-            else            
-                txtValue.Text = Value.ToString();
+            if(!float.TryParse(txtValue.Text, out val)) return;
+            if(val < MinValue) return;
+            if(val > MaxValue) return;
 
+            Value = val;            
             if(!_isUpdating && ValueUpdated != null) ValueUpdated(this,new EventArgs());
         }
     }
