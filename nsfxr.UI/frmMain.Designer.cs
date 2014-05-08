@@ -266,7 +266,7 @@
             this.valDeltaSlide.Location = new System.Drawing.Point(100, 58);
             this.valDeltaSlide.Margin = new System.Windows.Forms.Padding(1);
             this.valDeltaSlide.MaxValue = 1F;
-            this.valDeltaSlide.MinValue = 0F;
+            this.valDeltaSlide.MinValue = -1F;
             this.valDeltaSlide.Name = "valDeltaSlide";
             this.valDeltaSlide.Precision = 3;
             this.valDeltaSlide.Size = new System.Drawing.Size(225, 17);
@@ -280,7 +280,7 @@
             this.valSlide.Location = new System.Drawing.Point(100, 39);
             this.valSlide.Margin = new System.Windows.Forms.Padding(1);
             this.valSlide.MaxValue = 1F;
-            this.valSlide.MinValue = 0F;
+            this.valSlide.MinValue = -1F;
             this.valSlide.Name = "valSlide";
             this.valSlide.Precision = 3;
             this.valSlide.Size = new System.Drawing.Size(225, 17);
@@ -446,7 +446,7 @@
             this.valChangeAmount.Location = new System.Drawing.Point(100, 1);
             this.valChangeAmount.Margin = new System.Windows.Forms.Padding(1);
             this.valChangeAmount.MaxValue = 1F;
-            this.valChangeAmount.MinValue = 0F;
+            this.valChangeAmount.MinValue = -1F;
             this.valChangeAmount.Name = "valChangeAmount";
             this.valChangeAmount.Precision = 3;
             this.valChangeAmount.Size = new System.Drawing.Size(225, 17);
@@ -505,7 +505,7 @@
             this.valLpfSweep.Location = new System.Drawing.Point(100, 20);
             this.valLpfSweep.Margin = new System.Windows.Forms.Padding(1);
             this.valLpfSweep.MaxValue = 1F;
-            this.valLpfSweep.MinValue = 0F;
+            this.valLpfSweep.MinValue = -1F;
             this.valLpfSweep.Name = "valLpfSweep";
             this.valLpfSweep.Precision = 3;
             this.valLpfSweep.Size = new System.Drawing.Size(225, 17);
@@ -580,7 +580,7 @@
             this.valHpfSweep.Location = new System.Drawing.Point(100, 77);
             this.valHpfSweep.Margin = new System.Windows.Forms.Padding(1);
             this.valHpfSweep.MaxValue = 1F;
-            this.valHpfSweep.MinValue = 0F;
+            this.valHpfSweep.MinValue = -1F;
             this.valHpfSweep.Name = "valHpfSweep";
             this.valHpfSweep.Precision = 3;
             this.valHpfSweep.Size = new System.Drawing.Size(225, 17);
@@ -683,7 +683,7 @@
             this.valPhaserSweep.Location = new System.Drawing.Point(100, 20);
             this.valPhaserSweep.Margin = new System.Windows.Forms.Padding(1);
             this.valPhaserSweep.MaxValue = 1F;
-            this.valPhaserSweep.MinValue = 0F;
+            this.valPhaserSweep.MinValue = -1F;
             this.valPhaserSweep.Name = "valPhaserSweep";
             this.valPhaserSweep.Precision = 3;
             this.valPhaserSweep.Size = new System.Drawing.Size(225, 17);
@@ -697,7 +697,7 @@
             this.valPhaserOffset.Location = new System.Drawing.Point(100, 1);
             this.valPhaserOffset.Margin = new System.Windows.Forms.Padding(1);
             this.valPhaserOffset.MaxValue = 1F;
-            this.valPhaserOffset.MinValue = 0F;
+            this.valPhaserOffset.MinValue = -1F;
             this.valPhaserOffset.Name = "valPhaserOffset";
             this.valPhaserOffset.Precision = 3;
             this.valPhaserOffset.Size = new System.Drawing.Size(225, 17);
