@@ -47,12 +47,12 @@
             this.valMinFrequency = new nsfxr.UI.ValueSlider();
             this.valStartFrequency = new nsfxr.UI.ValueSlider();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.valAttackTime = new nsfxr.UI.ValueSlider();
             this.valSustainTime = new nsfxr.UI.ValueSlider();
             this.valSustainPunch = new nsfxr.UI.ValueSlider();
             this.valDecayTime = new nsfxr.UI.ValueSlider();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.valChangeSpeed = new nsfxr.UI.ValueSlider();
             this.calChangeAmount = new nsfxr.UI.ValueSlider();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -136,7 +136,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1, 20);
+            this.label3.Location = new System.Drawing.Point(1, 21);
             this.label3.Margin = new System.Windows.Forms.Padding(1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 17);
@@ -147,7 +147,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1, 1);
+            this.label4.Location = new System.Drawing.Point(1, 2);
             this.label4.Margin = new System.Windows.Forms.Padding(1);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 17);
@@ -169,7 +169,7 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1, 20);
+            this.label6.Location = new System.Drawing.Point(1, 21);
             this.label6.Margin = new System.Windows.Forms.Padding(1);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 17);
@@ -180,7 +180,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1, 1);
+            this.label7.Location = new System.Drawing.Point(1, 2);
             this.label7.Margin = new System.Windows.Forms.Padding(1);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 17);
@@ -191,7 +191,7 @@
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1, 96);
+            this.label8.Location = new System.Drawing.Point(1, 97);
             this.label8.Margin = new System.Windows.Forms.Padding(1);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 17);
@@ -202,7 +202,7 @@
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1, 77);
+            this.label9.Location = new System.Drawing.Point(1, 78);
             this.label9.Margin = new System.Windows.Forms.Padding(1);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 17);
@@ -213,7 +213,7 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1, 58);
+            this.label10.Location = new System.Drawing.Point(1, 59);
             this.label10.Margin = new System.Windows.Forms.Padding(1);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(97, 17);
@@ -224,7 +224,7 @@
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(1, 39);
+            this.label11.Location = new System.Drawing.Point(1, 40);
             this.label11.Margin = new System.Windows.Forms.Padding(1);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(97, 17);
@@ -235,7 +235,7 @@
             // valVibratoSpeed
             // 
             this.valVibratoSpeed.BackColor = System.Drawing.Color.PaleGreen;
-            this.valVibratoSpeed.Location = new System.Drawing.Point(104, 96);
+            this.valVibratoSpeed.Location = new System.Drawing.Point(100, 96);
             this.valVibratoSpeed.Margin = new System.Windows.Forms.Padding(1);
             this.valVibratoSpeed.MaxValue = 1F;
             this.valVibratoSpeed.MinValue = 0F;
@@ -249,7 +249,7 @@
             // valVibratoDepth
             // 
             this.valVibratoDepth.BackColor = System.Drawing.Color.PaleGreen;
-            this.valVibratoDepth.Location = new System.Drawing.Point(104, 77);
+            this.valVibratoDepth.Location = new System.Drawing.Point(100, 77);
             this.valVibratoDepth.Margin = new System.Windows.Forms.Padding(1);
             this.valVibratoDepth.MaxValue = 1F;
             this.valVibratoDepth.MinValue = 0F;
@@ -263,7 +263,7 @@
             // valDeltaSlide
             // 
             this.valDeltaSlide.BackColor = System.Drawing.Color.PaleGreen;
-            this.valDeltaSlide.Location = new System.Drawing.Point(104, 58);
+            this.valDeltaSlide.Location = new System.Drawing.Point(100, 58);
             this.valDeltaSlide.Margin = new System.Windows.Forms.Padding(1);
             this.valDeltaSlide.MaxValue = 1F;
             this.valDeltaSlide.MinValue = 0F;
@@ -277,7 +277,7 @@
             // valSlide
             // 
             this.valSlide.BackColor = System.Drawing.Color.PaleGreen;
-            this.valSlide.Location = new System.Drawing.Point(104, 39);
+            this.valSlide.Location = new System.Drawing.Point(100, 39);
             this.valSlide.Margin = new System.Windows.Forms.Padding(1);
             this.valSlide.MaxValue = 1F;
             this.valSlide.MinValue = 0F;
@@ -291,7 +291,7 @@
             // valMinFrequency
             // 
             this.valMinFrequency.BackColor = System.Drawing.Color.PaleGreen;
-            this.valMinFrequency.Location = new System.Drawing.Point(104, 20);
+            this.valMinFrequency.Location = new System.Drawing.Point(100, 20);
             this.valMinFrequency.Margin = new System.Windows.Forms.Padding(1);
             this.valMinFrequency.MaxValue = 1F;
             this.valMinFrequency.MinValue = 0F;
@@ -305,7 +305,7 @@
             // valStartFrequency
             // 
             this.valStartFrequency.BackColor = System.Drawing.Color.PaleGreen;
-            this.valStartFrequency.Location = new System.Drawing.Point(104, 1);
+            this.valStartFrequency.Location = new System.Drawing.Point(100, 1);
             this.valStartFrequency.Margin = new System.Windows.Forms.Padding(1);
             this.valStartFrequency.MaxValue = 1F;
             this.valStartFrequency.MinValue = 0F;
@@ -333,6 +333,62 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(332, 79);
             this.panel2.TabIndex = 26;
+            // 
+            // valAttackTime
+            // 
+            this.valAttackTime.BackColor = System.Drawing.Color.LemonChiffon;
+            this.valAttackTime.Location = new System.Drawing.Point(100, 1);
+            this.valAttackTime.Margin = new System.Windows.Forms.Padding(1);
+            this.valAttackTime.MaxValue = 1F;
+            this.valAttackTime.MinValue = 0F;
+            this.valAttackTime.Name = "valAttackTime";
+            this.valAttackTime.Precision = 3;
+            this.valAttackTime.Size = new System.Drawing.Size(225, 17);
+            this.valAttackTime.TabIndex = 16;
+            this.valAttackTime.Value = 0.5F;
+            this.valAttackTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valSustainTime
+            // 
+            this.valSustainTime.BackColor = System.Drawing.Color.LemonChiffon;
+            this.valSustainTime.Location = new System.Drawing.Point(100, 20);
+            this.valSustainTime.Margin = new System.Windows.Forms.Padding(1);
+            this.valSustainTime.MaxValue = 1F;
+            this.valSustainTime.MinValue = 0F;
+            this.valSustainTime.Name = "valSustainTime";
+            this.valSustainTime.Precision = 3;
+            this.valSustainTime.Size = new System.Drawing.Size(225, 17);
+            this.valSustainTime.TabIndex = 17;
+            this.valSustainTime.Value = 0.5F;
+            this.valSustainTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valSustainPunch
+            // 
+            this.valSustainPunch.BackColor = System.Drawing.Color.LemonChiffon;
+            this.valSustainPunch.Location = new System.Drawing.Point(100, 39);
+            this.valSustainPunch.Margin = new System.Windows.Forms.Padding(1);
+            this.valSustainPunch.MaxValue = 1F;
+            this.valSustainPunch.MinValue = 0F;
+            this.valSustainPunch.Name = "valSustainPunch";
+            this.valSustainPunch.Precision = 3;
+            this.valSustainPunch.Size = new System.Drawing.Size(225, 17);
+            this.valSustainPunch.TabIndex = 18;
+            this.valSustainPunch.Value = 0.5F;
+            this.valSustainPunch.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valDecayTime
+            // 
+            this.valDecayTime.BackColor = System.Drawing.Color.LemonChiffon;
+            this.valDecayTime.Location = new System.Drawing.Point(100, 58);
+            this.valDecayTime.Margin = new System.Windows.Forms.Padding(1);
+            this.valDecayTime.MaxValue = 1F;
+            this.valDecayTime.MinValue = 0F;
+            this.valDecayTime.Name = "valDecayTime";
+            this.valDecayTime.Precision = 3;
+            this.valDecayTime.Size = new System.Drawing.Size(225, 17);
+            this.valDecayTime.TabIndex = 19;
+            this.valDecayTime.Value = 0.5F;
+            this.valDecayTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
             // panel1
             // 
@@ -369,62 +425,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(332, 41);
             this.panel3.TabIndex = 28;
-            // 
-            // valAttackTime
-            // 
-            this.valAttackTime.BackColor = System.Drawing.Color.LemonChiffon;
-            this.valAttackTime.Location = new System.Drawing.Point(104, 1);
-            this.valAttackTime.Margin = new System.Windows.Forms.Padding(1);
-            this.valAttackTime.MaxValue = 1F;
-            this.valAttackTime.MinValue = 0F;
-            this.valAttackTime.Name = "valAttackTime";
-            this.valAttackTime.Precision = 3;
-            this.valAttackTime.Size = new System.Drawing.Size(225, 17);
-            this.valAttackTime.TabIndex = 16;
-            this.valAttackTime.Value = 0.5F;
-            this.valAttackTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valSustainTime
-            // 
-            this.valSustainTime.BackColor = System.Drawing.Color.LemonChiffon;
-            this.valSustainTime.Location = new System.Drawing.Point(104, 20);
-            this.valSustainTime.Margin = new System.Windows.Forms.Padding(1);
-            this.valSustainTime.MaxValue = 1F;
-            this.valSustainTime.MinValue = 0F;
-            this.valSustainTime.Name = "valSustainTime";
-            this.valSustainTime.Precision = 3;
-            this.valSustainTime.Size = new System.Drawing.Size(225, 17);
-            this.valSustainTime.TabIndex = 17;
-            this.valSustainTime.Value = 0.5F;
-            this.valSustainTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valSustainPunch
-            // 
-            this.valSustainPunch.BackColor = System.Drawing.Color.LemonChiffon;
-            this.valSustainPunch.Location = new System.Drawing.Point(104, 39);
-            this.valSustainPunch.Margin = new System.Windows.Forms.Padding(1);
-            this.valSustainPunch.MaxValue = 1F;
-            this.valSustainPunch.MinValue = 0F;
-            this.valSustainPunch.Name = "valSustainPunch";
-            this.valSustainPunch.Precision = 3;
-            this.valSustainPunch.Size = new System.Drawing.Size(225, 17);
-            this.valSustainPunch.TabIndex = 18;
-            this.valSustainPunch.Value = 0.5F;
-            this.valSustainPunch.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valDecayTime
-            // 
-            this.valDecayTime.BackColor = System.Drawing.Color.LemonChiffon;
-            this.valDecayTime.Location = new System.Drawing.Point(104, 58);
-            this.valDecayTime.Margin = new System.Windows.Forms.Padding(1);
-            this.valDecayTime.MaxValue = 1F;
-            this.valDecayTime.MinValue = 0F;
-            this.valDecayTime.Name = "valDecayTime";
-            this.valDecayTime.Precision = 3;
-            this.valDecayTime.Size = new System.Drawing.Size(225, 17);
-            this.valDecayTime.TabIndex = 19;
-            this.valDecayTime.Value = 0.5F;
-            this.valDecayTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
             // valChangeSpeed
             // 
@@ -477,7 +477,7 @@
             // valLpfCutoff
             // 
             this.valLpfCutoff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valLpfCutoff.Location = new System.Drawing.Point(1, 1);
+            this.valLpfCutoff.Location = new System.Drawing.Point(1, 2);
             this.valLpfCutoff.Margin = new System.Windows.Forms.Padding(1);
             this.valLpfCutoff.Name = "valLpfCutoff";
             this.valLpfCutoff.Size = new System.Drawing.Size(97, 17);
@@ -488,7 +488,7 @@
             // valLowPassCutoff
             // 
             this.valLowPassCutoff.BackColor = System.Drawing.Color.PaleGreen;
-            this.valLowPassCutoff.Location = new System.Drawing.Point(104, 1);
+            this.valLowPassCutoff.Location = new System.Drawing.Point(100, 1);
             this.valLowPassCutoff.Margin = new System.Windows.Forms.Padding(1);
             this.valLowPassCutoff.MaxValue = 1F;
             this.valLowPassCutoff.MinValue = 0F;
@@ -502,7 +502,7 @@
             // valueSlider14
             // 
             this.valueSlider14.BackColor = System.Drawing.Color.PaleGreen;
-            this.valueSlider14.Location = new System.Drawing.Point(104, 20);
+            this.valueSlider14.Location = new System.Drawing.Point(100, 20);
             this.valueSlider14.Margin = new System.Windows.Forms.Padding(1);
             this.valueSlider14.MaxValue = 1F;
             this.valueSlider14.MinValue = 0F;
@@ -516,7 +516,7 @@
             // valLpfSweep
             // 
             this.valLpfSweep.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valLpfSweep.Location = new System.Drawing.Point(1, 20);
+            this.valLpfSweep.Location = new System.Drawing.Point(1, 21);
             this.valLpfSweep.Margin = new System.Windows.Forms.Padding(1);
             this.valLpfSweep.Name = "valLpfSweep";
             this.valLpfSweep.Size = new System.Drawing.Size(97, 17);
@@ -527,7 +527,7 @@
             // valueSlider15
             // 
             this.valueSlider15.BackColor = System.Drawing.Color.PaleGreen;
-            this.valueSlider15.Location = new System.Drawing.Point(104, 39);
+            this.valueSlider15.Location = new System.Drawing.Point(100, 39);
             this.valueSlider15.Margin = new System.Windows.Forms.Padding(1);
             this.valueSlider15.MaxValue = 1F;
             this.valueSlider15.MinValue = 0F;
@@ -541,7 +541,7 @@
             // valLpfResonance
             // 
             this.valLpfResonance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valLpfResonance.Location = new System.Drawing.Point(1, 39);
+            this.valLpfResonance.Location = new System.Drawing.Point(1, 40);
             this.valLpfResonance.Margin = new System.Windows.Forms.Padding(1);
             this.valLpfResonance.Name = "valLpfResonance";
             this.valLpfResonance.Size = new System.Drawing.Size(97, 17);
@@ -552,7 +552,7 @@
             // valueSlider16
             // 
             this.valueSlider16.BackColor = System.Drawing.Color.PaleGreen;
-            this.valueSlider16.Location = new System.Drawing.Point(104, 58);
+            this.valueSlider16.Location = new System.Drawing.Point(100, 58);
             this.valueSlider16.Margin = new System.Windows.Forms.Padding(1);
             this.valueSlider16.MaxValue = 1F;
             this.valueSlider16.MinValue = 0F;
@@ -566,7 +566,7 @@
             // valHpfCutoff
             // 
             this.valHpfCutoff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valHpfCutoff.Location = new System.Drawing.Point(1, 58);
+            this.valHpfCutoff.Location = new System.Drawing.Point(1, 59);
             this.valHpfCutoff.Margin = new System.Windows.Forms.Padding(1);
             this.valHpfCutoff.Name = "valHpfCutoff";
             this.valHpfCutoff.Size = new System.Drawing.Size(97, 17);
@@ -577,7 +577,7 @@
             // valueSlider18
             // 
             this.valueSlider18.BackColor = System.Drawing.Color.PaleGreen;
-            this.valueSlider18.Location = new System.Drawing.Point(104, 77);
+            this.valueSlider18.Location = new System.Drawing.Point(100, 77);
             this.valueSlider18.Margin = new System.Windows.Forms.Padding(1);
             this.valueSlider18.MaxValue = 1F;
             this.valueSlider18.MinValue = 0F;
@@ -591,7 +591,7 @@
             // valHpfSweep
             // 
             this.valHpfSweep.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valHpfSweep.Location = new System.Drawing.Point(1, 77);
+            this.valHpfSweep.Location = new System.Drawing.Point(1, 78);
             this.valHpfSweep.Margin = new System.Windows.Forms.Padding(1);
             this.valHpfSweep.Name = "valHpfSweep";
             this.valHpfSweep.Size = new System.Drawing.Size(97, 17);
@@ -644,7 +644,7 @@
             // label24
             // 
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(1, 1);
+            this.label24.Location = new System.Drawing.Point(1, 2);
             this.label24.Margin = new System.Windows.Forms.Padding(1);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(97, 17);
@@ -655,7 +655,7 @@
             // label25
             // 
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(1, 20);
+            this.label25.Location = new System.Drawing.Point(1, 21);
             this.label25.Margin = new System.Windows.Forms.Padding(1);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(97, 17);
@@ -708,7 +708,7 @@
             // label26
             // 
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(1, 1);
+            this.label26.Location = new System.Drawing.Point(1, 2);
             this.label26.Margin = new System.Windows.Forms.Padding(1);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(97, 17);
@@ -719,7 +719,7 @@
             // label27
             // 
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(1, 20);
+            this.label27.Location = new System.Drawing.Point(1, 21);
             this.label27.Margin = new System.Windows.Forms.Padding(1);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(97, 17);
@@ -772,7 +772,7 @@
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(1, 1);
+            this.label18.Location = new System.Drawing.Point(1, 2);
             this.label18.Margin = new System.Windows.Forms.Padding(1);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(97, 17);
@@ -783,7 +783,7 @@
             // label19
             // 
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(1, 20);
+            this.label19.Location = new System.Drawing.Point(1, 21);
             this.label19.Margin = new System.Windows.Forms.Padding(1);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(97, 17);
