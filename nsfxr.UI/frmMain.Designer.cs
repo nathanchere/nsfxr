@@ -59,29 +59,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txtSerailized = new System.Windows.Forms.TextBox();
-            this.valRepeatSpeed = new nsfxr.UI.ValueSlider();
-            this.valVolume = new nsfxr.UI.ValueSlider();
-            this.valPhaserSweep = new nsfxr.UI.ValueSlider();
-            this.valPhaserOffset = new nsfxr.UI.ValueSlider();
-            this.valDutySweep = new nsfxr.UI.ValueSlider();
-            this.valSquareDuty = new nsfxr.UI.ValueSlider();
-            this.valLpfCutoff = new nsfxr.UI.ValueSlider();
-            this.valLpfSweep = new nsfxr.UI.ValueSlider();
-            this.valLpfResonance = new nsfxr.UI.ValueSlider();
-            this.valHpfCutoff = new nsfxr.UI.ValueSlider();
-            this.valHpfSweep = new nsfxr.UI.ValueSlider();
-            this.valChangeSpeed = new nsfxr.UI.ValueSlider();
-            this.valChangeAmount = new nsfxr.UI.ValueSlider();
-            this.valStartFrequency = new nsfxr.UI.ValueSlider();
-            this.valMinFrequency = new nsfxr.UI.ValueSlider();
-            this.valSlide = new nsfxr.UI.ValueSlider();
-            this.valDeltaSlide = new nsfxr.UI.ValueSlider();
-            this.valVibratoSpeed = new nsfxr.UI.ValueSlider();
-            this.valVibratoDepth = new nsfxr.UI.ValueSlider();
-            this.valAttackTime = new nsfxr.UI.ValueSlider();
-            this.valSustainTime = new nsfxr.UI.ValueSlider();
-            this.valSustainPunch = new nsfxr.UI.ValueSlider();
-            this.valDecayTime = new nsfxr.UI.ValueSlider();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -109,6 +86,29 @@
             this.btnPresetHit = new System.Windows.Forms.Button();
             this.btnPresetPowerup = new System.Windows.Forms.Button();
             this.btnPresetMenuBlip = new System.Windows.Forms.Button();
+            this.valRepeatSpeed = new nsfxr.UI.ValueSlider();
+            this.valVolume = new nsfxr.UI.ValueSlider();
+            this.valPhaserSweep = new nsfxr.UI.ValueSlider();
+            this.valPhaserOffset = new nsfxr.UI.ValueSlider();
+            this.valDutySweep = new nsfxr.UI.ValueSlider();
+            this.valSquareDuty = new nsfxr.UI.ValueSlider();
+            this.valLpfCutoff = new nsfxr.UI.ValueSlider();
+            this.valLpfSweep = new nsfxr.UI.ValueSlider();
+            this.valLpfResonance = new nsfxr.UI.ValueSlider();
+            this.valHpfCutoff = new nsfxr.UI.ValueSlider();
+            this.valHpfSweep = new nsfxr.UI.ValueSlider();
+            this.valChangeSpeed = new nsfxr.UI.ValueSlider();
+            this.valChangeAmount = new nsfxr.UI.ValueSlider();
+            this.valStartFrequency = new nsfxr.UI.ValueSlider();
+            this.valMinFrequency = new nsfxr.UI.ValueSlider();
+            this.valSlide = new nsfxr.UI.ValueSlider();
+            this.valDeltaSlide = new nsfxr.UI.ValueSlider();
+            this.valVibratoSpeed = new nsfxr.UI.ValueSlider();
+            this.valVibratoDepth = new nsfxr.UI.ValueSlider();
+            this.valAttackTime = new nsfxr.UI.ValueSlider();
+            this.valSustainTime = new nsfxr.UI.ValueSlider();
+            this.valSustainPunch = new nsfxr.UI.ValueSlider();
+            this.valDecayTime = new nsfxr.UI.ValueSlider();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -528,10 +528,309 @@
             // 
             this.txtSerailized.Location = new System.Drawing.Point(2, 482);
             this.txtSerailized.Margin = new System.Windows.Forms.Padding(0);
+            this.txtSerailized.Multiline = true;
             this.txtSerailized.Name = "txtSerailized";
             this.txtSerailized.ReadOnly = true;
-            this.txtSerailized.Size = new System.Drawing.Size(404, 20);
+            this.txtSerailized.Size = new System.Drawing.Size(460, 44);
             this.txtSerailized.TabIndex = 32;
+            this.txtSerailized.Click += new System.EventHandler(this.txtSerailized_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(462, 481);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(56, 22);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "Copy";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(462, 504);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(56, 22);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Paste";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.MintCream;
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.rdoShapeNoise);
+            this.panel8.Controls.Add(this.rdoShapeSine);
+            this.panel8.Controls.Add(this.rdoShapeSaw);
+            this.panel8.Controls.Add(this.rdoShapeWave);
+            this.panel8.Controls.Add(this.label12);
+            this.panel8.Location = new System.Drawing.Point(337, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(181, 64);
+            this.panel8.TabIndex = 27;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.MintCream;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(1, 2);
+            this.label12.Margin = new System.Windows.Forms.Padding(1);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(177, 17);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Attack Time";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // rdoShapeWave
+            // 
+            this.rdoShapeWave.AutoSize = true;
+            this.rdoShapeWave.BackColor = System.Drawing.Color.MintCream;
+            this.rdoShapeWave.Location = new System.Drawing.Point(13, 20);
+            this.rdoShapeWave.Name = "rdoShapeWave";
+            this.rdoShapeWave.Size = new System.Drawing.Size(59, 17);
+            this.rdoShapeWave.TabIndex = 3;
+            this.rdoShapeWave.Text = "Square";
+            this.rdoShapeWave.UseVisualStyleBackColor = false;
+            // 
+            // rdoShapeSine
+            // 
+            this.rdoShapeSine.AutoSize = true;
+            this.rdoShapeSine.BackColor = System.Drawing.Color.MintCream;
+            this.rdoShapeSine.Checked = true;
+            this.rdoShapeSine.Location = new System.Drawing.Point(104, 20);
+            this.rdoShapeSine.Name = "rdoShapeSine";
+            this.rdoShapeSine.Size = new System.Drawing.Size(46, 17);
+            this.rdoShapeSine.TabIndex = 5;
+            this.rdoShapeSine.TabStop = true;
+            this.rdoShapeSine.Text = "Sine";
+            this.rdoShapeSine.UseVisualStyleBackColor = false;
+            // 
+            // rdoShapeNoise
+            // 
+            this.rdoShapeNoise.AutoSize = true;
+            this.rdoShapeNoise.BackColor = System.Drawing.Color.MintCream;
+            this.rdoShapeNoise.Location = new System.Drawing.Point(104, 43);
+            this.rdoShapeNoise.Name = "rdoShapeNoise";
+            this.rdoShapeNoise.Size = new System.Drawing.Size(52, 17);
+            this.rdoShapeNoise.TabIndex = 6;
+            this.rdoShapeNoise.Text = "Noise";
+            this.rdoShapeNoise.UseVisualStyleBackColor = false;
+            // 
+            // rdoShapeSaw
+            // 
+            this.rdoShapeSaw.AutoSize = true;
+            this.rdoShapeSaw.BackColor = System.Drawing.Color.MintCream;
+            this.rdoShapeSaw.Location = new System.Drawing.Point(13, 43);
+            this.rdoShapeSaw.Name = "rdoShapeSaw";
+            this.rdoShapeSaw.Size = new System.Drawing.Size(70, 17);
+            this.rdoShapeSaw.TabIndex = 4;
+            this.rdoShapeSaw.Text = "Sawtooth";
+            this.rdoShapeSaw.UseVisualStyleBackColor = false;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.MintCream;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.panel11);
+            this.panel9.Controls.Add(this.panel10);
+            this.panel9.Controls.Add(this.label13);
+            this.panel9.Location = new System.Drawing.Point(337, 69);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(181, 68);
+            this.panel9.TabIndex = 28;
+            // 
+            // rdoBits16
+            // 
+            this.rdoBits16.AutoSize = true;
+            this.rdoBits16.BackColor = System.Drawing.Color.MintCream;
+            this.rdoBits16.Checked = true;
+            this.rdoBits16.Location = new System.Drawing.Point(101, 3);
+            this.rdoBits16.Name = "rdoBits16";
+            this.rdoBits16.Size = new System.Drawing.Size(51, 17);
+            this.rdoBits16.TabIndex = 6;
+            this.rdoBits16.TabStop = true;
+            this.rdoBits16.Text = "16-bit";
+            this.rdoBits16.UseVisualStyleBackColor = false;
+            // 
+            // rdoBits8
+            // 
+            this.rdoBits8.AutoSize = true;
+            this.rdoBits8.BackColor = System.Drawing.Color.MintCream;
+            this.rdoBits8.Location = new System.Drawing.Point(10, 3);
+            this.rdoBits8.Name = "rdoBits8";
+            this.rdoBits8.Size = new System.Drawing.Size(45, 17);
+            this.rdoBits8.TabIndex = 4;
+            this.rdoBits8.Text = "8-bit";
+            this.rdoBits8.UseVisualStyleBackColor = false;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.MintCream;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(1, 2);
+            this.label13.Margin = new System.Windows.Forms.Padding(1);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(177, 17);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Quality";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.MintCream;
+            this.panel10.Controls.Add(this.rdoBits16);
+            this.panel10.Controls.Add(this.rdoBits8);
+            this.panel10.Location = new System.Drawing.Point(3, 18);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(170, 22);
+            this.panel10.TabIndex = 35;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.MintCream;
+            this.panel11.Controls.Add(this.radioButton1);
+            this.panel11.Controls.Add(this.radioButton2);
+            this.panel11.Location = new System.Drawing.Point(3, 44);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(170, 22);
+            this.panel11.TabIndex = 36;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.Color.MintCream;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(101, 3);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(55, 17);
+            this.radioButton1.TabIndex = 6;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "44Khz";
+            this.radioButton1.UseVisualStyleBackColor = false;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.Color.MintCream;
+            this.radioButton2.Location = new System.Drawing.Point(10, 3);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(55, 17);
+            this.radioButton2.TabIndex = 4;
+            this.radioButton2.Text = "22Khz";
+            this.radioButton2.UseVisualStyleBackColor = false;
+            // 
+            // btnMutate
+            // 
+            this.btnMutate.Location = new System.Drawing.Point(337, 403);
+            this.btnMutate.Name = "btnMutate";
+            this.btnMutate.Size = new System.Drawing.Size(88, 26);
+            this.btnMutate.TabIndex = 35;
+            this.btnMutate.Text = "Mutate";
+            this.btnMutate.UseVisualStyleBackColor = true;
+            // 
+            // btnRandomize
+            // 
+            this.btnRandomize.Location = new System.Drawing.Point(428, 403);
+            this.btnRandomize.Name = "btnRandomize";
+            this.btnRandomize.Size = new System.Drawing.Size(88, 26);
+            this.btnRandomize.TabIndex = 36;
+            this.btnRandomize.Text = "Randomize";
+            this.btnRandomize.UseVisualStyleBackColor = true;
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.MintCream;
+            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel12.Controls.Add(this.btnPresetMenuBlip);
+            this.panel12.Controls.Add(this.btnPresetJump);
+            this.panel12.Controls.Add(this.btnPresetHit);
+            this.panel12.Controls.Add(this.btnPresetPowerup);
+            this.panel12.Controls.Add(this.btnPresetExplosion);
+            this.panel12.Controls.Add(this.btnPresetLaser);
+            this.panel12.Controls.Add(this.btnPresetCoin);
+            this.panel12.Controls.Add(this.label14);
+            this.panel12.Location = new System.Drawing.Point(337, 140);
+            this.panel12.Margin = new System.Windows.Forms.Padding(0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(181, 235);
+            this.panel12.TabIndex = 37;
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.MintCream;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(1, 2);
+            this.label14.Margin = new System.Windows.Forms.Padding(1);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(177, 17);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Presets";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnPresetCoin
+            // 
+            this.btnPresetCoin.Location = new System.Drawing.Point(4, 25);
+            this.btnPresetCoin.Name = "btnPresetCoin";
+            this.btnPresetCoin.Size = new System.Drawing.Size(172, 28);
+            this.btnPresetCoin.TabIndex = 38;
+            this.btnPresetCoin.Text = "Coin";
+            this.btnPresetCoin.UseVisualStyleBackColor = true;
+            // 
+            // btnPresetLaser
+            // 
+            this.btnPresetLaser.Location = new System.Drawing.Point(4, 54);
+            this.btnPresetLaser.Name = "btnPresetLaser";
+            this.btnPresetLaser.Size = new System.Drawing.Size(172, 28);
+            this.btnPresetLaser.TabIndex = 39;
+            this.btnPresetLaser.Text = "Laser";
+            this.btnPresetLaser.UseVisualStyleBackColor = true;
+            // 
+            // btnPresetExplosion
+            // 
+            this.btnPresetExplosion.Location = new System.Drawing.Point(4, 83);
+            this.btnPresetExplosion.Name = "btnPresetExplosion";
+            this.btnPresetExplosion.Size = new System.Drawing.Size(172, 28);
+            this.btnPresetExplosion.TabIndex = 40;
+            this.btnPresetExplosion.Text = "Explosion";
+            this.btnPresetExplosion.UseVisualStyleBackColor = true;
+            // 
+            // btnPresetJump
+            // 
+            this.btnPresetJump.Location = new System.Drawing.Point(4, 170);
+            this.btnPresetJump.Name = "btnPresetJump";
+            this.btnPresetJump.Size = new System.Drawing.Size(172, 28);
+            this.btnPresetJump.TabIndex = 43;
+            this.btnPresetJump.Text = "Jump";
+            this.btnPresetJump.UseVisualStyleBackColor = true;
+            // 
+            // btnPresetHit
+            // 
+            this.btnPresetHit.Location = new System.Drawing.Point(4, 141);
+            this.btnPresetHit.Name = "btnPresetHit";
+            this.btnPresetHit.Size = new System.Drawing.Size(172, 28);
+            this.btnPresetHit.TabIndex = 42;
+            this.btnPresetHit.Text = "Hit / Injured";
+            this.btnPresetHit.UseVisualStyleBackColor = true;
+            // 
+            // btnPresetPowerup
+            // 
+            this.btnPresetPowerup.Location = new System.Drawing.Point(4, 112);
+            this.btnPresetPowerup.Name = "btnPresetPowerup";
+            this.btnPresetPowerup.Size = new System.Drawing.Size(172, 28);
+            this.btnPresetPowerup.TabIndex = 41;
+            this.btnPresetPowerup.Text = "Powerup";
+            this.btnPresetPowerup.UseVisualStyleBackColor = true;
+            // 
+            // btnPresetMenuBlip
+            // 
+            this.btnPresetMenuBlip.Location = new System.Drawing.Point(4, 199);
+            this.btnPresetMenuBlip.Name = "btnPresetMenuBlip";
+            this.btnPresetMenuBlip.Size = new System.Drawing.Size(172, 28);
+            this.btnPresetMenuBlip.TabIndex = 44;
+            this.btnPresetMenuBlip.Text = "Menu Blip";
+            this.btnPresetMenuBlip.UseVisualStyleBackColor = true;
             // 
             // valRepeatSpeed
             // 
@@ -855,309 +1154,12 @@
             this.valDecayTime.Value = 0.5F;
             this.valDecayTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(406, 481);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 20);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "Copy";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(462, 481);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(56, 20);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Paste";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.MintCream;
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.rdoShapeNoise);
-            this.panel8.Controls.Add(this.rdoShapeSine);
-            this.panel8.Controls.Add(this.rdoShapeSaw);
-            this.panel8.Controls.Add(this.rdoShapeWave);
-            this.panel8.Controls.Add(this.label12);
-            this.panel8.Location = new System.Drawing.Point(337, 2);
-            this.panel8.Margin = new System.Windows.Forms.Padding(0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(181, 64);
-            this.panel8.TabIndex = 27;
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.MintCream;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1, 2);
-            this.label12.Margin = new System.Windows.Forms.Padding(1);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(177, 17);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Attack Time";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // rdoShapeWave
-            // 
-            this.rdoShapeWave.AutoSize = true;
-            this.rdoShapeWave.BackColor = System.Drawing.Color.MintCream;
-            this.rdoShapeWave.Location = new System.Drawing.Point(13, 20);
-            this.rdoShapeWave.Name = "rdoShapeWave";
-            this.rdoShapeWave.Size = new System.Drawing.Size(59, 17);
-            this.rdoShapeWave.TabIndex = 3;
-            this.rdoShapeWave.Text = "Square";
-            this.rdoShapeWave.UseVisualStyleBackColor = false;
-            // 
-            // rdoShapeSine
-            // 
-            this.rdoShapeSine.AutoSize = true;
-            this.rdoShapeSine.BackColor = System.Drawing.Color.MintCream;
-            this.rdoShapeSine.Checked = true;
-            this.rdoShapeSine.Location = new System.Drawing.Point(104, 20);
-            this.rdoShapeSine.Name = "rdoShapeSine";
-            this.rdoShapeSine.Size = new System.Drawing.Size(46, 17);
-            this.rdoShapeSine.TabIndex = 5;
-            this.rdoShapeSine.TabStop = true;
-            this.rdoShapeSine.Text = "Sine";
-            this.rdoShapeSine.UseVisualStyleBackColor = false;
-            // 
-            // rdoShapeNoise
-            // 
-            this.rdoShapeNoise.AutoSize = true;
-            this.rdoShapeNoise.BackColor = System.Drawing.Color.MintCream;
-            this.rdoShapeNoise.Location = new System.Drawing.Point(104, 43);
-            this.rdoShapeNoise.Name = "rdoShapeNoise";
-            this.rdoShapeNoise.Size = new System.Drawing.Size(52, 17);
-            this.rdoShapeNoise.TabIndex = 6;
-            this.rdoShapeNoise.Text = "Noise";
-            this.rdoShapeNoise.UseVisualStyleBackColor = false;
-            // 
-            // rdoShapeSaw
-            // 
-            this.rdoShapeSaw.AutoSize = true;
-            this.rdoShapeSaw.BackColor = System.Drawing.Color.MintCream;
-            this.rdoShapeSaw.Location = new System.Drawing.Point(13, 43);
-            this.rdoShapeSaw.Name = "rdoShapeSaw";
-            this.rdoShapeSaw.Size = new System.Drawing.Size(70, 17);
-            this.rdoShapeSaw.TabIndex = 4;
-            this.rdoShapeSaw.Text = "Sawtooth";
-            this.rdoShapeSaw.UseVisualStyleBackColor = false;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.MintCream;
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.panel11);
-            this.panel9.Controls.Add(this.panel10);
-            this.panel9.Controls.Add(this.label13);
-            this.panel9.Location = new System.Drawing.Point(337, 69);
-            this.panel9.Margin = new System.Windows.Forms.Padding(0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(181, 68);
-            this.panel9.TabIndex = 28;
-            // 
-            // rdoBits16
-            // 
-            this.rdoBits16.AutoSize = true;
-            this.rdoBits16.BackColor = System.Drawing.Color.MintCream;
-            this.rdoBits16.Checked = true;
-            this.rdoBits16.Location = new System.Drawing.Point(101, 3);
-            this.rdoBits16.Name = "rdoBits16";
-            this.rdoBits16.Size = new System.Drawing.Size(51, 17);
-            this.rdoBits16.TabIndex = 6;
-            this.rdoBits16.TabStop = true;
-            this.rdoBits16.Text = "16-bit";
-            this.rdoBits16.UseVisualStyleBackColor = false;
-            // 
-            // rdoBits8
-            // 
-            this.rdoBits8.AutoSize = true;
-            this.rdoBits8.BackColor = System.Drawing.Color.MintCream;
-            this.rdoBits8.Location = new System.Drawing.Point(10, 3);
-            this.rdoBits8.Name = "rdoBits8";
-            this.rdoBits8.Size = new System.Drawing.Size(45, 17);
-            this.rdoBits8.TabIndex = 4;
-            this.rdoBits8.Text = "8-bit";
-            this.rdoBits8.UseVisualStyleBackColor = false;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.MintCream;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1, 2);
-            this.label13.Margin = new System.Windows.Forms.Padding(1);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(177, 17);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Quality";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.MintCream;
-            this.panel10.Controls.Add(this.rdoBits16);
-            this.panel10.Controls.Add(this.rdoBits8);
-            this.panel10.Location = new System.Drawing.Point(3, 18);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(170, 22);
-            this.panel10.TabIndex = 35;
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.Color.MintCream;
-            this.panel11.Controls.Add(this.radioButton1);
-            this.panel11.Controls.Add(this.radioButton2);
-            this.panel11.Location = new System.Drawing.Point(3, 44);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(170, 22);
-            this.panel11.TabIndex = 36;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.BackColor = System.Drawing.Color.MintCream;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(101, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(55, 17);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "44Khz";
-            this.radioButton1.UseVisualStyleBackColor = false;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.BackColor = System.Drawing.Color.MintCream;
-            this.radioButton2.Location = new System.Drawing.Point(10, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(55, 17);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.Text = "22Khz";
-            this.radioButton2.UseVisualStyleBackColor = false;
-            // 
-            // btnMutate
-            // 
-            this.btnMutate.Location = new System.Drawing.Point(337, 403);
-            this.btnMutate.Name = "btnMutate";
-            this.btnMutate.Size = new System.Drawing.Size(88, 26);
-            this.btnMutate.TabIndex = 35;
-            this.btnMutate.Text = "Mutate";
-            this.btnMutate.UseVisualStyleBackColor = true;
-            // 
-            // btnRandomize
-            // 
-            this.btnRandomize.Location = new System.Drawing.Point(428, 403);
-            this.btnRandomize.Name = "btnRandomize";
-            this.btnRandomize.Size = new System.Drawing.Size(88, 26);
-            this.btnRandomize.TabIndex = 36;
-            this.btnRandomize.Text = "Randomize";
-            this.btnRandomize.UseVisualStyleBackColor = true;
-            // 
-            // panel12
-            // 
-            this.panel12.BackColor = System.Drawing.Color.MintCream;
-            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel12.Controls.Add(this.btnPresetMenuBlip);
-            this.panel12.Controls.Add(this.btnPresetJump);
-            this.panel12.Controls.Add(this.btnPresetHit);
-            this.panel12.Controls.Add(this.btnPresetPowerup);
-            this.panel12.Controls.Add(this.btnPresetExplosion);
-            this.panel12.Controls.Add(this.btnPresetLaser);
-            this.panel12.Controls.Add(this.btnPresetCoin);
-            this.panel12.Controls.Add(this.label14);
-            this.panel12.Location = new System.Drawing.Point(337, 140);
-            this.panel12.Margin = new System.Windows.Forms.Padding(0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(181, 235);
-            this.panel12.TabIndex = 37;
-            // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.Color.MintCream;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1, 2);
-            this.label14.Margin = new System.Windows.Forms.Padding(1);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(177, 17);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Presets";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnPresetCoin
-            // 
-            this.btnPresetCoin.Location = new System.Drawing.Point(4, 25);
-            this.btnPresetCoin.Name = "btnPresetCoin";
-            this.btnPresetCoin.Size = new System.Drawing.Size(172, 28);
-            this.btnPresetCoin.TabIndex = 38;
-            this.btnPresetCoin.Text = "Coin";
-            this.btnPresetCoin.UseVisualStyleBackColor = true;
-            // 
-            // btnPresetLaser
-            // 
-            this.btnPresetLaser.Location = new System.Drawing.Point(4, 54);
-            this.btnPresetLaser.Name = "btnPresetLaser";
-            this.btnPresetLaser.Size = new System.Drawing.Size(172, 28);
-            this.btnPresetLaser.TabIndex = 39;
-            this.btnPresetLaser.Text = "Laser";
-            this.btnPresetLaser.UseVisualStyleBackColor = true;
-            // 
-            // btnPresetExplosion
-            // 
-            this.btnPresetExplosion.Location = new System.Drawing.Point(4, 83);
-            this.btnPresetExplosion.Name = "btnPresetExplosion";
-            this.btnPresetExplosion.Size = new System.Drawing.Size(172, 28);
-            this.btnPresetExplosion.TabIndex = 40;
-            this.btnPresetExplosion.Text = "Explosion";
-            this.btnPresetExplosion.UseVisualStyleBackColor = true;
-            // 
-            // btnPresetJump
-            // 
-            this.btnPresetJump.Location = new System.Drawing.Point(4, 170);
-            this.btnPresetJump.Name = "btnPresetJump";
-            this.btnPresetJump.Size = new System.Drawing.Size(172, 28);
-            this.btnPresetJump.TabIndex = 43;
-            this.btnPresetJump.Text = "Jump";
-            this.btnPresetJump.UseVisualStyleBackColor = true;
-            // 
-            // btnPresetHit
-            // 
-            this.btnPresetHit.Location = new System.Drawing.Point(4, 141);
-            this.btnPresetHit.Name = "btnPresetHit";
-            this.btnPresetHit.Size = new System.Drawing.Size(172, 28);
-            this.btnPresetHit.TabIndex = 42;
-            this.btnPresetHit.Text = "Hit / Injured";
-            this.btnPresetHit.UseVisualStyleBackColor = true;
-            // 
-            // btnPresetPowerup
-            // 
-            this.btnPresetPowerup.Location = new System.Drawing.Point(4, 112);
-            this.btnPresetPowerup.Name = "btnPresetPowerup";
-            this.btnPresetPowerup.Size = new System.Drawing.Size(172, 28);
-            this.btnPresetPowerup.TabIndex = 41;
-            this.btnPresetPowerup.Text = "Powerup";
-            this.btnPresetPowerup.UseVisualStyleBackColor = true;
-            // 
-            // btnPresetMenuBlip
-            // 
-            this.btnPresetMenuBlip.Location = new System.Drawing.Point(4, 199);
-            this.btnPresetMenuBlip.Name = "btnPresetMenuBlip";
-            this.btnPresetMenuBlip.Size = new System.Drawing.Size(172, 28);
-            this.btnPresetMenuBlip.TabIndex = 44;
-            this.btnPresetMenuBlip.Text = "Menu Blip";
-            this.btnPresetMenuBlip.UseVisualStyleBackColor = true;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(522, 503);
+            this.ClientSize = new System.Drawing.Size(522, 528);
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.btnRandomize);
             this.Controls.Add(this.btnMutate);

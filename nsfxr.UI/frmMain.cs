@@ -50,5 +50,11 @@ namespace nsfxr.UI
                 VibratoSpeed = valVibratoSpeed.Value,
             };
         }
+
+        private void txtSerailized_Click(object sender, EventArgs e)
+        {
+            txtSerailized.SelectionStart = 0;
+            txtSerailized.SelectionLength = txtSerailized.TextLength;
+        }
     }
 }
