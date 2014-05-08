@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Data;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace nsfxr.UI
         public float Value
         {
             get
-            {
+            {                
                 if(Math.Abs(MaxValue - _value) < TOLERANCE) return MaxValue;
                 if(Math.Abs(_value - MinValue) < TOLERANCE) return MinValue;
                 return (float) Math.Round(_value, Precision, MidpointRounding.ToEven);
@@ -94,15 +95,15 @@ namespace nsfxr.UI
             lblMin.Text = MinValue.ToString();
             lblMax.Text = _maxValue.ToString();
 
-            scrollBar.Value = (int)(scrollBar.Maximum / MaxValue * _value);
+            scrollBar.Value = (int)((Value - MinValue) / (MaxValue - MinValue) * scrollBar.Maximum);
                 
             _isUpdating = false;
         }
 
         private void scrollBar_ValueChanged(object sender, EventArgs e)
-        {            
-            Value = scrollBar.Value / (float)scrollBar.Maximum * MaxValue;
-            if(!_isUpdating && ValueUpdated != null) ValueUpdated(this,new EventArgs());
+        {                       
+            Value = MinValue + (MaxValue - MinValue) * (scrollBar.Value / (float)scrollBar.Maximum) ;
+            if(!_isUpdating && ValueUpdated != null) ValueUpdated(this,new EventArgs());            
         }
 
         private void txtValue_TextChanged(object sender, EventArgs e)

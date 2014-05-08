@@ -41,74 +41,74 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.valAttackTime = new nsfxr.UI.ValueSlider();
+            this.valSustainTime = new nsfxr.UI.ValueSlider();
+            this.valSustainPunch = new nsfxr.UI.ValueSlider();
+            this.valDecayTime = new nsfxr.UI.ValueSlider();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtSerailized = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.rdoShapeWave = new System.Windows.Forms.RadioButton();
-            this.rdoShapeSine = new System.Windows.Forms.RadioButton();
-            this.rdoShapeNoise = new System.Windows.Forms.RadioButton();
-            this.rdoShapeSaw = new System.Windows.Forms.RadioButton();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.rdoBits16 = new System.Windows.Forms.RadioButton();
-            this.rdoBits8 = new System.Windows.Forms.RadioButton();
-            this.label13 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.btnMutate = new System.Windows.Forms.Button();
-            this.btnRandomize = new System.Windows.Forms.Button();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.btnPresetCoin = new System.Windows.Forms.Button();
-            this.btnPresetLaser = new System.Windows.Forms.Button();
-            this.btnPresetExplosion = new System.Windows.Forms.Button();
-            this.btnPresetJump = new System.Windows.Forms.Button();
-            this.btnPresetHit = new System.Windows.Forms.Button();
-            this.btnPresetPowerup = new System.Windows.Forms.Button();
-            this.btnPresetMenuBlip = new System.Windows.Forms.Button();
-            this.valRepeatSpeed = new nsfxr.UI.ValueSlider();
-            this.valVolume = new nsfxr.UI.ValueSlider();
-            this.valPhaserSweep = new nsfxr.UI.ValueSlider();
-            this.valPhaserOffset = new nsfxr.UI.ValueSlider();
-            this.valDutySweep = new nsfxr.UI.ValueSlider();
-            this.valSquareDuty = new nsfxr.UI.ValueSlider();
-            this.valLpfCutoff = new nsfxr.UI.ValueSlider();
-            this.valLpfSweep = new nsfxr.UI.ValueSlider();
-            this.valLpfResonance = new nsfxr.UI.ValueSlider();
-            this.valHpfCutoff = new nsfxr.UI.ValueSlider();
-            this.valHpfSweep = new nsfxr.UI.ValueSlider();
-            this.valChangeSpeed = new nsfxr.UI.ValueSlider();
-            this.valChangeAmount = new nsfxr.UI.ValueSlider();
             this.valStartFrequency = new nsfxr.UI.ValueSlider();
             this.valMinFrequency = new nsfxr.UI.ValueSlider();
             this.valSlide = new nsfxr.UI.ValueSlider();
             this.valDeltaSlide = new nsfxr.UI.ValueSlider();
             this.valVibratoSpeed = new nsfxr.UI.ValueSlider();
             this.valVibratoDepth = new nsfxr.UI.ValueSlider();
-            this.valAttackTime = new nsfxr.UI.ValueSlider();
-            this.valSustainTime = new nsfxr.UI.ValueSlider();
-            this.valSustainPunch = new nsfxr.UI.ValueSlider();
-            this.valDecayTime = new nsfxr.UI.ValueSlider();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.valChangeSpeed = new nsfxr.UI.ValueSlider();
+            this.valChangeAmount = new nsfxr.UI.ValueSlider();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label43 = new System.Windows.Forms.Label();
+            this.valLpfCutoff = new nsfxr.UI.ValueSlider();
+            this.valLpfSweep = new nsfxr.UI.ValueSlider();
+            this.label41 = new System.Windows.Forms.Label();
+            this.valLpfResonance = new nsfxr.UI.ValueSlider();
+            this.label40 = new System.Windows.Forms.Label();
+            this.valHpfCutoff = new nsfxr.UI.ValueSlider();
+            this.label22 = new System.Windows.Forms.Label();
+            this.valHpfSweep = new nsfxr.UI.ValueSlider();
+            this.label23 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.valDutySweep = new nsfxr.UI.ValueSlider();
+            this.valSquareDuty = new nsfxr.UI.ValueSlider();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.valPhaserSweep = new nsfxr.UI.ValueSlider();
+            this.valPhaserOffset = new nsfxr.UI.ValueSlider();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.valRepeatSpeed = new nsfxr.UI.ValueSlider();
+            this.valVolume = new nsfxr.UI.ValueSlider();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtSerailized = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.rdoShapeNoise = new System.Windows.Forms.RadioButton();
+            this.rdoShapeSine = new System.Windows.Forms.RadioButton();
+            this.rdoShapeSaw = new System.Windows.Forms.RadioButton();
+            this.rdoShapeWave = new System.Windows.Forms.RadioButton();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.rdoBits16 = new System.Windows.Forms.RadioButton();
+            this.rdoBits8 = new System.Windows.Forms.RadioButton();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnMutate = new System.Windows.Forms.Button();
+            this.btnRandomize = new System.Windows.Forms.Button();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.btnPresetMenuBlip = new System.Windows.Forms.Button();
+            this.btnPresetJump = new System.Windows.Forms.Button();
+            this.btnPresetHit = new System.Windows.Forms.Button();
+            this.btnPresetPowerup = new System.Windows.Forms.Button();
+            this.btnPresetExplosion = new System.Windows.Forms.Button();
+            this.btnPresetLaser = new System.Windows.Forms.Button();
+            this.btnPresetCoin = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -118,8 +118,8 @@
             this.panel5.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -294,6 +294,62 @@
             this.panel2.Size = new System.Drawing.Size(332, 79);
             this.panel2.TabIndex = 26;
             // 
+            // valAttackTime
+            // 
+            this.valAttackTime.BackColor = System.Drawing.Color.MintCream;
+            this.valAttackTime.Location = new System.Drawing.Point(100, 1);
+            this.valAttackTime.Margin = new System.Windows.Forms.Padding(1);
+            this.valAttackTime.MaxValue = 1F;
+            this.valAttackTime.MinValue = 0F;
+            this.valAttackTime.Name = "valAttackTime";
+            this.valAttackTime.Precision = 3;
+            this.valAttackTime.Size = new System.Drawing.Size(225, 17);
+            this.valAttackTime.TabIndex = 16;
+            this.valAttackTime.Value = 0.5F;
+            this.valAttackTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valSustainTime
+            // 
+            this.valSustainTime.BackColor = System.Drawing.Color.MintCream;
+            this.valSustainTime.Location = new System.Drawing.Point(100, 20);
+            this.valSustainTime.Margin = new System.Windows.Forms.Padding(1);
+            this.valSustainTime.MaxValue = 1F;
+            this.valSustainTime.MinValue = 0F;
+            this.valSustainTime.Name = "valSustainTime";
+            this.valSustainTime.Precision = 3;
+            this.valSustainTime.Size = new System.Drawing.Size(225, 17);
+            this.valSustainTime.TabIndex = 17;
+            this.valSustainTime.Value = 0.5F;
+            this.valSustainTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valSustainPunch
+            // 
+            this.valSustainPunch.BackColor = System.Drawing.Color.MintCream;
+            this.valSustainPunch.Location = new System.Drawing.Point(100, 39);
+            this.valSustainPunch.Margin = new System.Windows.Forms.Padding(1);
+            this.valSustainPunch.MaxValue = 1F;
+            this.valSustainPunch.MinValue = 0F;
+            this.valSustainPunch.Name = "valSustainPunch";
+            this.valSustainPunch.Precision = 3;
+            this.valSustainPunch.Size = new System.Drawing.Size(225, 17);
+            this.valSustainPunch.TabIndex = 18;
+            this.valSustainPunch.Value = 0.5F;
+            this.valSustainPunch.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valDecayTime
+            // 
+            this.valDecayTime.BackColor = System.Drawing.Color.MintCream;
+            this.valDecayTime.Location = new System.Drawing.Point(100, 58);
+            this.valDecayTime.Margin = new System.Windows.Forms.Padding(1);
+            this.valDecayTime.MaxValue = 1F;
+            this.valDecayTime.MinValue = 0F;
+            this.valDecayTime.Name = "valDecayTime";
+            this.valDecayTime.Precision = 3;
+            this.valDecayTime.Size = new System.Drawing.Size(225, 17);
+            this.valDecayTime.TabIndex = 19;
+            this.valDecayTime.Value = 0.5F;
+            this.valDecayTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MintCream;
@@ -316,6 +372,90 @@
             this.panel1.Size = new System.Drawing.Size(332, 118);
             this.panel1.TabIndex = 27;
             // 
+            // valStartFrequency
+            // 
+            this.valStartFrequency.BackColor = System.Drawing.Color.MintCream;
+            this.valStartFrequency.Location = new System.Drawing.Point(100, 1);
+            this.valStartFrequency.Margin = new System.Windows.Forms.Padding(1);
+            this.valStartFrequency.MaxValue = 1F;
+            this.valStartFrequency.MinValue = 0F;
+            this.valStartFrequency.Name = "valStartFrequency";
+            this.valStartFrequency.Precision = 3;
+            this.valStartFrequency.Size = new System.Drawing.Size(225, 17);
+            this.valStartFrequency.TabIndex = 9;
+            this.valStartFrequency.Value = 0.5F;
+            this.valStartFrequency.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valMinFrequency
+            // 
+            this.valMinFrequency.BackColor = System.Drawing.Color.MintCream;
+            this.valMinFrequency.Location = new System.Drawing.Point(100, 20);
+            this.valMinFrequency.Margin = new System.Windows.Forms.Padding(1);
+            this.valMinFrequency.MaxValue = 1F;
+            this.valMinFrequency.MinValue = 0F;
+            this.valMinFrequency.Name = "valMinFrequency";
+            this.valMinFrequency.Precision = 3;
+            this.valMinFrequency.Size = new System.Drawing.Size(225, 17);
+            this.valMinFrequency.TabIndex = 11;
+            this.valMinFrequency.Value = 0.5F;
+            this.valMinFrequency.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valSlide
+            // 
+            this.valSlide.BackColor = System.Drawing.Color.MintCream;
+            this.valSlide.Location = new System.Drawing.Point(100, 39);
+            this.valSlide.Margin = new System.Windows.Forms.Padding(1);
+            this.valSlide.MaxValue = 1F;
+            this.valSlide.MinValue = -1F;
+            this.valSlide.Name = "valSlide";
+            this.valSlide.Precision = 3;
+            this.valSlide.Size = new System.Drawing.Size(225, 17);
+            this.valSlide.TabIndex = 13;
+            this.valSlide.Value = 0F;
+            this.valSlide.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valDeltaSlide
+            // 
+            this.valDeltaSlide.BackColor = System.Drawing.Color.MintCream;
+            this.valDeltaSlide.Location = new System.Drawing.Point(100, 58);
+            this.valDeltaSlide.Margin = new System.Windows.Forms.Padding(1);
+            this.valDeltaSlide.MaxValue = 1F;
+            this.valDeltaSlide.MinValue = -1F;
+            this.valDeltaSlide.Name = "valDeltaSlide";
+            this.valDeltaSlide.Precision = 3;
+            this.valDeltaSlide.Size = new System.Drawing.Size(225, 17);
+            this.valDeltaSlide.TabIndex = 15;
+            this.valDeltaSlide.Value = 0F;
+            this.valDeltaSlide.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valVibratoSpeed
+            // 
+            this.valVibratoSpeed.BackColor = System.Drawing.Color.MintCream;
+            this.valVibratoSpeed.Location = new System.Drawing.Point(100, 96);
+            this.valVibratoSpeed.Margin = new System.Windows.Forms.Padding(1);
+            this.valVibratoSpeed.MaxValue = 1F;
+            this.valVibratoSpeed.MinValue = 0F;
+            this.valVibratoSpeed.Name = "valVibratoSpeed";
+            this.valVibratoSpeed.Precision = 3;
+            this.valVibratoSpeed.Size = new System.Drawing.Size(225, 17);
+            this.valVibratoSpeed.TabIndex = 19;
+            this.valVibratoSpeed.Value = 0.5F;
+            this.valVibratoSpeed.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valVibratoDepth
+            // 
+            this.valVibratoDepth.BackColor = System.Drawing.Color.MintCream;
+            this.valVibratoDepth.Location = new System.Drawing.Point(100, 77);
+            this.valVibratoDepth.Margin = new System.Windows.Forms.Padding(1);
+            this.valVibratoDepth.MaxValue = 1F;
+            this.valVibratoDepth.MinValue = 0F;
+            this.valVibratoDepth.Name = "valVibratoDepth";
+            this.valVibratoDepth.Precision = 3;
+            this.valVibratoDepth.Size = new System.Drawing.Size(225, 17);
+            this.valVibratoDepth.TabIndex = 17;
+            this.valVibratoDepth.Value = 0.5F;
+            this.valVibratoDepth.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.MintCream;
@@ -329,6 +469,34 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(332, 41);
             this.panel3.TabIndex = 28;
+            // 
+            // valChangeSpeed
+            // 
+            this.valChangeSpeed.BackColor = System.Drawing.Color.MintCream;
+            this.valChangeSpeed.Location = new System.Drawing.Point(100, 20);
+            this.valChangeSpeed.Margin = new System.Windows.Forms.Padding(1);
+            this.valChangeSpeed.MaxValue = 1F;
+            this.valChangeSpeed.MinValue = 0F;
+            this.valChangeSpeed.Name = "valChangeSpeed";
+            this.valChangeSpeed.Precision = 3;
+            this.valChangeSpeed.Size = new System.Drawing.Size(225, 17);
+            this.valChangeSpeed.TabIndex = 22;
+            this.valChangeSpeed.Value = 0.5F;
+            this.valChangeSpeed.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valChangeAmount
+            // 
+            this.valChangeAmount.BackColor = System.Drawing.Color.MintCream;
+            this.valChangeAmount.Location = new System.Drawing.Point(100, 1);
+            this.valChangeAmount.Margin = new System.Windows.Forms.Padding(1);
+            this.valChangeAmount.MaxValue = 1F;
+            this.valChangeAmount.MinValue = -1F;
+            this.valChangeAmount.Name = "valChangeAmount";
+            this.valChangeAmount.Precision = 3;
+            this.valChangeAmount.Size = new System.Drawing.Size(225, 17);
+            this.valChangeAmount.TabIndex = 21;
+            this.valChangeAmount.Value = 0F;
+            this.valChangeAmount.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
             // panel4
             // 
@@ -362,6 +530,34 @@
             this.label43.Text = "LPF Cutoff";
             this.label43.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // valLpfCutoff
+            // 
+            this.valLpfCutoff.BackColor = System.Drawing.Color.MintCream;
+            this.valLpfCutoff.Location = new System.Drawing.Point(100, 1);
+            this.valLpfCutoff.Margin = new System.Windows.Forms.Padding(1);
+            this.valLpfCutoff.MaxValue = 1F;
+            this.valLpfCutoff.MinValue = 0F;
+            this.valLpfCutoff.Name = "valLpfCutoff";
+            this.valLpfCutoff.Precision = 3;
+            this.valLpfCutoff.Size = new System.Drawing.Size(225, 17);
+            this.valLpfCutoff.TabIndex = 9;
+            this.valLpfCutoff.Value = 0.5F;
+            this.valLpfCutoff.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valLpfSweep
+            // 
+            this.valLpfSweep.BackColor = System.Drawing.Color.MintCream;
+            this.valLpfSweep.Location = new System.Drawing.Point(100, 20);
+            this.valLpfSweep.Margin = new System.Windows.Forms.Padding(1);
+            this.valLpfSweep.MaxValue = 1F;
+            this.valLpfSweep.MinValue = -1F;
+            this.valLpfSweep.Name = "valLpfSweep";
+            this.valLpfSweep.Precision = 3;
+            this.valLpfSweep.Size = new System.Drawing.Size(225, 17);
+            this.valLpfSweep.TabIndex = 11;
+            this.valLpfSweep.Value = 0F;
+            this.valLpfSweep.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
             // label41
             // 
             this.label41.BackColor = System.Drawing.Color.MintCream;
@@ -373,6 +569,20 @@
             this.label41.TabIndex = 12;
             this.label41.Text = "LPF Sweep";
             this.label41.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // valLpfResonance
+            // 
+            this.valLpfResonance.BackColor = System.Drawing.Color.MintCream;
+            this.valLpfResonance.Location = new System.Drawing.Point(100, 39);
+            this.valLpfResonance.Margin = new System.Windows.Forms.Padding(1);
+            this.valLpfResonance.MaxValue = 1F;
+            this.valLpfResonance.MinValue = 0F;
+            this.valLpfResonance.Name = "valLpfResonance";
+            this.valLpfResonance.Precision = 3;
+            this.valLpfResonance.Size = new System.Drawing.Size(225, 17);
+            this.valLpfResonance.TabIndex = 13;
+            this.valLpfResonance.Value = 0.5F;
+            this.valLpfResonance.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
             // label40
             // 
@@ -386,6 +596,20 @@
             this.label40.Text = "LPF Resonance";
             this.label40.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // valHpfCutoff
+            // 
+            this.valHpfCutoff.BackColor = System.Drawing.Color.MintCream;
+            this.valHpfCutoff.Location = new System.Drawing.Point(100, 58);
+            this.valHpfCutoff.Margin = new System.Windows.Forms.Padding(1);
+            this.valHpfCutoff.MaxValue = 1F;
+            this.valHpfCutoff.MinValue = 0F;
+            this.valHpfCutoff.Name = "valHpfCutoff";
+            this.valHpfCutoff.Precision = 3;
+            this.valHpfCutoff.Size = new System.Drawing.Size(225, 17);
+            this.valHpfCutoff.TabIndex = 15;
+            this.valHpfCutoff.Value = 0.5F;
+            this.valHpfCutoff.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
             // label22
             // 
             this.label22.BackColor = System.Drawing.Color.MintCream;
@@ -397,6 +621,20 @@
             this.label22.TabIndex = 16;
             this.label22.Text = "HPF Cutoff";
             this.label22.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // valHpfSweep
+            // 
+            this.valHpfSweep.BackColor = System.Drawing.Color.MintCream;
+            this.valHpfSweep.Location = new System.Drawing.Point(100, 77);
+            this.valHpfSweep.Margin = new System.Windows.Forms.Padding(1);
+            this.valHpfSweep.MaxValue = 1F;
+            this.valHpfSweep.MinValue = -1F;
+            this.valHpfSweep.Name = "valHpfSweep";
+            this.valHpfSweep.Precision = 3;
+            this.valHpfSweep.Size = new System.Drawing.Size(225, 17);
+            this.valHpfSweep.TabIndex = 17;
+            this.valHpfSweep.Value = 0F;
+            this.valHpfSweep.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
             // label23
             // 
@@ -423,6 +661,34 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(332, 41);
             this.panel6.TabIndex = 29;
+            // 
+            // valDutySweep
+            // 
+            this.valDutySweep.BackColor = System.Drawing.Color.MintCream;
+            this.valDutySweep.Location = new System.Drawing.Point(100, 20);
+            this.valDutySweep.Margin = new System.Windows.Forms.Padding(1);
+            this.valDutySweep.MaxValue = 1F;
+            this.valDutySweep.MinValue = 0F;
+            this.valDutySweep.Name = "valDutySweep";
+            this.valDutySweep.Precision = 3;
+            this.valDutySweep.Size = new System.Drawing.Size(225, 17);
+            this.valDutySweep.TabIndex = 22;
+            this.valDutySweep.Value = 0.5F;
+            this.valDutySweep.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valSquareDuty
+            // 
+            this.valSquareDuty.BackColor = System.Drawing.Color.MintCream;
+            this.valSquareDuty.Location = new System.Drawing.Point(100, 1);
+            this.valSquareDuty.Margin = new System.Windows.Forms.Padding(1);
+            this.valSquareDuty.MaxValue = 1F;
+            this.valSquareDuty.MinValue = 0F;
+            this.valSquareDuty.Name = "valSquareDuty";
+            this.valSquareDuty.Precision = 3;
+            this.valSquareDuty.Size = new System.Drawing.Size(225, 17);
+            this.valSquareDuty.TabIndex = 21;
+            this.valSquareDuty.Value = 0.5F;
+            this.valSquareDuty.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
             // label24
             // 
@@ -462,6 +728,34 @@
             this.panel7.Size = new System.Drawing.Size(332, 41);
             this.panel7.TabIndex = 30;
             // 
+            // valPhaserSweep
+            // 
+            this.valPhaserSweep.BackColor = System.Drawing.Color.MintCream;
+            this.valPhaserSweep.Location = new System.Drawing.Point(100, 20);
+            this.valPhaserSweep.Margin = new System.Windows.Forms.Padding(1);
+            this.valPhaserSweep.MaxValue = 1F;
+            this.valPhaserSweep.MinValue = -1F;
+            this.valPhaserSweep.Name = "valPhaserSweep";
+            this.valPhaserSweep.Precision = 3;
+            this.valPhaserSweep.Size = new System.Drawing.Size(225, 17);
+            this.valPhaserSweep.TabIndex = 22;
+            this.valPhaserSweep.Value = 0F;
+            this.valPhaserSweep.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valPhaserOffset
+            // 
+            this.valPhaserOffset.BackColor = System.Drawing.Color.MintCream;
+            this.valPhaserOffset.Location = new System.Drawing.Point(100, 1);
+            this.valPhaserOffset.Margin = new System.Windows.Forms.Padding(1);
+            this.valPhaserOffset.MaxValue = 1F;
+            this.valPhaserOffset.MinValue = -1F;
+            this.valPhaserOffset.Name = "valPhaserOffset";
+            this.valPhaserOffset.Precision = 3;
+            this.valPhaserOffset.Size = new System.Drawing.Size(225, 17);
+            this.valPhaserOffset.TabIndex = 21;
+            this.valPhaserOffset.Value = 0F;
+            this.valPhaserOffset.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
             // label26
             // 
             this.label26.BackColor = System.Drawing.Color.MintCream;
@@ -499,6 +793,34 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(332, 41);
             this.panel5.TabIndex = 31;
+            // 
+            // valRepeatSpeed
+            // 
+            this.valRepeatSpeed.BackColor = System.Drawing.Color.MintCream;
+            this.valRepeatSpeed.Location = new System.Drawing.Point(100, 20);
+            this.valRepeatSpeed.Margin = new System.Windows.Forms.Padding(1);
+            this.valRepeatSpeed.MaxValue = 1F;
+            this.valRepeatSpeed.MinValue = 0F;
+            this.valRepeatSpeed.Name = "valRepeatSpeed";
+            this.valRepeatSpeed.Precision = 3;
+            this.valRepeatSpeed.Size = new System.Drawing.Size(225, 17);
+            this.valRepeatSpeed.TabIndex = 22;
+            this.valRepeatSpeed.Value = 0.5F;
+            this.valRepeatSpeed.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // valVolume
+            // 
+            this.valVolume.BackColor = System.Drawing.Color.MintCream;
+            this.valVolume.Location = new System.Drawing.Point(100, 1);
+            this.valVolume.Margin = new System.Windows.Forms.Padding(1);
+            this.valVolume.MaxValue = 1F;
+            this.valVolume.MinValue = 0F;
+            this.valVolume.Name = "valVolume";
+            this.valVolume.Precision = 3;
+            this.valVolume.Size = new System.Drawing.Size(225, 17);
+            this.valVolume.TabIndex = 21;
+            this.valVolume.Value = 0.5F;
+            this.valVolume.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
             // label18
             // 
@@ -570,28 +892,16 @@
             this.panel8.Size = new System.Drawing.Size(181, 64);
             this.panel8.TabIndex = 27;
             // 
-            // label12
+            // rdoShapeNoise
             // 
-            this.label12.BackColor = System.Drawing.Color.MintCream;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1, 2);
-            this.label12.Margin = new System.Windows.Forms.Padding(1);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(177, 17);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Attack Time";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // rdoShapeWave
-            // 
-            this.rdoShapeWave.AutoSize = true;
-            this.rdoShapeWave.BackColor = System.Drawing.Color.MintCream;
-            this.rdoShapeWave.Location = new System.Drawing.Point(13, 20);
-            this.rdoShapeWave.Name = "rdoShapeWave";
-            this.rdoShapeWave.Size = new System.Drawing.Size(59, 17);
-            this.rdoShapeWave.TabIndex = 3;
-            this.rdoShapeWave.Text = "Square";
-            this.rdoShapeWave.UseVisualStyleBackColor = false;
+            this.rdoShapeNoise.AutoSize = true;
+            this.rdoShapeNoise.BackColor = System.Drawing.Color.MintCream;
+            this.rdoShapeNoise.Location = new System.Drawing.Point(104, 43);
+            this.rdoShapeNoise.Name = "rdoShapeNoise";
+            this.rdoShapeNoise.Size = new System.Drawing.Size(52, 17);
+            this.rdoShapeNoise.TabIndex = 6;
+            this.rdoShapeNoise.Text = "Noise";
+            this.rdoShapeNoise.UseVisualStyleBackColor = false;
             // 
             // rdoShapeSine
             // 
@@ -606,17 +916,6 @@
             this.rdoShapeSine.Text = "Sine";
             this.rdoShapeSine.UseVisualStyleBackColor = false;
             // 
-            // rdoShapeNoise
-            // 
-            this.rdoShapeNoise.AutoSize = true;
-            this.rdoShapeNoise.BackColor = System.Drawing.Color.MintCream;
-            this.rdoShapeNoise.Location = new System.Drawing.Point(104, 43);
-            this.rdoShapeNoise.Name = "rdoShapeNoise";
-            this.rdoShapeNoise.Size = new System.Drawing.Size(52, 17);
-            this.rdoShapeNoise.TabIndex = 6;
-            this.rdoShapeNoise.Text = "Noise";
-            this.rdoShapeNoise.UseVisualStyleBackColor = false;
-            // 
             // rdoShapeSaw
             // 
             this.rdoShapeSaw.AutoSize = true;
@@ -627,6 +926,29 @@
             this.rdoShapeSaw.TabIndex = 4;
             this.rdoShapeSaw.Text = "Sawtooth";
             this.rdoShapeSaw.UseVisualStyleBackColor = false;
+            // 
+            // rdoShapeWave
+            // 
+            this.rdoShapeWave.AutoSize = true;
+            this.rdoShapeWave.BackColor = System.Drawing.Color.MintCream;
+            this.rdoShapeWave.Location = new System.Drawing.Point(13, 20);
+            this.rdoShapeWave.Name = "rdoShapeWave";
+            this.rdoShapeWave.Size = new System.Drawing.Size(59, 17);
+            this.rdoShapeWave.TabIndex = 3;
+            this.rdoShapeWave.Text = "Square";
+            this.rdoShapeWave.UseVisualStyleBackColor = false;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.MintCream;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(1, 2);
+            this.label12.Margin = new System.Windows.Forms.Padding(1);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(177, 17);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Attack Time";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel9
             // 
@@ -640,6 +962,50 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(181, 68);
             this.panel9.TabIndex = 28;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.MintCream;
+            this.panel11.Controls.Add(this.radioButton1);
+            this.panel11.Controls.Add(this.radioButton2);
+            this.panel11.Location = new System.Drawing.Point(3, 44);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(170, 22);
+            this.panel11.TabIndex = 36;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.Color.MintCream;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(101, 3);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(55, 17);
+            this.radioButton1.TabIndex = 6;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "44Khz";
+            this.radioButton1.UseVisualStyleBackColor = false;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.Color.MintCream;
+            this.radioButton2.Location = new System.Drawing.Point(10, 3);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(55, 17);
+            this.radioButton2.TabIndex = 4;
+            this.radioButton2.Text = "22Khz";
+            this.radioButton2.UseVisualStyleBackColor = false;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.MintCream;
+            this.panel10.Controls.Add(this.rdoBits16);
+            this.panel10.Controls.Add(this.rdoBits8);
+            this.panel10.Location = new System.Drawing.Point(3, 18);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(170, 22);
+            this.panel10.TabIndex = 35;
             // 
             // rdoBits16
             // 
@@ -677,50 +1043,6 @@
             this.label13.Text = "Quality";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.MintCream;
-            this.panel10.Controls.Add(this.rdoBits16);
-            this.panel10.Controls.Add(this.rdoBits8);
-            this.panel10.Location = new System.Drawing.Point(3, 18);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(170, 22);
-            this.panel10.TabIndex = 35;
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.Color.MintCream;
-            this.panel11.Controls.Add(this.radioButton1);
-            this.panel11.Controls.Add(this.radioButton2);
-            this.panel11.Location = new System.Drawing.Point(3, 44);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(170, 22);
-            this.panel11.TabIndex = 36;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.BackColor = System.Drawing.Color.MintCream;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(101, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(55, 17);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "44Khz";
-            this.radioButton1.UseVisualStyleBackColor = false;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.BackColor = System.Drawing.Color.MintCream;
-            this.radioButton2.Location = new System.Drawing.Point(10, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(55, 17);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.Text = "22Khz";
-            this.radioButton2.UseVisualStyleBackColor = false;
-            // 
             // btnMutate
             // 
             this.btnMutate.Location = new System.Drawing.Point(337, 403);
@@ -757,44 +1079,14 @@
             this.panel12.Size = new System.Drawing.Size(181, 235);
             this.panel12.TabIndex = 37;
             // 
-            // label14
+            // btnPresetMenuBlip
             // 
-            this.label14.BackColor = System.Drawing.Color.MintCream;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1, 2);
-            this.label14.Margin = new System.Windows.Forms.Padding(1);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(177, 17);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Presets";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnPresetCoin
-            // 
-            this.btnPresetCoin.Location = new System.Drawing.Point(4, 25);
-            this.btnPresetCoin.Name = "btnPresetCoin";
-            this.btnPresetCoin.Size = new System.Drawing.Size(172, 28);
-            this.btnPresetCoin.TabIndex = 38;
-            this.btnPresetCoin.Text = "Coin";
-            this.btnPresetCoin.UseVisualStyleBackColor = true;
-            // 
-            // btnPresetLaser
-            // 
-            this.btnPresetLaser.Location = new System.Drawing.Point(4, 54);
-            this.btnPresetLaser.Name = "btnPresetLaser";
-            this.btnPresetLaser.Size = new System.Drawing.Size(172, 28);
-            this.btnPresetLaser.TabIndex = 39;
-            this.btnPresetLaser.Text = "Laser";
-            this.btnPresetLaser.UseVisualStyleBackColor = true;
-            // 
-            // btnPresetExplosion
-            // 
-            this.btnPresetExplosion.Location = new System.Drawing.Point(4, 83);
-            this.btnPresetExplosion.Name = "btnPresetExplosion";
-            this.btnPresetExplosion.Size = new System.Drawing.Size(172, 28);
-            this.btnPresetExplosion.TabIndex = 40;
-            this.btnPresetExplosion.Text = "Explosion";
-            this.btnPresetExplosion.UseVisualStyleBackColor = true;
+            this.btnPresetMenuBlip.Location = new System.Drawing.Point(4, 199);
+            this.btnPresetMenuBlip.Name = "btnPresetMenuBlip";
+            this.btnPresetMenuBlip.Size = new System.Drawing.Size(172, 28);
+            this.btnPresetMenuBlip.TabIndex = 44;
+            this.btnPresetMenuBlip.Text = "Menu Blip";
+            this.btnPresetMenuBlip.UseVisualStyleBackColor = true;
             // 
             // btnPresetJump
             // 
@@ -823,336 +1115,44 @@
             this.btnPresetPowerup.Text = "Powerup";
             this.btnPresetPowerup.UseVisualStyleBackColor = true;
             // 
-            // btnPresetMenuBlip
+            // btnPresetExplosion
             // 
-            this.btnPresetMenuBlip.Location = new System.Drawing.Point(4, 199);
-            this.btnPresetMenuBlip.Name = "btnPresetMenuBlip";
-            this.btnPresetMenuBlip.Size = new System.Drawing.Size(172, 28);
-            this.btnPresetMenuBlip.TabIndex = 44;
-            this.btnPresetMenuBlip.Text = "Menu Blip";
-            this.btnPresetMenuBlip.UseVisualStyleBackColor = true;
+            this.btnPresetExplosion.Location = new System.Drawing.Point(4, 83);
+            this.btnPresetExplosion.Name = "btnPresetExplosion";
+            this.btnPresetExplosion.Size = new System.Drawing.Size(172, 28);
+            this.btnPresetExplosion.TabIndex = 40;
+            this.btnPresetExplosion.Text = "Explosion";
+            this.btnPresetExplosion.UseVisualStyleBackColor = true;
             // 
-            // valRepeatSpeed
+            // btnPresetLaser
             // 
-            this.valRepeatSpeed.BackColor = System.Drawing.Color.MintCream;
-            this.valRepeatSpeed.Location = new System.Drawing.Point(100, 20);
-            this.valRepeatSpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.valRepeatSpeed.MaxValue = 1F;
-            this.valRepeatSpeed.MinValue = 0F;
-            this.valRepeatSpeed.Name = "valRepeatSpeed";
-            this.valRepeatSpeed.Precision = 3;
-            this.valRepeatSpeed.Size = new System.Drawing.Size(225, 17);
-            this.valRepeatSpeed.TabIndex = 22;
-            this.valRepeatSpeed.Value = 0.5F;
-            this.valRepeatSpeed.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            this.btnPresetLaser.Location = new System.Drawing.Point(4, 54);
+            this.btnPresetLaser.Name = "btnPresetLaser";
+            this.btnPresetLaser.Size = new System.Drawing.Size(172, 28);
+            this.btnPresetLaser.TabIndex = 39;
+            this.btnPresetLaser.Text = "Laser";
+            this.btnPresetLaser.UseVisualStyleBackColor = true;
             // 
-            // valVolume
+            // btnPresetCoin
             // 
-            this.valVolume.BackColor = System.Drawing.Color.MintCream;
-            this.valVolume.Location = new System.Drawing.Point(100, 1);
-            this.valVolume.Margin = new System.Windows.Forms.Padding(1);
-            this.valVolume.MaxValue = 1F;
-            this.valVolume.MinValue = 0F;
-            this.valVolume.Name = "valVolume";
-            this.valVolume.Precision = 3;
-            this.valVolume.Size = new System.Drawing.Size(225, 17);
-            this.valVolume.TabIndex = 21;
-            this.valVolume.Value = 0.5F;
-            this.valVolume.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            this.btnPresetCoin.Location = new System.Drawing.Point(4, 25);
+            this.btnPresetCoin.Name = "btnPresetCoin";
+            this.btnPresetCoin.Size = new System.Drawing.Size(172, 28);
+            this.btnPresetCoin.TabIndex = 38;
+            this.btnPresetCoin.Text = "Coin";
+            this.btnPresetCoin.UseVisualStyleBackColor = true;
             // 
-            // valPhaserSweep
+            // label14
             // 
-            this.valPhaserSweep.BackColor = System.Drawing.Color.MintCream;
-            this.valPhaserSweep.Location = new System.Drawing.Point(100, 20);
-            this.valPhaserSweep.Margin = new System.Windows.Forms.Padding(1);
-            this.valPhaserSweep.MaxValue = 1F;
-            this.valPhaserSweep.MinValue = -1F;
-            this.valPhaserSweep.Name = "valPhaserSweep";
-            this.valPhaserSweep.Precision = 3;
-            this.valPhaserSweep.Size = new System.Drawing.Size(225, 17);
-            this.valPhaserSweep.TabIndex = 22;
-            this.valPhaserSweep.Value = 0.5F;
-            this.valPhaserSweep.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valPhaserOffset
-            // 
-            this.valPhaserOffset.BackColor = System.Drawing.Color.MintCream;
-            this.valPhaserOffset.Location = new System.Drawing.Point(100, 1);
-            this.valPhaserOffset.Margin = new System.Windows.Forms.Padding(1);
-            this.valPhaserOffset.MaxValue = 1F;
-            this.valPhaserOffset.MinValue = -1F;
-            this.valPhaserOffset.Name = "valPhaserOffset";
-            this.valPhaserOffset.Precision = 3;
-            this.valPhaserOffset.Size = new System.Drawing.Size(225, 17);
-            this.valPhaserOffset.TabIndex = 21;
-            this.valPhaserOffset.Value = 0.5F;
-            this.valPhaserOffset.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valDutySweep
-            // 
-            this.valDutySweep.BackColor = System.Drawing.Color.MintCream;
-            this.valDutySweep.Location = new System.Drawing.Point(100, 20);
-            this.valDutySweep.Margin = new System.Windows.Forms.Padding(1);
-            this.valDutySweep.MaxValue = 1F;
-            this.valDutySweep.MinValue = 0F;
-            this.valDutySweep.Name = "valDutySweep";
-            this.valDutySweep.Precision = 3;
-            this.valDutySweep.Size = new System.Drawing.Size(225, 17);
-            this.valDutySweep.TabIndex = 22;
-            this.valDutySweep.Value = 0.5F;
-            this.valDutySweep.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valSquareDuty
-            // 
-            this.valSquareDuty.BackColor = System.Drawing.Color.MintCream;
-            this.valSquareDuty.Location = new System.Drawing.Point(100, 1);
-            this.valSquareDuty.Margin = new System.Windows.Forms.Padding(1);
-            this.valSquareDuty.MaxValue = 1F;
-            this.valSquareDuty.MinValue = 0F;
-            this.valSquareDuty.Name = "valSquareDuty";
-            this.valSquareDuty.Precision = 3;
-            this.valSquareDuty.Size = new System.Drawing.Size(225, 17);
-            this.valSquareDuty.TabIndex = 21;
-            this.valSquareDuty.Value = 0.5F;
-            this.valSquareDuty.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valLpfCutoff
-            // 
-            this.valLpfCutoff.BackColor = System.Drawing.Color.MintCream;
-            this.valLpfCutoff.Location = new System.Drawing.Point(100, 1);
-            this.valLpfCutoff.Margin = new System.Windows.Forms.Padding(1);
-            this.valLpfCutoff.MaxValue = 1F;
-            this.valLpfCutoff.MinValue = 0F;
-            this.valLpfCutoff.Name = "valLpfCutoff";
-            this.valLpfCutoff.Precision = 3;
-            this.valLpfCutoff.Size = new System.Drawing.Size(225, 17);
-            this.valLpfCutoff.TabIndex = 9;
-            this.valLpfCutoff.Value = 0.5F;
-            this.valLpfCutoff.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valLpfSweep
-            // 
-            this.valLpfSweep.BackColor = System.Drawing.Color.MintCream;
-            this.valLpfSweep.Location = new System.Drawing.Point(100, 20);
-            this.valLpfSweep.Margin = new System.Windows.Forms.Padding(1);
-            this.valLpfSweep.MaxValue = 1F;
-            this.valLpfSweep.MinValue = -1F;
-            this.valLpfSweep.Name = "valLpfSweep";
-            this.valLpfSweep.Precision = 3;
-            this.valLpfSweep.Size = new System.Drawing.Size(225, 17);
-            this.valLpfSweep.TabIndex = 11;
-            this.valLpfSweep.Value = 0.5F;
-            this.valLpfSweep.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valLpfResonance
-            // 
-            this.valLpfResonance.BackColor = System.Drawing.Color.MintCream;
-            this.valLpfResonance.Location = new System.Drawing.Point(100, 39);
-            this.valLpfResonance.Margin = new System.Windows.Forms.Padding(1);
-            this.valLpfResonance.MaxValue = 1F;
-            this.valLpfResonance.MinValue = 0F;
-            this.valLpfResonance.Name = "valLpfResonance";
-            this.valLpfResonance.Precision = 3;
-            this.valLpfResonance.Size = new System.Drawing.Size(225, 17);
-            this.valLpfResonance.TabIndex = 13;
-            this.valLpfResonance.Value = 0.5F;
-            this.valLpfResonance.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valHpfCutoff
-            // 
-            this.valHpfCutoff.BackColor = System.Drawing.Color.MintCream;
-            this.valHpfCutoff.Location = new System.Drawing.Point(100, 58);
-            this.valHpfCutoff.Margin = new System.Windows.Forms.Padding(1);
-            this.valHpfCutoff.MaxValue = 1F;
-            this.valHpfCutoff.MinValue = 0F;
-            this.valHpfCutoff.Name = "valHpfCutoff";
-            this.valHpfCutoff.Precision = 3;
-            this.valHpfCutoff.Size = new System.Drawing.Size(225, 17);
-            this.valHpfCutoff.TabIndex = 15;
-            this.valHpfCutoff.Value = 0.5F;
-            this.valHpfCutoff.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valHpfSweep
-            // 
-            this.valHpfSweep.BackColor = System.Drawing.Color.MintCream;
-            this.valHpfSweep.Location = new System.Drawing.Point(100, 77);
-            this.valHpfSweep.Margin = new System.Windows.Forms.Padding(1);
-            this.valHpfSweep.MaxValue = 1F;
-            this.valHpfSweep.MinValue = -1F;
-            this.valHpfSweep.Name = "valHpfSweep";
-            this.valHpfSweep.Precision = 3;
-            this.valHpfSweep.Size = new System.Drawing.Size(225, 17);
-            this.valHpfSweep.TabIndex = 17;
-            this.valHpfSweep.Value = 0.5F;
-            this.valHpfSweep.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valChangeSpeed
-            // 
-            this.valChangeSpeed.BackColor = System.Drawing.Color.MintCream;
-            this.valChangeSpeed.Location = new System.Drawing.Point(100, 20);
-            this.valChangeSpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.valChangeSpeed.MaxValue = 1F;
-            this.valChangeSpeed.MinValue = 0F;
-            this.valChangeSpeed.Name = "valChangeSpeed";
-            this.valChangeSpeed.Precision = 3;
-            this.valChangeSpeed.Size = new System.Drawing.Size(225, 17);
-            this.valChangeSpeed.TabIndex = 22;
-            this.valChangeSpeed.Value = 0.5F;
-            this.valChangeSpeed.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valChangeAmount
-            // 
-            this.valChangeAmount.BackColor = System.Drawing.Color.MintCream;
-            this.valChangeAmount.Location = new System.Drawing.Point(100, 1);
-            this.valChangeAmount.Margin = new System.Windows.Forms.Padding(1);
-            this.valChangeAmount.MaxValue = 1F;
-            this.valChangeAmount.MinValue = -1F;
-            this.valChangeAmount.Name = "valChangeAmount";
-            this.valChangeAmount.Precision = 3;
-            this.valChangeAmount.Size = new System.Drawing.Size(225, 17);
-            this.valChangeAmount.TabIndex = 21;
-            this.valChangeAmount.Value = 0.5F;
-            this.valChangeAmount.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valStartFrequency
-            // 
-            this.valStartFrequency.BackColor = System.Drawing.Color.MintCream;
-            this.valStartFrequency.Location = new System.Drawing.Point(100, 1);
-            this.valStartFrequency.Margin = new System.Windows.Forms.Padding(1);
-            this.valStartFrequency.MaxValue = 1F;
-            this.valStartFrequency.MinValue = 0F;
-            this.valStartFrequency.Name = "valStartFrequency";
-            this.valStartFrequency.Precision = 3;
-            this.valStartFrequency.Size = new System.Drawing.Size(225, 17);
-            this.valStartFrequency.TabIndex = 9;
-            this.valStartFrequency.Value = 0.5F;
-            this.valStartFrequency.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valMinFrequency
-            // 
-            this.valMinFrequency.BackColor = System.Drawing.Color.MintCream;
-            this.valMinFrequency.Location = new System.Drawing.Point(100, 20);
-            this.valMinFrequency.Margin = new System.Windows.Forms.Padding(1);
-            this.valMinFrequency.MaxValue = 1F;
-            this.valMinFrequency.MinValue = 0F;
-            this.valMinFrequency.Name = "valMinFrequency";
-            this.valMinFrequency.Precision = 3;
-            this.valMinFrequency.Size = new System.Drawing.Size(225, 17);
-            this.valMinFrequency.TabIndex = 11;
-            this.valMinFrequency.Value = 0.5F;
-            this.valMinFrequency.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valSlide
-            // 
-            this.valSlide.BackColor = System.Drawing.Color.MintCream;
-            this.valSlide.Location = new System.Drawing.Point(100, 39);
-            this.valSlide.Margin = new System.Windows.Forms.Padding(1);
-            this.valSlide.MaxValue = 1F;
-            this.valSlide.MinValue = -1F;
-            this.valSlide.Name = "valSlide";
-            this.valSlide.Precision = 3;
-            this.valSlide.Size = new System.Drawing.Size(225, 17);
-            this.valSlide.TabIndex = 13;
-            this.valSlide.Value = 0.5F;
-            this.valSlide.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valDeltaSlide
-            // 
-            this.valDeltaSlide.BackColor = System.Drawing.Color.MintCream;
-            this.valDeltaSlide.Location = new System.Drawing.Point(100, 58);
-            this.valDeltaSlide.Margin = new System.Windows.Forms.Padding(1);
-            this.valDeltaSlide.MaxValue = 1F;
-            this.valDeltaSlide.MinValue = -1F;
-            this.valDeltaSlide.Name = "valDeltaSlide";
-            this.valDeltaSlide.Precision = 3;
-            this.valDeltaSlide.Size = new System.Drawing.Size(225, 17);
-            this.valDeltaSlide.TabIndex = 15;
-            this.valDeltaSlide.Value = 0.5F;
-            this.valDeltaSlide.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valVibratoSpeed
-            // 
-            this.valVibratoSpeed.BackColor = System.Drawing.Color.MintCream;
-            this.valVibratoSpeed.Location = new System.Drawing.Point(100, 96);
-            this.valVibratoSpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.valVibratoSpeed.MaxValue = 1F;
-            this.valVibratoSpeed.MinValue = 0F;
-            this.valVibratoSpeed.Name = "valVibratoSpeed";
-            this.valVibratoSpeed.Precision = 3;
-            this.valVibratoSpeed.Size = new System.Drawing.Size(225, 17);
-            this.valVibratoSpeed.TabIndex = 19;
-            this.valVibratoSpeed.Value = 0.5F;
-            this.valVibratoSpeed.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valVibratoDepth
-            // 
-            this.valVibratoDepth.BackColor = System.Drawing.Color.MintCream;
-            this.valVibratoDepth.Location = new System.Drawing.Point(100, 77);
-            this.valVibratoDepth.Margin = new System.Windows.Forms.Padding(1);
-            this.valVibratoDepth.MaxValue = 1F;
-            this.valVibratoDepth.MinValue = 0F;
-            this.valVibratoDepth.Name = "valVibratoDepth";
-            this.valVibratoDepth.Precision = 3;
-            this.valVibratoDepth.Size = new System.Drawing.Size(225, 17);
-            this.valVibratoDepth.TabIndex = 17;
-            this.valVibratoDepth.Value = 0.5F;
-            this.valVibratoDepth.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valAttackTime
-            // 
-            this.valAttackTime.BackColor = System.Drawing.Color.MintCream;
-            this.valAttackTime.Location = new System.Drawing.Point(100, 1);
-            this.valAttackTime.Margin = new System.Windows.Forms.Padding(1);
-            this.valAttackTime.MaxValue = 1F;
-            this.valAttackTime.MinValue = 0F;
-            this.valAttackTime.Name = "valAttackTime";
-            this.valAttackTime.Precision = 3;
-            this.valAttackTime.Size = new System.Drawing.Size(225, 17);
-            this.valAttackTime.TabIndex = 16;
-            this.valAttackTime.Value = 0.5F;
-            this.valAttackTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valSustainTime
-            // 
-            this.valSustainTime.BackColor = System.Drawing.Color.MintCream;
-            this.valSustainTime.Location = new System.Drawing.Point(100, 20);
-            this.valSustainTime.Margin = new System.Windows.Forms.Padding(1);
-            this.valSustainTime.MaxValue = 1F;
-            this.valSustainTime.MinValue = 0F;
-            this.valSustainTime.Name = "valSustainTime";
-            this.valSustainTime.Precision = 3;
-            this.valSustainTime.Size = new System.Drawing.Size(225, 17);
-            this.valSustainTime.TabIndex = 17;
-            this.valSustainTime.Value = 0.5F;
-            this.valSustainTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valSustainPunch
-            // 
-            this.valSustainPunch.BackColor = System.Drawing.Color.MintCream;
-            this.valSustainPunch.Location = new System.Drawing.Point(100, 39);
-            this.valSustainPunch.Margin = new System.Windows.Forms.Padding(1);
-            this.valSustainPunch.MaxValue = 1F;
-            this.valSustainPunch.MinValue = 0F;
-            this.valSustainPunch.Name = "valSustainPunch";
-            this.valSustainPunch.Precision = 3;
-            this.valSustainPunch.Size = new System.Drawing.Size(225, 17);
-            this.valSustainPunch.TabIndex = 18;
-            this.valSustainPunch.Value = 0.5F;
-            this.valSustainPunch.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valDecayTime
-            // 
-            this.valDecayTime.BackColor = System.Drawing.Color.MintCream;
-            this.valDecayTime.Location = new System.Drawing.Point(100, 58);
-            this.valDecayTime.Margin = new System.Windows.Forms.Padding(1);
-            this.valDecayTime.MaxValue = 1F;
-            this.valDecayTime.MinValue = 0F;
-            this.valDecayTime.Name = "valDecayTime";
-            this.valDecayTime.Precision = 3;
-            this.valDecayTime.Size = new System.Drawing.Size(225, 17);
-            this.valDecayTime.TabIndex = 19;
-            this.valDecayTime.Value = 0.5F;
-            this.valDecayTime.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            this.label14.BackColor = System.Drawing.Color.MintCream;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(1, 2);
+            this.label14.Margin = new System.Windows.Forms.Padding(1);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(177, 17);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Presets";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmMain
             // 
@@ -1189,10 +1189,10 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel9.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
