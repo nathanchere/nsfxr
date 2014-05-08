@@ -21,7 +21,7 @@ namespace nsfxr
 
         public static int Int(int min, int max)
         {
-            return min + (_random.Next() * (max - min));
+            return min + (_random.NextDouble() * (max - min));
         }
 
         public static float Float()
