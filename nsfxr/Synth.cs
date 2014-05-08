@@ -30,21 +30,12 @@ namespace nsfxr
         private float _periodTemp;						// Period modified by vibrato
         private float _maxPeriod;							// Maximum period before sound stops (from minFrequency)
 
-        private float _slide;								// Note slide        
+        private float _vibratoPhase;						// Phase through the vibrato sine wave        
 
-        private float _vibratoPhase;						// Phase through the vibrato sine wave
-        private float _vibratoSpeed;						// Speed at which the vibrato phase moves
-        private float _vibratoAmplitude;					// Amount to change the period of the wave by at the peak of the vibrato wave
-
-        private float _changeAmount;						// Amount to change the note by
         private int _changeTime;						// Counter for the note change
         private int _changeLimit;						// Once the time reaches this limit, the note changes
 
-        private float _squareDuty;						// Offset of center switching point in the square wave
-        private float _dutySweep;							// Amount to change the duty by
-
         private int _repeatTime;						// Counter for the repeats
-        private int _repeatLimit;						// Once the time reaches this limit, some of the variables are reset
         
         private float _phaserOffset;						// Phase offset for phaser effect
         private float _phaserDeltaOffset;					// Change in phase offset
@@ -55,15 +46,10 @@ namespace nsfxr
         private float _lpFilterPos;						// Adjusted wave position after low-pass filter
         private float _lpFilterOldPos;					// Previous low-pass wave position
         private float _lpFilterDeltaPos;					// Change in low-pass wave position, as allowed by the cutoff and damping
-        private float _lpFilterCutoff;					// Cutoff multiplier which adjusts the amount the wave position can move
-        private float _lpFilterDeltaCutoff;				// Speed of the low-pass cutoff multiplier
         private float _lpFilterDamping;					// Damping muliplier which restricts how fast the wave position can move
-        private bool _lpFilterOn;						// If the low pass filter is active
-
+        
         private float _hpFilterPos;						// Adjusted wave position after high-pass filter
-        private float _hpFilterCutoff;					// Cutoff multiplier which adjusts the amount the wave position can move
-        private float _hpFilterDeltaCutoff;				// Speed of the high-pass cutoff multiplier
-
+        
         private float[] _noiseBuffer;						// Buffer of random values used to generate noise
 
         private float _superSample;						// Actual sample writen to the wave
@@ -191,18 +177,19 @@ namespace nsfxr
             //    }
             }        
         
-        private bool GenerateAudioData(SynthParams sfxParams)
+        private float[] GenerateAudioData(SynthParams sfxParams)
         {            
             float[] buffer = null;
             bool _finished = false;
             uint i, j, n;
 
-            for (i = 0; i < buffer.Length; i++) {
-                if (_finished) return true;
+            for (i = 0; i < buffer.Length; i++)
+            {
+                if (_finished) return buffer;
 
                 // Repeats every _repeatLimit times, partially resetting the sound parameters
-                if (_repeatLimit != 0) {
-                    if (++_repeatTime >= _repeatLimit) {
+                if (sfxParams.RepeatLimit > 0) {
+                    if (++_repeatTime >= sfxParams.RepeatLimit) {
                         _repeatTime = 0;
                         Reset(false);
                     }
@@ -212,13 +199,13 @@ namespace nsfxr
                 if (_changeLimit != 0) {
                     if (++_changeTime >= _changeLimit) {
                         _changeLimit = 0;
-                        _period *= _changeAmount;
+                        _period *= sfxParams.ChangeAmount;
                     }
                 }
 
                 // Acccelerate and apply slide
-                _slide += sfxParams.DeltaSlide;
-                _period *= _slide;
+                sfxParams.Slide += sfxParams.DeltaSlide;
+                _period *= sfxParams.Slide;
 
                 // Checks for frequency getting too low, and stops the sound if a minFrequency was set
                 if (_period > _maxPeriod) {
@@ -230,23 +217,20 @@ namespace nsfxr
                 _periodTemp = _period;
 
                 // Applies the vibrato effect
-                if (_vibratoAmplitude > 0) {
-                    _vibratoPhase += _vibratoSpeed;
-                    _periodTemp = _period * (float)(1.0f + Math.Sin(_vibratoPhase) * _vibratoAmplitude);
+                if (sfxParams.IsVibratoEnabled) {
+                    _vibratoPhase += sfxParams.VibratoSpeed;
+                    _periodTemp = _period * (float)(1.0f + Math.Sin(_vibratoPhase) * sfxParams.VibratoDepth);
                 }
 
                 _periodTemp = (int)_periodTemp;
-                if (_periodTemp < 8)
-                    _periodTemp = 8;
+                if (_periodTemp < 8) _periodTemp = 8;
 
                 // Sweeps the square duty
-                if (sfxParams.WaveShape == SynthParams.WaveShapeEnum.Square) {
-                    _squareDuty += _dutySweep;
-                    if (_squareDuty < 0.0) {
-                        _squareDuty = 0.0f;
-                    } else if (_squareDuty > 0.5) {
-                        _squareDuty = 0.5f;
-                    }
+                if (sfxParams.WaveShape == SynthParams.WaveShapeEnum.Square)
+                {
+                    sfxParams.SquareDuty += sfxParams.DutySweep;
+                    if (sfxParams.SquareDuty < 0.0) sfxParams.SquareDuty = 0.0f;
+                    if (sfxParams.SquareDuty > 0.5) sfxParams.SquareDuty = 0.5f;
                 }
 
                 // Moves through the different stages of the volume envelope
@@ -292,13 +276,11 @@ namespace nsfxr
                 }
 
                 // Moves the high-pass filter cutoff
-                if (sfxParams.IsFilterEnabled && _hpFilterDeltaCutoff != 0) {
-                    _hpFilterCutoff *= _hpFilterDeltaCutoff;
-                    if (_hpFilterCutoff < 0.00001f) {
-                        _hpFilterCutoff = 0.00001f;
-                    } else if (_hpFilterCutoff > 0.1f) {
-                        _hpFilterCutoff = 0.1f;
-                    }
+                if (sfxParams.IsFilterEnabled && Math.Abs(sfxParams.HighPassFilterCutoffSweep) > TOLERANCE)
+                {
+                    sfxParams.HighPassFilterCutoff *= sfxParams.HighPassFilterCutoffSweep;
+                    if (sfxParams.HighPassFilterCutoff < 0.00001f) sfxParams.HighPassFilterCutoff = 0.00001f;
+                    if (sfxParams.HighPassFilterCutoff > 0.1f) sfxParams.HighPassFilterCutoff = 0.1f;
                 }
 
                 _superSample = 0;
@@ -315,21 +297,25 @@ namespace nsfxr
                         }
                     }
 
-                    // Gets the sample from the oscillator
-                    switch (sfxParams.WaveShape) {
+
+                    switch (sfxParams.WaveShape)
+                    {
                         case SynthParams.WaveShapeEnum.Square:
-                            _sample = ((_phase / _periodTemp) < _squareDuty) ? 0.5f : -0.5f;
+                            _sample = ((_phase / _periodTemp) < sfxParams.SquareDuty) ? 0.5f : -0.5f;
                             break;
-                        case SynthParams.WaveShapeEnum.Saw: // Saw wave
+
+                        case SynthParams.WaveShapeEnum.Saw:
                             _sample = 1.0f - (_phase / _periodTemp) * 2.0f;
                             break;
-                        case SynthParams.WaveShapeEnum.Sine: // Sine wave (fast and accurate approx) {
+
+                        case SynthParams.WaveShapeEnum.Sine:
                             _pos = _phase / _periodTemp;
                             _pos = _pos > 0.5f ? (_pos - 1.0f) * 6.28318531f : _pos * 6.28318531f;
                             _sample = _pos < 0 ? 1.27323954f * _pos + 0.405284735f * _pos * _pos : 1.27323954f * _pos - 0.405284735f * _pos * _pos;
                             _sample = _sample < 0 ? 0.225f * (_sample * -_sample - _sample) + _sample : 0.225f * (_sample * _sample - _sample) + _sample;
                             break;
-                        case SynthParams.WaveShapeEnum.Noise: // Noise
+
+                        case SynthParams.WaveShapeEnum.Noise:
                             _sample = _noiseBuffer[(uint)(_phase * 32 / (int)_periodTemp)];
                             break;
                     }
@@ -337,15 +323,13 @@ namespace nsfxr
                     // Applies the low and high pass filters
                     if (sfxParams.IsFilterEnabled) {
                         _lpFilterOldPos = _lpFilterPos;
-                        _lpFilterCutoff *= _lpFilterDeltaCutoff;
-                        if (_lpFilterCutoff < 0.0) {
-                            _lpFilterCutoff = 0.0f;
-                        } else if (_lpFilterCutoff > 0.1) {
-                            _lpFilterCutoff = 0.1f;
-                        }
+                        sfxParams.LowPassFilterCutoff *= sfxParams.LowPassFilterCutoffSweep;
+                        if (sfxParams.LowPassFilterCutoff < 0.0) sfxParams.LowPassFilterCutoff = 0.0f;
+                        if (sfxParams.LowPassFilterCutoff > 0.1) sfxParams.LowPassFilterCutoff = 0.1f;                        
 
-                        if (_lpFilterOn) {
-                            _lpFilterDeltaPos += (_sample - _lpFilterPos) * _lpFilterCutoff;
+                        if (sfxParams.IsLowPassFilterEnabled)
+                        {
+                            _lpFilterDeltaPos += (_sample - _lpFilterPos) * sfxParams.LowPassFilterCutoff;
                             _lpFilterDeltaPos *= _lpFilterDamping;
                         } else {
                             _lpFilterPos = _sample;
@@ -355,12 +339,12 @@ namespace nsfxr
                         _lpFilterPos += _lpFilterDeltaPos;
 
                         _hpFilterPos += _lpFilterPos - _lpFilterOldPos;
-                        _hpFilterPos *= 1.0f - _hpFilterCutoff;
+                        _hpFilterPos *= 1.0f - sfxParams.HighPassFilterCutoff;
                         _sample = _hpFilterPos;
                     }
 
-                    // Applies the phaser effect
-                    if (sfxParams.IsPhaserEnabled) {
+                    if (sfxParams.IsPhaserEnabled)
+                    {
                         _phaserBuffer[_phaserPos & 1023] = _sample;
                         _sample += _phaserBuffer[(_phaserPos - _phaserInt + 1024) & 1023];
                         _phaserPos = (_phaserPos + 1) & 1023;
@@ -381,7 +365,7 @@ namespace nsfxr
                 buffer[i] = _superSample;
             }
 
-            return false;
+            return buffer;
         }       
     }
 }

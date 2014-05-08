@@ -99,6 +99,7 @@ namespace nsfxr
         /// Ratio between the up and down states of the square wave; affects timbre
         /// </summary>
         /// <remarks>Valid range: 0 to 1</remarks>
+        /// <note>Implementation suggests actual range is 0 to 0.5..?</note>
         public float SquareDuty { get; set; }
 
         /// <summary>
@@ -164,6 +165,21 @@ namespace nsfxr
         /// TODO: Map to presets
         /// </summary>
         public bool IsFilterEnabled { get; set; }
+
+        /// <summary>
+        /// TODO: map
+        /// </summary>
+        public int RepeatLimit { get; set; }
+
+        /// <summary>
+        /// TODO: map
+        /// </summary>
+        public bool IsVibratoEnabled { get; set; }
+
+        /// <summary>
+        /// TODO: map
+        /// </summary>
+        public bool IsLowPassFilterEnabled { get; set; }
 
         #endregion
 
