@@ -1,0 +1,10 @@
+D:\Source\usfxr\nsfxr.UI\bin\Debug\nsfxr.UI.exe
+D:\Source\usfxr\nsfxr.UI\bin\Debug\nsfxr.UI.pdb
+D:\Source\usfxr\nsfxr.UI\bin\Debug\nFMOD.dll
+D:\Source\usfxr\nsfxr.UI\obj\Debug\nsfxr.UI.csprojResolveAssemblyReference.cache
+D:\Source\usfxr\nsfxr.UI\obj\Debug\nsfxr.UI.g.resources
+D:\Source\usfxr\nsfxr.UI\obj\Debug\nsfxr.UI.frmMain.resources
+D:\Source\usfxr\nsfxr.UI\obj\Debug\nsfxr.UI.Properties.Resources.resources
+D:\Source\usfxr\nsfxr.UI\obj\Debug\nsfxr.UI.csproj.GenerateResource.Cache
+D:\Source\usfxr\nsfxr.UI\obj\Debug\nsfxr.UI.exe
+D:\Source\usfxr\nsfxr.UI\obj\Debug\nsfxr.UI.pdb
