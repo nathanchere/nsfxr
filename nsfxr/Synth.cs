@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace nsfxr
 {
@@ -6,12 +7,12 @@ namespace nsfxr
     {
         private const float TOLERANCE = 0.00001f;
 
-        public Synth(SynthParams sfxParams) 
+        public Synth(SynthParams sfxParams)
         {
             GenerateAudioData(sfxParams);
         }
 
-        #region crap                                
+        #region crap
         private float _envelopeVolume;					// Current volume of the envelope
         private int _envelopeStage;						// Current stage of the envelope (attack, sustain, decay, end)
         private float _envelopeTime;						// Current time through current enelope stage
@@ -36,7 +37,7 @@ namespace nsfxr
         private int _changeLimit;						// Once the time reaches this limit, the note changes
 
         private int _repeatTime;						// Counter for the repeats
-        
+
         private float _phaserOffset;						// Phase offset for phaser effect
         private float _phaserDeltaOffset;					// Change in phase offset
         private int _phaserInt;							// Integer phaser offset, for bit maths
@@ -47,22 +48,15 @@ namespace nsfxr
         private float _lpFilterOldPos;					// Previous low-pass wave position
         private float _lpFilterDeltaPos;					// Change in low-pass wave position, as allowed by the cutoff and damping
         private float _lpFilterDamping;					// Damping muliplier which restricts how fast the wave position can move
-        
+
         private float _hpFilterPos;						// Adjusted wave position after high-pass filter
-        
-        private float[] _noiseBuffer;						// Buffer of random values used to generate noise
+
+        private List<float> _noiseBuffer;						// Buffer of random values used to generate noise
 
         private float _superSample;						// Actual sample writen to the wave
         private float _sample;							// Sub-sample calculated 8 times per actual sample, averaged out to get the super sample
 
         #endregion
-
-        private IntPtr WriteSamples(float[] __originSamples, int __originPos, float[] __targetSamples, int __targetChannels)
-        {
-            // Write samples to fMod format
-            // TODO
-            return new IntPtr();
-        }
 
         public bool GenerateAudioFilterData(float[] _data, int _channels)
         {
@@ -175,17 +169,16 @@ namespace nsfxr
             //         ? 0
             //         : (int)((1.0 - Parameters.RepeatSpeed) * (1.0 - Parameters.RepeatSpeed) * 20000) + 32;
             //    }
-            }        
-        
+        }
+
         private float[] GenerateAudioData(SynthParams sfxParams)
-        {            
+        {
             float[] buffer = null;
             bool _finished = false;
-            uint i, j, n;
 
-            for (i = 0; i < buffer.Length; i++)
-            {
-                if (_finished) return buffer;
+            for (int i = 0; i < buffer.Length; i++) {
+                if (_finished)
+                    return buffer;
 
                 // Repeats every _repeatLimit times, partially resetting the sound parameters
                 if (sfxParams.RepeatLimit > 0) {
@@ -223,14 +216,16 @@ namespace nsfxr
                 }
 
                 _periodTemp = (int)_periodTemp;
-                if (_periodTemp < 8) _periodTemp = 8;
+                if (_periodTemp < 8)
+                    _periodTemp = 8;
 
                 // Sweeps the square duty
-                if (sfxParams.WaveShape == SynthParams.WaveShapeEnum.Square)
-                {
+                if (sfxParams.WaveShape == SynthParams.WaveShapeEnum.Square) {
                     sfxParams.SquareDuty += sfxParams.DutySweep;
-                    if (sfxParams.SquareDuty < 0.0) sfxParams.SquareDuty = 0.0f;
-                    if (sfxParams.SquareDuty > 0.5) sfxParams.SquareDuty = 0.5f;
+                    if (sfxParams.SquareDuty < 0.0)
+                        sfxParams.SquareDuty = 0.0f;
+                    if (sfxParams.SquareDuty > 0.5)
+                        sfxParams.SquareDuty = 0.5f;
                 }
 
                 // Moves through the different stages of the volume envelope
@@ -276,25 +271,20 @@ namespace nsfxr
                 }
 
                 // Moves the high-pass filter cutoff
-                if (sfxParams.IsFilterEnabled && Math.Abs(sfxParams.HighPassFilterCutoffSweep) > TOLERANCE)
-                {
+                if (sfxParams.IsFilterEnabled && Math.Abs(sfxParams.HighPassFilterCutoffSweep) > TOLERANCE) {
                     sfxParams.HighPassFilterCutoff *= sfxParams.HighPassFilterCutoffSweep;
-                    if (sfxParams.HighPassFilterCutoff < 0.00001f) sfxParams.HighPassFilterCutoff = 0.00001f;
-                    if (sfxParams.HighPassFilterCutoff > 0.1f) sfxParams.HighPassFilterCutoff = 0.1f;
+                    if (sfxParams.HighPassFilterCutoff < 0.00001f)
+                        sfxParams.HighPassFilterCutoff = 0.00001f;
+                    if (sfxParams.HighPassFilterCutoff > 0.1f)
+                        sfxParams.HighPassFilterCutoff = 0.1f;
                 }
 
                 _superSample = 0;
-                for (j = 0; j < 8; j++) {
-                    // Cycles through the period
+                for (int periodCounter = 0; periodCounter < 8; periodCounter++) // "Cycles through the period" - WTF this means?
+                {
                     _phase++;
                     if (_phase >= _periodTemp) {
-                        _phase = _phase % (int)_periodTemp;
-
-                        // Generates new random noise for this period
-                        if (sfxParams.WaveShape == SynthParams.WaveShapeEnum.Noise) {
-                            for (n = 0; n < 32; n++)
-                                _noiseBuffer[n] = GetRandom.Float() * 2.0f - 1.0f;
-                        }
+                        _phase = _phase % (int)_periodTemp;   
                     }
 
 
@@ -316,7 +306,7 @@ namespace nsfxr
                             break;
 
                         case SynthParams.WaveShapeEnum.Noise:
-                            _sample = _noiseBuffer[(uint)(_phase * 32 / (int)_periodTemp)];
+                            _sample = GetRandom.Float(-1, 1);
                             break;
                     }
 
@@ -325,10 +315,9 @@ namespace nsfxr
                         _lpFilterOldPos = _lpFilterPos;
                         sfxParams.LowPassFilterCutoff *= sfxParams.LowPassFilterCutoffSweep;
                         if (sfxParams.LowPassFilterCutoff < 0.0) sfxParams.LowPassFilterCutoff = 0.0f;
-                        if (sfxParams.LowPassFilterCutoff > 0.1) sfxParams.LowPassFilterCutoff = 0.1f;                        
+                        if (sfxParams.LowPassFilterCutoff > 0.1) sfxParams.LowPassFilterCutoff = 0.1f;
 
-                        if (sfxParams.IsLowPassFilterEnabled)
-                        {
+                        if (sfxParams.IsLowPassFilterEnabled) {
                             _lpFilterDeltaPos += (_sample - _lpFilterPos) * sfxParams.LowPassFilterCutoff;
                             _lpFilterDeltaPos *= _lpFilterDamping;
                         } else {
@@ -343,8 +332,7 @@ namespace nsfxr
                         _sample = _hpFilterPos;
                     }
 
-                    if (sfxParams.IsPhaserEnabled)
-                    {
+                    if (sfxParams.IsPhaserEnabled) {
                         _phaserBuffer[_phaserPos & 1023] = _sample;
                         _sample += _phaserBuffer[(_phaserPos - _phaserInt + 1024) & 1023];
                         _phaserPos = (_phaserPos + 1) & 1023;
@@ -359,14 +347,14 @@ namespace nsfxr
                 // Apply clipping
                 if (_superSample < -1f) _superSample = -1f;
                 if (_superSample > 1f) _superSample = 1f;
-                
+
 
                 // Writes value to list, ignoring left/right sound channels (this is applied when filtering the audio later)
                 buffer[i] = _superSample;
             }
 
             return buffer;
-        }       
+        }
     }
 }
 
