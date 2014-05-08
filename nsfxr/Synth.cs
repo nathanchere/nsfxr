@@ -51,8 +51,6 @@ namespace nsfxr
 
         private float _hpFilterPos;						// Adjusted wave position after high-pass filter
 
-        private List<float> _noiseBuffer;						// Buffer of random values used to generate noise
-
         private float _superSample;						// Actual sample writen to the wave
         private float _sample;							// Sub-sample calculated 8 times per actual sample, averaged out to get the super sample
 
@@ -259,18 +257,14 @@ namespace nsfxr
                         break;
                 }
 
-                // Moves the phaser offset
-                if (sfxParams.IsPhaserEnabled) {
+                if (sfxParams.IsPhaserEnabled)
+                {
                     _phaserOffset += _phaserDeltaOffset;
                     _phaserInt = (int)_phaserOffset;
-                    if (_phaserInt < 0) {
-                        _phaserInt = -_phaserInt;
-                    } else if (_phaserInt > 1023) {
-                        _phaserInt = 1023;
-                    }
+                    if (_phaserInt < 0) _phaserInt = -_phaserInt;
+                    if (_phaserInt > 1023) _phaserInt = 1023;
                 }
 
-                // Moves the high-pass filter cutoff
                 if (sfxParams.IsFilterEnabled && Math.Abs(sfxParams.HighPassFilterCutoffSweep) > TOLERANCE) {
                     sfxParams.HighPassFilterCutoff *= sfxParams.HighPassFilterCutoffSweep;
                     if (sfxParams.HighPassFilterCutoff < 0.00001f)
@@ -280,13 +274,11 @@ namespace nsfxr
                 }
 
                 _superSample = 0;
-                for (int periodCounter = 0; periodCounter < 8; periodCounter++) // "Cycles through the period" - WTF this means?
-                {
-                    _phase++;
-                    if (_phase >= _periodTemp) {
-                        _phase = _phase % (int)_periodTemp;   
-                    }
 
+                // Generates 8 samples which are averaged out to produce superSample
+                for (int cycle = 0; cycle < 8; cycle++)
+                {                                       
+                    if (++_phase >= _periodTemp) _phase = _phase % (int)_periodTemp;
 
                     switch (sfxParams.WaveShape)
                     {
