@@ -6,14 +6,12 @@ namespace nsfxr
     {
         private const float TOLERANCE = 0.00001f;
 
-        private SynthParams Parameters { get; set; }
+        public Synth(SynthParams sfxParams) 
+        {
+            GenerateAudioData(sfxParams);
+        }
 
-        #region crap        
-        private float[] _waveData;						// Full wave, read out in chuncks by the onSampleData method
-        private uint _waveDataPos;					// Current position in the waveData
-        
-        private float _masterVolume;						// masterVolume * masterVolume (for quick calculations)
-        private uint _waveType;							// The type of wave to generate
+        #region crap                                
         private float _envelopeVolume;					// Current volume of the envelope
         private int _envelopeStage;						// Current stage of the envelope (attack, sustain, decay, end)
         private float _envelopeTime;						// Current time through current enelope stage
@@ -24,9 +22,7 @@ namespace nsfxr
         private float _envelopeOverLength0;				// 1 / _envelopeLength0 (for quick calculations)
         private float _envelopeOverLength1;				// 1 / _envelopeLength1 (for quick calculations)
         private float _envelopeOverLength2;				// 1 / _envelopeLength2 (for quick calculations)
-        private uint _envelopeFullLength;				// Full length of the volume envelop (and therefore sound)
-
-        private float _sustainPunch;						// The punch factor (louder at begining of sustain)
+        private uint _envelopeFullLength;				// Full length of the volume envelop (and therefore sound)        
 
         private int _phase;								// Phase through the wave
         private float _pos;								// Phase expresed as a Number from 0-1, used for fast sin approx
@@ -34,9 +30,7 @@ namespace nsfxr
         private float _periodTemp;						// Period modified by vibrato
         private float _maxPeriod;							// Maximum period before sound stops (from minFrequency)
 
-        private float _slide;								// Note slide
-        private float _deltaSlide;						// Change in slide
-        private float _minFrequency;						// Minimum frequency before stopping
+        private float _slide;								// Note slide        
 
         private float _vibratoPhase;						// Phase through the vibrato sine wave
         private float _vibratoSpeed;						// Speed at which the vibrato phase moves
@@ -78,11 +72,6 @@ namespace nsfxr
         private float _sample;							// Sub-sample calculated 8 times per actual sample, averaged out to get the super sample
 
         #endregion
-                
-        public void Mutate(float __mutationAmount = 0.05f, uint __mutationsNum = 15)
-        {                        
-                Parameters.Mutate(__mutationAmount);          
-        }
 
         private IntPtr WriteSamples(float[] __originSamples, int __originPos, float[] __targetSamples, int __targetChannels)
         {
@@ -93,137 +82,125 @@ namespace nsfxr
 
         public bool GenerateAudioFilterData(float[] _data, int _channels)
         {
-            bool endOfSamples = false;                                                                        
             int samplesNeeded = _data.Length / _channels;
-
-            if(samplesNeeded == 0) return false;
-
-            if (SynthWave(_data, (uint) samplesNeeded))
-            {
-            //    WriteSamples(_cachedMutation, (int) _waveDataPos, _data, _channels);
-            }
             return true;
         }
 
-        private void Reset(bool __totalReset)
+        private void Reset(bool fullReset)
         {
-            // Shorter reference
-            var p = Parameters;
+            //_period = 100.0f / (Parameters.StartFrequency * Parameters.StartFrequency + 0.001f);
+            //_maxPeriod = 100.0f / (Parameters.MinFrequency * Parameters.MinFrequency + 0.001f);
 
-            _period = 100.0f / (p.StartFrequency * p.StartFrequency + 0.001f);
-            _maxPeriod = 100.0f / (p.MinFrequency * p.MinFrequency + 0.001f);
+            //_slide = 1.0f - Parameters.Slide * Parameters.Slide * Parameters.Slide * 0.01f;
+            //_deltaSlide = -Parameters.DeltaSlide * Parameters.DeltaSlide * Parameters.DeltaSlide * 0.000001f;
 
-            _slide = 1.0f - p.Slide * p.Slide * p.Slide * 0.01f;
-            _deltaSlide = -p.DeltaSlide * p.DeltaSlide * p.DeltaSlide * 0.000001f;
+            //if (Parameters.WaveShape == 0) {
+            //    _squareDuty = 0.5f - Parameters.SquareDuty * 0.5f;
+            //    _dutySweep = -Parameters.DutySweep * 0.00005f;
+            //}
 
-            if (p.WaveShape == 0) {
-                _squareDuty = 0.5f - p.SquareDuty * 0.5f;
-                _dutySweep = -p.DutySweep * 0.00005f;
-            }
+            //if (Parameters.ChangeAmount > 0.0) {
+            //    _changeAmount = 1.0f - Parameters.ChangeAmount * Parameters.ChangeAmount * 0.9f;
+            //} else {
+            //    _changeAmount = 1.0f + Parameters.ChangeAmount * Parameters.ChangeAmount * 10.0f;
+            //}
 
-            if (p.ChangeAmount > 0.0) {
-                _changeAmount = 1.0f - p.ChangeAmount * p.ChangeAmount * 0.9f;
-            } else {
-                _changeAmount = 1.0f + p.ChangeAmount * p.ChangeAmount * 10.0f;
-            }
+            //_changeTime = 0;
 
-            _changeTime = 0;
+            //if (Parameters.ChangeSpeed == 1.0f) {
+            //    _changeLimit = 0;
+            //} else {
+            //    _changeLimit = (int)((1f - Parameters.ChangeSpeed) * (1f - Parameters.ChangeSpeed) * 20000f + 32f);
+            //}
 
-            if (p.ChangeSpeed == 1.0f) {
-                _changeLimit = 0;
-            } else {
-                _changeLimit = (int)((1f - p.ChangeSpeed) * (1f - p.ChangeSpeed) * 20000f + 32f);
-            }
+            //if (fullReset) {
 
-            if (__totalReset) {
-                //p.paramsDirty = false;
+            //    _masterVolume = Parameters.MasterVolume * Parameters.MasterVolume;
 
-                _masterVolume = p.MasterVolume * p.MasterVolume;
+            //    _waveType = (uint)Parameters.WaveShape;
 
-                _waveType = (uint)p.WaveShape;
+            //    if (Parameters.SustainTime < 0.01)
+            //        Parameters.SustainTime = 0.01f;
 
-                if (p.SustainTime < 0.01)
-                    p.SustainTime = 0.01f;
+            //    float totalTime = Parameters.AttackTime + Parameters.SustainTime + Parameters.DecayTime;
+            //    if (totalTime < 0.18f) {
+            //        float multiplier = 0.18f / totalTime;
+            //        Parameters.AttackTime *= multiplier;
+            //        Parameters.SustainTime *= multiplier;
+            //        Parameters.DecayTime *= multiplier;
+            //    }
 
-                float totalTime = p.AttackTime + p.SustainTime + p.DecayTime;
-                if (totalTime < 0.18f) {
-                    float multiplier = 0.18f / totalTime;
-                    p.AttackTime *= multiplier;
-                    p.SustainTime *= multiplier;
-                    p.DecayTime *= multiplier;
-                }
+            //    _sustainPunch = Parameters.SustainPunch;
 
-                _sustainPunch = p.SustainPunch;
+            //    _phase = 0;
 
-                _phase = 0;
+            //    _minFrequency = Parameters.MinFrequency;
 
-                _minFrequency = p.MinFrequency;
+            //    _filters = Parameters.LowPassFilterCutoff != 1.0 || Parameters.HighPassFilterCutoff != 0.0;
 
-                _filters = p.LowPassFilterCutoff != 1.0 || p.HighPassFilterCutoff != 0.0;
+            //    _lpFilterPos = 0.0f;
+            //    _lpFilterDeltaPos = 0.0f;
+            //    _lpFilterCutoff = Parameters.LowPassFilterCutoff * Parameters.LowPassFilterCutoff * Parameters.LowPassFilterCutoff * 0.1f;
+            //    _lpFilterDeltaCutoff = 1.0f + Parameters.LowPassFilterCutoffSweep * 0.0001f;
+            //    _lpFilterDamping = 5.0f / (1.0f + Parameters.LowPassFilterResonance * Parameters.LowPassFilterResonance * 20.0f) * (0.01f + _lpFilterCutoff);
+            //    if (_lpFilterDamping > 0.8f)
+            //        _lpFilterDamping = 0.8f;
+            //    _lpFilterDamping = 1.0f - _lpFilterDamping;
+            //    _lpFilterOn = Parameters.LowPassFilterCutoff != 1.0f;
 
-                _lpFilterPos = 0.0f;
-                _lpFilterDeltaPos = 0.0f;
-                _lpFilterCutoff = p.LowPassFilterCutoff * p.LowPassFilterCutoff * p.LowPassFilterCutoff * 0.1f;
-                _lpFilterDeltaCutoff = 1.0f + p.LowPassFilterCutoffSweep * 0.0001f;
-                _lpFilterDamping = 5.0f / (1.0f + p.LowPassFilterResonance * p.LowPassFilterResonance * 20.0f) * (0.01f + _lpFilterCutoff);
-                if (_lpFilterDamping > 0.8f)
-                    _lpFilterDamping = 0.8f;
-                _lpFilterDamping = 1.0f - _lpFilterDamping;
-                _lpFilterOn = p.LowPassFilterCutoff != 1.0f;
+            //    _hpFilterPos = 0.0f;
+            //    _hpFilterCutoff = Parameters.HighPassFilterCutoff * Parameters.HighPassFilterCutoff * 0.1f;
+            //    _hpFilterDeltaCutoff = 1.0f + Parameters.HighPassFilterCutoffSweep * 0.0003f;
 
-                _hpFilterPos = 0.0f;
-                _hpFilterCutoff = p.HighPassFilterCutoff * p.HighPassFilterCutoff * 0.1f;
-                _hpFilterDeltaCutoff = 1.0f + p.HighPassFilterCutoffSweep * 0.0003f;
+            //    _vibratoPhase = 0.0f;
+            //    _vibratoSpeed = Parameters.VibratoSpeed * Parameters.VibratoSpeed * 0.01f;
+            //    _vibratoAmplitude = Parameters.VibratoDepth * 0.5f;
 
-                _vibratoPhase = 0.0f;
-                _vibratoSpeed = p.VibratoSpeed * p.VibratoSpeed * 0.01f;
-                _vibratoAmplitude = p.VibratoDepth * 0.5f;
+            //    _envelopeVolume = 0.0f;
+            //    _envelopeStage = 0;
+            //    _envelopeTime = 0;
+            //    _envelopeLength0 = Parameters.AttackTime * Parameters.AttackTime * 100000.0f;
+            //    _envelopeLength1 = Parameters.SustainTime * Parameters.SustainTime * 100000.0f;
+            //    _envelopeLength2 = Parameters.DecayTime * Parameters.DecayTime * 100000.0f + 10f;
+            //    _envelopeLength = _envelopeLength0;
+            //    _envelopeFullLength = (uint)(_envelopeLength0 + _envelopeLength1 + _envelopeLength2);
 
-                _envelopeVolume = 0.0f;
-                _envelopeStage = 0;
-                _envelopeTime = 0;
-                _envelopeLength0 = p.AttackTime * p.AttackTime * 100000.0f;
-                _envelopeLength1 = p.SustainTime * p.SustainTime * 100000.0f;
-                _envelopeLength2 = p.DecayTime * p.DecayTime * 100000.0f + 10f;
-                _envelopeLength = _envelopeLength0;
-                _envelopeFullLength = (uint)(_envelopeLength0 + _envelopeLength1 + _envelopeLength2);
+            //    _envelopeOverLength0 = 1.0f / _envelopeLength0;
+            //    _envelopeOverLength1 = 1.0f / _envelopeLength1;
+            //    _envelopeOverLength2 = 1.0f / _envelopeLength2;
 
-                _envelopeOverLength0 = 1.0f / _envelopeLength0;
-                _envelopeOverLength1 = 1.0f / _envelopeLength1;
-                _envelopeOverLength2 = 1.0f / _envelopeLength2;
+            //    _phaser = Parameters.PhaserOffset != 0.0f || Parameters.PhaserSweep != 0.0f;
 
-                _phaser = p.PhaserOffset != 0.0f || p.PhaserSweep != 0.0f;
+            //    _phaserOffset = Parameters.PhaserOffset * Parameters.PhaserOffset * 1020.0f;
+            //    if (Parameters.PhaserOffset < 0.0f) _phaserOffset = -_phaserOffset;
+            //    _phaserDeltaOffset = Parameters.PhaserSweep * Parameters.PhaserSweep * Parameters.PhaserSweep * 0.2f;
+            //    _phaserPos = 0;
 
-                _phaserOffset = p.PhaserOffset * p.PhaserOffset * 1020.0f;
-                if (p.PhaserOffset < 0.0f) _phaserOffset = -_phaserOffset;
-                _phaserDeltaOffset = p.PhaserSweep * p.PhaserSweep * p.PhaserSweep * 0.2f;
-                _phaserPos = 0;
+            //    if (_phaserBuffer == null)
+            //        _phaserBuffer = new float[1024];
+            //    if (_noiseBuffer == null)
+            //        _noiseBuffer = new float[32];
 
-                if (_phaserBuffer == null)
-                    _phaserBuffer = new float[1024];
-                if (_noiseBuffer == null)
-                    _noiseBuffer = new float[32];
+            //    uint i;
+            //    for (i = 0; i < 1024; i++) _phaserBuffer[i] = 0.0f;
+            //    for (i = 0; i < 32; i++) _noiseBuffer[i] = GetRandom.Float() * 2.0f - 1.0f;
 
-                uint i;
-                for (i = 0; i < 1024; i++) _phaserBuffer[i] = 0.0f;
-                for (i = 0; i < 32; i++) _noiseBuffer[i] = GetRandom.Float() * 2.0f - 1.0f;
+            //    _repeatTime = 0;
 
-                _repeatTime = 0;
-
-                 _repeatLimit = Math.Abs(p.RepeatSpeed) < TOLERANCE
-                     ? 0
-                     : (int)((1.0 - p.RepeatSpeed) * (1.0 - p.RepeatSpeed) * 20000) + 32;
-                }
-            }
+            //     _repeatLimit = Math.Abs(Parameters.RepeatSpeed) < TOLERANCE
+            //         ? 0
+            //         : (int)((1.0 - Parameters.RepeatSpeed) * (1.0 - Parameters.RepeatSpeed) * 20000) + 32;
+            //    }
+            }        
         
-        
-        private bool SynthWave(float[] buffer, uint __length)
+        private bool GenerateAudioData(SynthParams sfxParams)
         {            
+            float[] buffer = null;
+            bool _finished = false;
             uint i, j, n;
 
-            for (i = 0; i < __length; i++) {
-                if (_finished)
-                    return true;
+            for (i = 0; i < buffer.Length; i++) {
+                if (_finished) return true;
 
                 // Repeats every _repeatLimit times, partially resetting the sound parameters
                 if (_repeatLimit != 0) {
@@ -242,13 +219,13 @@ namespace nsfxr
                 }
 
                 // Acccelerate and apply slide
-                _slide += _deltaSlide;
+                _slide += sfxParams.DeltaSlide;
                 _period *= _slide;
 
                 // Checks for frequency getting too low, and stops the sound if a minFrequency was set
                 if (_period > _maxPeriod) {
                     _period = _maxPeriod;
-                    if (_minFrequency > 0)
+                    if (sfxParams.MinFrequency > 0)
                         _finished = true;
                 }
 
@@ -265,7 +242,7 @@ namespace nsfxr
                     _periodTemp = 8;
 
                 // Sweeps the square duty
-                if (_waveType == 0) {
+                if (sfxParams.WaveShape == SynthParams.WaveShapeEnum.Square) {
                     _squareDuty += _dutySweep;
                     if (_squareDuty < 0.0) {
                         _squareDuty = 0.0f;
@@ -294,7 +271,7 @@ namespace nsfxr
                         _envelopeVolume = _envelopeTime * _envelopeOverLength0;
                         break;
                     case 1:
-                        _envelopeVolume = 1.0f + (1.0f - _envelopeTime * _envelopeOverLength1) * 2.0f * _sustainPunch;
+                        _envelopeVolume = 1.0f + (1.0f - _envelopeTime * _envelopeOverLength1) * 2.0f * sfxParams.SustainPunch;
                         break;
                     case 2:
                         _envelopeVolume = 1.0f - _envelopeTime * _envelopeOverLength2;
@@ -334,27 +311,27 @@ namespace nsfxr
                         _phase = _phase % (int)_periodTemp;
 
                         // Generates new random noise for this period
-                        if (_waveType == 3) {
+                        if (sfxParams.WaveShape == SynthParams.WaveShapeEnum.Noise) {
                             for (n = 0; n < 32; n++)
                                 _noiseBuffer[n] = GetRandom.Float() * 2.0f - 1.0f;
                         }
                     }
 
                     // Gets the sample from the oscillator
-                    switch (_waveType) {
-                        case 0: // Square wave
+                    switch (sfxParams.WaveShape) {
+                        case SynthParams.WaveShapeEnum.Square:
                             _sample = ((_phase / _periodTemp) < _squareDuty) ? 0.5f : -0.5f;
                             break;
-                        case 1: // Saw wave
+                        case SynthParams.WaveShapeEnum.Saw: // Saw wave
                             _sample = 1.0f - (_phase / _periodTemp) * 2.0f;
                             break;
-                        case 2: // Sine wave (fast and accurate approx) {
+                        case SynthParams.WaveShapeEnum.Sine: // Sine wave (fast and accurate approx) {
                             _pos = _phase / _periodTemp;
                             _pos = _pos > 0.5f ? (_pos - 1.0f) * 6.28318531f : _pos * 6.28318531f;
                             _sample = _pos < 0 ? 1.27323954f * _pos + 0.405284735f * _pos * _pos : 1.27323954f * _pos - 0.405284735f * _pos * _pos;
                             _sample = _sample < 0 ? 0.225f * (_sample * -_sample - _sample) + _sample : 0.225f * (_sample * _sample - _sample) + _sample;
                             break;
-                        case 3: // Noise
+                        case SynthParams.WaveShapeEnum.Noise: // Noise
                             _sample = _noiseBuffer[(uint)(_phase * 32 / (int)_periodTemp)];
                             break;
                     }
@@ -395,7 +372,7 @@ namespace nsfxr
                 }
 
                 // Averages out the super samples and applies volumes
-                _superSample = _masterVolume * _envelopeVolume * _superSample * 0.125f;
+                _superSample = sfxParams.MasterVolume * _envelopeVolume * _superSample * 0.125f;
 
                 // Clipping if too loud
                 if (_superSample < -1f) {
@@ -405,7 +382,7 @@ namespace nsfxr
                 }
 
                 // Writes value to list, ignoring left/right sound channels (this is applied when filtering the audio later)
-                buffer[i + __bufferPos] = _superSample;
+                buffer[i] = _superSample;
             }
 
             return false;

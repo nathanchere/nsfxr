@@ -164,7 +164,7 @@ namespace nsfxr.UI
         private void GenerateSound()
         { 
             var sfxParams = GetSynthParamsFromInputs();
-            var sfx = new Synth();
+            var sfx = new Synth(sfxParams);
             
         }
     }
