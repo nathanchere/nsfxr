@@ -14,13 +14,30 @@ namespace nsfxr.UI
         public frmMain()
         {
             InitializeComponent();
+            rdoShapeNoise.Tag = SynthParams.WaveShapeEnum.Noise;
+            rdoShapeSaw.Tag = SynthParams.WaveShapeEnum.Saw;
+            rdoShapeSine.Tag = SynthParams.WaveShapeEnum.Sine;
+            rdoShapeSquare.Tag = SynthParams.WaveShapeEnum.Square;
             BindParams(SynthParams.Preset.Default());
+        }
+
+        private SynthParams.WaveShapeEnum SelectedWaveShape
+        {
+            get
+            {
+                var result = groupWaveShape.Controls.OfType<RadioButton>().Single(r => r.Checked);
+                return (SynthParams.WaveShapeEnum)result.Tag;
+            }
+            set
+            {
+                var radioButton = groupWaveShape.Controls.OfType<RadioButton>().Single(r => (SynthParams.WaveShapeEnum)r.Tag == value);
+                radioButton.Checked = true;
+            }
         }
 
         private void BindParams(SynthParams value)
         {
-            //value.WaveShape = 0, //TODO: input for wave shape
-
+            SelectedWaveShape = value.WaveShape;
             valAttackTime.Value = value.AttackTime;
             valChangeAmount.Value = value.ChangeAmount;
             valChangeSpeed.Value = value.ChangeSpeed;            
@@ -31,12 +48,10 @@ namespace nsfxr.UI
             valHpfSweep.Value = value.HighPassFilterCutoffSweep;
             valLpfCutoff.Value = value.LowPassFilterCutoff;
             valLpfSweep.Value = value.LowPassFilterCutoffSweep;
-            valLpfResonance.Value = value.LowPassFilterResonance;
-            valVolume.Value = value.MasterVolume;
+            valLpfResonance.Value = value.LowPassFilterResonance;            
             valMinFrequency.Value = value.MinFrequency;
             valPhaserOffset.Value = value.PhaserOffset;
-            valPhaserSweep.Value = value.PhaserSweep;
-            valRepeatSpeed.Value = value.RepeatSpeed;
+            valPhaserSweep.Value = value.PhaserSweep;            
             valSlide.Value = value.Slide;
             valSquareDuty.Value = value.SquareDuty;
             valStartFrequency.Value = value.StartFrequency;
@@ -44,6 +59,10 @@ namespace nsfxr.UI
             valSustainTime.Value = value.SustainTime;
             valVibratoDepth.Value = value.VibratoDepth;
             valVibratoSpeed.Value = value.VibratoSpeed;
+
+            //// TODO: handle separately?
+            //valRepeatSpeed.Value = value.RepeatSpeed;
+            //valVolume.Value = value.MasterVolume;
 
             txtSerailized.Text = value.Serialize();
         }
@@ -59,7 +78,7 @@ namespace nsfxr.UI
                 AttackTime = valAttackTime.Value,
                 ChangeAmount = valChangeAmount.Value,
                 ChangeSpeed = valChangeSpeed.Value,
-                WaveShape = 0, //TODO: input for wave shape
+                WaveShape = SelectedWaveShape, //TODO: input for wave shape
                 DecayTime = valDecayTime.Value,
                 DeltaSlide = valDeltaSlide.Value,
                 DutySweep = valDutySweep.Value,
@@ -68,11 +87,9 @@ namespace nsfxr.UI
                 LowPassFilterCutoff = valLpfCutoff.Value,
                 LowPassFilterCutoffSweep = valLpfSweep.Value,
                 LowPassFilterResonance = valLpfResonance.Value,
-                MasterVolume = valVolume.Value,
                 MinFrequency = valMinFrequency.Value,
                 PhaserOffset = valPhaserOffset.Value,
                 PhaserSweep = valPhaserSweep.Value,
-                RepeatSpeed = valRepeatSpeed.Value,
                 Slide = valSlide.Value,
                 SquareDuty = valSquareDuty.Value,
                 StartFrequency = valStartFrequency.Value,
@@ -80,6 +97,9 @@ namespace nsfxr.UI
                 SustainTime = valSustainTime.Value,
                 VibratoDepth = valVibratoDepth.Value,
                 VibratoSpeed = valVibratoSpeed.Value,
+
+                MasterVolume = valVolume.Value,
+                RepeatSpeed = valRepeatSpeed.Value,
             };
         }
 

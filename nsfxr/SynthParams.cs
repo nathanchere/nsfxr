@@ -10,7 +10,7 @@ namespace nsfxr
         {
             Square = 0,
             Saw = 1,
-            Sin = 2,
+            Sine = 2,
             Noise = 3,
         }        
 
@@ -495,7 +495,7 @@ namespace nsfxr
                 var result = new SynthParams();
 
                 result.WaveShape = (WaveShapeEnum)(GetRandom.Int(3));
-                if (result.WaveShape == WaveShapeEnum.Sin) result.WaveShape = WaveShapeEnum.Noise;
+                if (result.WaveShape == WaveShapeEnum.Sine) result.WaveShape = WaveShapeEnum.Noise;
                 if (result.WaveShape == WaveShapeEnum.Square) result.SquareDuty = GetRandom.Float(0.6f);
 
                 result.StartFrequency = GetRandom.Float(0.2f, 0.8f);
