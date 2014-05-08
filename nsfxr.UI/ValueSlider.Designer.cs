@@ -39,9 +39,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.scrollBar.Location = new System.Drawing.Point(0, 0);
+            this.scrollBar.Maximum = 1000;
             this.scrollBar.Name = "scrollBar";
             this.scrollBar.Size = new System.Drawing.Size(227, 30);
             this.scrollBar.TabIndex = 0;
+            this.scrollBar.ValueChanged += new System.EventHandler(this.scrollBar_ValueChanged);
             // 
             // lblMin
             // 
@@ -70,6 +72,7 @@
             this.txtValue.Name = "txtValue";
             this.txtValue.Size = new System.Drawing.Size(114, 20);
             this.txtValue.TabIndex = 3;
+            this.txtValue.TextChanged += new System.EventHandler(this.txtValue_TextChanged);
             // 
             // ValueSlider
             // 
