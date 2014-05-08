@@ -155,5 +155,17 @@ namespace nsfxr.UI
             result.Mutate();
             BindParams(result);
         }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            GenerateSound();
+        }
+
+        private void GenerateSound()
+        { 
+            var sfxParams = GetSynthParamsFromInputs();
+            var sfx = new Synth();
+            
+        }
     }
 }

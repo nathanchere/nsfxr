@@ -8,21 +8,12 @@ namespace nsfxr
 
         private SynthParams Parameters { get; set; }
 
-        #region crap
-        private bool _mutation;						// If the current sound playing or caching is a mutation
-
+        #region crap        
         private float[] _waveData;						// Full wave, read out in chuncks by the onSampleData method
         private uint _waveDataPos;					// Current position in the waveData
-
-        private SynthParams _original;						// Copied properties for mutation base
-
-        // Synth properies
-        private bool _finished;							// If the sound has finished
-
+        
         private float _masterVolume;						// masterVolume * masterVolume (for quick calculations)
-
         private uint _waveType;							// The type of wave to generate
-
         private float _envelopeVolume;					// Current volume of the envelope
         private int _envelopeStage;						// Current stage of the envelope (attack, sustain, decay, end)
         private float _envelopeTime;						// Current time through current enelope stage
@@ -87,7 +78,6 @@ namespace nsfxr
         private float _sample;							// Sub-sample calculated 8 times per actual sample, averaged out to get the super sample
 
         #endregion
-        private Random _random = new Random();
                 
         public void Mutate(float __mutationAmount = 0.05f, uint __mutationsNum = 15)
         {                        
@@ -106,11 +96,12 @@ namespace nsfxr
             bool endOfSamples = false;                                                                        
             int samplesNeeded = _data.Length / _channels;
 
-            //if (SynthWave(_cachedMutation, (int) _cachedMutationPos, (uint) samplesNeeded) || samplesNeeded == 0)
-            //{
+            if(samplesNeeded == 0) return false;
 
+            if (SynthWave(_data, (uint) samplesNeeded))
+            {
             //    WriteSamples(_cachedMutation, (int) _waveDataPos, _data, _channels);
-            //}
+            }
             return true;
         }
 
@@ -225,17 +216,9 @@ namespace nsfxr
                 }
             }
         
-
-        /**
-	 * Writes the wave to the supplied buffer array of floats (it'll contain the mono audio)
-	 * @param	buffer		A float[] to write the wave to
-	 * @param	waveData	If the wave should be written for the waveData
-	 * @return				If the wave is finished
-	 */
-        private bool SynthWave(float[] __buffer, int __bufferPos, uint __length)
-        {
-            _finished = false;
-
+        
+        private bool SynthWave(float[] buffer, uint __length)
+        {            
             uint i, j, n;
 
             for (i = 0; i < __length; i++) {
@@ -422,7 +405,7 @@ namespace nsfxr
                 }
 
                 // Writes value to list, ignoring left/right sound channels (this is applied when filtering the audio later)
-                __buffer[i + __bufferPos] = _superSample;
+                buffer[i + __bufferPos] = _superSample;
             }
 
             return false;
