@@ -1051,6 +1051,7 @@
             this.btnMutate.TabIndex = 35;
             this.btnMutate.Text = "Mutate";
             this.btnMutate.UseVisualStyleBackColor = true;
+            this.btnMutate.Click += new System.EventHandler(this.btnMutate_Click);
             // 
             // btnRandomize
             // 
@@ -1060,6 +1061,7 @@
             this.btnRandomize.TabIndex = 36;
             this.btnRandomize.Text = "Randomize";
             this.btnRandomize.UseVisualStyleBackColor = true;
+            this.btnRandomize.Click += new System.EventHandler(this.btnRandomize_Click);
             // 
             // panel12
             // 

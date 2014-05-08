@@ -143,5 +143,17 @@ namespace nsfxr.UI
         {
             BindParams(SynthParams.Preset.MenuBlip());
         }
+
+        private void btnRandomize_Click(object sender, EventArgs e)
+        {
+            BindParams(SynthParams.Preset.Random());
+        }
+
+        private void btnMutate_Click(object sender, EventArgs e)
+        {
+            var result = GetSynthParamsFromInputs();
+            result.Mutate();
+            BindParams(result);
+        }
     }
 }
