@@ -45,15 +45,13 @@ namespace nsfxr
 
         private int _repeatTime;						// Counter for the repeats
         private int _repeatLimit;						// Once the time reaches this limit, some of the variables are reset
-
-        private bool _phaser;							// If the phaser is active
+        
         private float _phaserOffset;						// Phase offset for phaser effect
         private float _phaserDeltaOffset;					// Change in phase offset
         private int _phaserInt;							// Integer phaser offset, for bit maths
         private int _phaserPos;							// Position through the phaser buffer
         private float[] _phaserBuffer;						// Buffer of wave values used to create the out of phase second wave
 
-        private bool _filters;							// If the filters are active
         private float _lpFilterPos;						// Adjusted wave position after low-pass filter
         private float _lpFilterOldPos;					// Previous low-pass wave position
         private float _lpFilterDeltaPos;					// Change in low-pass wave position, as allowed by the cutoff and damping
@@ -283,7 +281,7 @@ namespace nsfxr
                 }
 
                 // Moves the phaser offset
-                if (_phaser) {
+                if (sfxParams.IsPhaserEnabled) {
                     _phaserOffset += _phaserDeltaOffset;
                     _phaserInt = (int)_phaserOffset;
                     if (_phaserInt < 0) {
@@ -294,7 +292,7 @@ namespace nsfxr
                 }
 
                 // Moves the high-pass filter cutoff
-                if (_filters && _hpFilterDeltaCutoff != 0) {
+                if (sfxParams.IsFilterEnabled && _hpFilterDeltaCutoff != 0) {
                     _hpFilterCutoff *= _hpFilterDeltaCutoff;
                     if (_hpFilterCutoff < 0.00001f) {
                         _hpFilterCutoff = 0.00001f;
@@ -337,7 +335,7 @@ namespace nsfxr
                     }
 
                     // Applies the low and high pass filters
-                    if (_filters) {
+                    if (sfxParams.IsFilterEnabled) {
                         _lpFilterOldPos = _lpFilterPos;
                         _lpFilterCutoff *= _lpFilterDeltaCutoff;
                         if (_lpFilterCutoff < 0.0) {
@@ -362,7 +360,7 @@ namespace nsfxr
                     }
 
                     // Applies the phaser effect
-                    if (_phaser) {
+                    if (sfxParams.IsPhaserEnabled) {
                         _phaserBuffer[_phaserPos & 1023] = _sample;
                         _sample += _phaserBuffer[(_phaserPos - _phaserInt + 1024) & 1023];
                         _phaserPos = (_phaserPos + 1) & 1023;
@@ -374,12 +372,10 @@ namespace nsfxr
                 // Averages out the super samples and applies volumes
                 _superSample = sfxParams.MasterVolume * _envelopeVolume * _superSample * 0.125f;
 
-                // Clipping if too loud
-                if (_superSample < -1f) {
-                    _superSample = -1f;
-                } else if (_superSample > 1f) {
-                    _superSample = 1f;
-                }
+                // Apply clipping
+                if (_superSample < -1f) _superSample = -1f;
+                if (_superSample > 1f) _superSample = 1f;
+                
 
                 // Writes value to list, ignoring left/right sound channels (this is applied when filtering the audio later)
                 buffer[i] = _superSample;

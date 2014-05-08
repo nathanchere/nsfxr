@@ -14,7 +14,7 @@ namespace nsfxr
             Noise = 3,
         }        
 
-          #region Properties
+        #region Properties
         public WaveShapeEnum WaveShape { get; set; }
 
         /// <summary>
@@ -154,6 +154,17 @@ namespace nsfxr
         /// </summary>
         /// <remarks>Valid range: -1 to 1</remarks>
         public float HighPassFilterCutoffSweep { get; set; }
+
+        /// <summary>
+        /// TODO: Map to presets
+        /// </summary>
+        public bool IsPhaserEnabled { get; set; }
+
+        /// <summary>
+        /// TODO: Map to presets
+        /// </summary>
+        public bool IsFilterEnabled { get; set; }
+
         #endregion
 
         /// <summary>
