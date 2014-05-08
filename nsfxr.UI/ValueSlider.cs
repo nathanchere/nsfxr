@@ -13,10 +13,13 @@ namespace nsfxr.UI
     {
         public ValueSlider()
         {
+            _isUpdating = true;
             InitializeComponent();
             MinValue = 0;
             MaxValue = 1;
             Value = 0.5f;
+            _isUpdating = false;
+            UpdateUI();
         }
 
         private float _value;
@@ -44,18 +47,6 @@ namespace nsfxr.UI
             }
         }
 
-        private void UpdateUI() { 
-            if(_isUpdating) return;
-            _isUpdating = true;
-                
-            txtValue.Text = Value.ToString();
-            lblMin.Text = MinValue.ToString();
-            lblMax.Text = _maxValue.ToString();
-            scrollBar.Value = (int)(scrollBar.Maximum / MaxValue * _value);
-                
-            _isUpdating = false;
-        }
-
         public float MinValue
         {
             get
@@ -74,7 +65,7 @@ namespace nsfxr.UI
         {
             get
             {
-                return _value;
+                return _maxValue;
             }
 
             set
@@ -82,6 +73,20 @@ namespace nsfxr.UI
                 _maxValue = (value < MinValue) ? MinValue : value;                
                 UpdateUI();
             }
+        }
+
+        private void UpdateUI()
+        {
+            if(_isUpdating) return;
+            _isUpdating = true;
+                
+            txtValue.Text = Value.ToString();
+            lblMin.Text = MinValue.ToString();
+            lblMax.Text = _maxValue.ToString();
+
+            scrollBar.Value = (int)(scrollBar.Maximum / MaxValue * _value);
+                
+            _isUpdating = false;
         }
 
         private void scrollBar_ValueChanged(object sender, EventArgs e)

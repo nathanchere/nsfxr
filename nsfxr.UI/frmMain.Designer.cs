@@ -28,6 +28,7 @@
         private void InitializeComponent()
         {
             this.btnPlay = new System.Windows.Forms.Button();
+            this.valueSlider1 = new nsfxr.UI.ValueSlider();
             this.SuspendLayout();
             // 
             // btnPlay
@@ -39,11 +40,22 @@
             this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = true;
             // 
+            // valueSlider1
+            // 
+            this.valueSlider1.Location = new System.Drawing.Point(105, 62);
+            this.valueSlider1.MaxValue = 0F;
+            this.valueSlider1.MinValue = 0F;
+            this.valueSlider1.Name = "valueSlider1";
+            this.valueSlider1.Size = new System.Drawing.Size(229, 53);
+            this.valueSlider1.TabIndex = 1;
+            this.valueSlider1.Value = 0F;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 314);
+            this.Controls.Add(this.valueSlider1);
             this.Controls.Add(this.btnPlay);
             this.Name = "frmMain";
             this.Text = "nsfxr";
@@ -54,6 +66,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnPlay;
+        private ValueSlider valueSlider1;
     }
 }
 
