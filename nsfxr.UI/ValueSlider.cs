@@ -11,12 +11,18 @@ namespace nsfxr.UI
 {
     public partial class ValueSlider : UserControl
     {
+        public delegate void ValueUpdatedEvent(object sender, EventArgs args);
+        public event ValueUpdatedEvent ValueUpdated;
+
+        private const float TOLERANCE = 0.005f;
+
         public ValueSlider()
         {
             _isUpdating = true;
             InitializeComponent();
             MinValue = 0;
             MaxValue = 1;
+            Precision = 3;
             Value = 0.5f;
             _isUpdating = false;
             UpdateUI();
@@ -27,11 +33,14 @@ namespace nsfxr.UI
         private float _maxValue;
         private bool _isUpdating;
 
+        public int Precision { get; set; }
+
         public float Value
         {
             get
             {
-                return _value;
+                if(Math.Abs(MaxValue - _value) < TOLERANCE) return MaxValue;
+                return (float) Math.Round(_value, Precision, MidpointRounding.ToEven);
             }
 
             set
@@ -90,17 +99,20 @@ namespace nsfxr.UI
         }
 
         private void scrollBar_ValueChanged(object sender, EventArgs e)
-        {
+        {            
             Value = scrollBar.Value / (float)scrollBar.Maximum * MaxValue;
+            if(!_isUpdating && ValueUpdated != null) ValueUpdated(this,new EventArgs());
         }
 
         private void txtValue_TextChanged(object sender, EventArgs e)
         {
             float val;
-            if(!float.TryParse(txtValue.Text, out val))
+            if(float.TryParse(txtValue.Text, out val))
                 Value = val;
             else            
                 txtValue.Text = Value.ToString();
+
+            if(!_isUpdating && ValueUpdated != null) ValueUpdated(this,new EventArgs());
         }
     }
 }

@@ -42,13 +42,14 @@
             // 
             // valueSlider1
             // 
-            this.valueSlider1.Location = new System.Drawing.Point(105, 62);
-            this.valueSlider1.MaxValue = 0F;
+            this.valueSlider1.Location = new System.Drawing.Point(12, 44);
+            this.valueSlider1.MaxValue = 1F;
             this.valueSlider1.MinValue = 0F;
             this.valueSlider1.Name = "valueSlider1";
-            this.valueSlider1.Size = new System.Drawing.Size(229, 53);
+            this.valueSlider1.Size = new System.Drawing.Size(403, 54);
             this.valueSlider1.TabIndex = 1;
-            this.valueSlider1.Value = 0F;
+            this.valueSlider1.Value = 0.5F;
+            this.valueSlider1.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.valueSlider1_ValueUpdated);
             // 
             // frmMain
             // 

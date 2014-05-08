@@ -15,5 +15,10 @@ namespace nsfxr.UI
         {
             InitializeComponent();
         }
+
+        private void valueSlider1_ValueUpdated(object sender, EventArgs args)
+        {
+            Text = valueSlider1.Value.ToString();
+        }
     }
 }

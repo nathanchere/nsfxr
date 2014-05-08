@@ -39,7 +39,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.scrollBar.Location = new System.Drawing.Point(0, 0);
-            this.scrollBar.Maximum = 1000;
+            this.scrollBar.Maximum = 10000;
             this.scrollBar.Name = "scrollBar";
             this.scrollBar.Size = new System.Drawing.Size(227, 30);
             this.scrollBar.TabIndex = 0;
