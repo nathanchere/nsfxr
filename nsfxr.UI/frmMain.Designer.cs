@@ -54,18 +54,18 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.valChangeSpeed = new nsfxr.UI.ValueSlider();
-            this.calChangeAmount = new nsfxr.UI.ValueSlider();
+            this.valChangeAmount = new nsfxr.UI.ValueSlider();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.valLpfCutoff = new System.Windows.Forms.Label();
-            this.valLowPassCutoff = new nsfxr.UI.ValueSlider();
-            this.valueSlider14 = new nsfxr.UI.ValueSlider();
-            this.valLpfSweep = new System.Windows.Forms.Label();
-            this.valueSlider15 = new nsfxr.UI.ValueSlider();
-            this.valLpfResonance = new System.Windows.Forms.Label();
-            this.valueSlider16 = new nsfxr.UI.ValueSlider();
-            this.valHpfCutoff = new System.Windows.Forms.Label();
-            this.valueSlider18 = new nsfxr.UI.ValueSlider();
-            this.valHpfSweep = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.valLpfCutoff = new nsfxr.UI.ValueSlider();
+            this.valLpfSweep = new nsfxr.UI.ValueSlider();
+            this.label41 = new System.Windows.Forms.Label();
+            this.valLpfResonance = new nsfxr.UI.ValueSlider();
+            this.label40 = new System.Windows.Forms.Label();
+            this.valHpfCutoff = new nsfxr.UI.ValueSlider();
+            this.label22 = new System.Windows.Forms.Label();
+            this.valHpfSweep = new nsfxr.UI.ValueSlider();
+            this.label23 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.valDutySweep = new nsfxr.UI.ValueSlider();
             this.valSquareDuty = new nsfxr.UI.ValueSlider();
@@ -417,7 +417,7 @@
             this.panel3.BackColor = System.Drawing.Color.PaleTurquoise;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.valChangeSpeed);
-            this.panel3.Controls.Add(this.calChangeAmount);
+            this.panel3.Controls.Add(this.valChangeAmount);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Location = new System.Drawing.Point(2, 249);
@@ -440,164 +440,164 @@
             this.valChangeSpeed.Value = 0.5F;
             this.valChangeSpeed.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
-            // calChangeAmount
+            // valChangeAmount
             // 
-            this.calChangeAmount.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.calChangeAmount.Location = new System.Drawing.Point(100, 1);
-            this.calChangeAmount.Margin = new System.Windows.Forms.Padding(1);
-            this.calChangeAmount.MaxValue = 1F;
-            this.calChangeAmount.MinValue = 0F;
-            this.calChangeAmount.Name = "calChangeAmount";
-            this.calChangeAmount.Precision = 3;
-            this.calChangeAmount.Size = new System.Drawing.Size(225, 17);
-            this.calChangeAmount.TabIndex = 21;
-            this.calChangeAmount.Value = 0.5F;
-            this.calChangeAmount.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            this.valChangeAmount.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.valChangeAmount.Location = new System.Drawing.Point(100, 1);
+            this.valChangeAmount.Margin = new System.Windows.Forms.Padding(1);
+            this.valChangeAmount.MaxValue = 1F;
+            this.valChangeAmount.MinValue = 0F;
+            this.valChangeAmount.Name = "valChangeAmount";
+            this.valChangeAmount.Precision = 3;
+            this.valChangeAmount.Size = new System.Drawing.Size(225, 17);
+            this.valChangeAmount.TabIndex = 21;
+            this.valChangeAmount.Value = 0.5F;
+            this.valChangeAmount.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.PaleGreen;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.label43);
             this.panel4.Controls.Add(this.valLpfCutoff);
-            this.panel4.Controls.Add(this.valLowPassCutoff);
-            this.panel4.Controls.Add(this.valueSlider14);
             this.panel4.Controls.Add(this.valLpfSweep);
-            this.panel4.Controls.Add(this.valueSlider15);
+            this.panel4.Controls.Add(this.label41);
             this.panel4.Controls.Add(this.valLpfResonance);
-            this.panel4.Controls.Add(this.valueSlider16);
+            this.panel4.Controls.Add(this.label40);
             this.panel4.Controls.Add(this.valHpfCutoff);
-            this.panel4.Controls.Add(this.valueSlider18);
+            this.panel4.Controls.Add(this.label22);
             this.panel4.Controls.Add(this.valHpfSweep);
+            this.panel4.Controls.Add(this.label23);
             this.panel4.Location = new System.Drawing.Point(2, 381);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(332, 98);
             this.panel4.TabIndex = 28;
             // 
+            // label43
+            // 
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(1, 2);
+            this.label43.Margin = new System.Windows.Forms.Padding(1);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(97, 17);
+            this.label43.TabIndex = 10;
+            this.label43.Text = "LPF Cutoff";
+            this.label43.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // valLpfCutoff
             // 
-            this.valLpfCutoff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valLpfCutoff.Location = new System.Drawing.Point(1, 2);
+            this.valLpfCutoff.BackColor = System.Drawing.Color.PaleGreen;
+            this.valLpfCutoff.Location = new System.Drawing.Point(100, 1);
             this.valLpfCutoff.Margin = new System.Windows.Forms.Padding(1);
+            this.valLpfCutoff.MaxValue = 1F;
+            this.valLpfCutoff.MinValue = 0F;
             this.valLpfCutoff.Name = "valLpfCutoff";
-            this.valLpfCutoff.Size = new System.Drawing.Size(97, 17);
-            this.valLpfCutoff.TabIndex = 10;
-            this.valLpfCutoff.Text = "LPF Cutoff";
-            this.valLpfCutoff.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // valLowPassCutoff
-            // 
-            this.valLowPassCutoff.BackColor = System.Drawing.Color.PaleGreen;
-            this.valLowPassCutoff.Location = new System.Drawing.Point(100, 1);
-            this.valLowPassCutoff.Margin = new System.Windows.Forms.Padding(1);
-            this.valLowPassCutoff.MaxValue = 1F;
-            this.valLowPassCutoff.MinValue = 0F;
-            this.valLowPassCutoff.Name = "valLowPassCutoff";
-            this.valLowPassCutoff.Precision = 3;
-            this.valLowPassCutoff.Size = new System.Drawing.Size(225, 17);
-            this.valLowPassCutoff.TabIndex = 9;
-            this.valLowPassCutoff.Value = 0.5F;
-            this.valLowPassCutoff.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
-            // 
-            // valueSlider14
-            // 
-            this.valueSlider14.BackColor = System.Drawing.Color.PaleGreen;
-            this.valueSlider14.Location = new System.Drawing.Point(100, 20);
-            this.valueSlider14.Margin = new System.Windows.Forms.Padding(1);
-            this.valueSlider14.MaxValue = 1F;
-            this.valueSlider14.MinValue = 0F;
-            this.valueSlider14.Name = "valueSlider14";
-            this.valueSlider14.Precision = 3;
-            this.valueSlider14.Size = new System.Drawing.Size(225, 17);
-            this.valueSlider14.TabIndex = 11;
-            this.valueSlider14.Value = 0.5F;
-            this.valueSlider14.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            this.valLpfCutoff.Precision = 3;
+            this.valLpfCutoff.Size = new System.Drawing.Size(225, 17);
+            this.valLpfCutoff.TabIndex = 9;
+            this.valLpfCutoff.Value = 0.5F;
+            this.valLpfCutoff.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
             // valLpfSweep
             // 
-            this.valLpfSweep.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valLpfSweep.Location = new System.Drawing.Point(1, 21);
+            this.valLpfSweep.BackColor = System.Drawing.Color.PaleGreen;
+            this.valLpfSweep.Location = new System.Drawing.Point(100, 20);
             this.valLpfSweep.Margin = new System.Windows.Forms.Padding(1);
+            this.valLpfSweep.MaxValue = 1F;
+            this.valLpfSweep.MinValue = 0F;
             this.valLpfSweep.Name = "valLpfSweep";
-            this.valLpfSweep.Size = new System.Drawing.Size(97, 17);
-            this.valLpfSweep.TabIndex = 12;
-            this.valLpfSweep.Text = "LPF Sweep";
-            this.valLpfSweep.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.valLpfSweep.Precision = 3;
+            this.valLpfSweep.Size = new System.Drawing.Size(225, 17);
+            this.valLpfSweep.TabIndex = 11;
+            this.valLpfSweep.Value = 0.5F;
+            this.valLpfSweep.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
-            // valueSlider15
+            // label41
             // 
-            this.valueSlider15.BackColor = System.Drawing.Color.PaleGreen;
-            this.valueSlider15.Location = new System.Drawing.Point(100, 39);
-            this.valueSlider15.Margin = new System.Windows.Forms.Padding(1);
-            this.valueSlider15.MaxValue = 1F;
-            this.valueSlider15.MinValue = 0F;
-            this.valueSlider15.Name = "valueSlider15";
-            this.valueSlider15.Precision = 3;
-            this.valueSlider15.Size = new System.Drawing.Size(225, 17);
-            this.valueSlider15.TabIndex = 13;
-            this.valueSlider15.Value = 0.5F;
-            this.valueSlider15.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(1, 21);
+            this.label41.Margin = new System.Windows.Forms.Padding(1);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(97, 17);
+            this.label41.TabIndex = 12;
+            this.label41.Text = "LPF Sweep";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // valLpfResonance
             // 
-            this.valLpfResonance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valLpfResonance.Location = new System.Drawing.Point(1, 40);
+            this.valLpfResonance.BackColor = System.Drawing.Color.PaleGreen;
+            this.valLpfResonance.Location = new System.Drawing.Point(100, 39);
             this.valLpfResonance.Margin = new System.Windows.Forms.Padding(1);
+            this.valLpfResonance.MaxValue = 1F;
+            this.valLpfResonance.MinValue = 0F;
             this.valLpfResonance.Name = "valLpfResonance";
-            this.valLpfResonance.Size = new System.Drawing.Size(97, 17);
-            this.valLpfResonance.TabIndex = 14;
-            this.valLpfResonance.Text = "LPF Resonance";
-            this.valLpfResonance.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.valLpfResonance.Precision = 3;
+            this.valLpfResonance.Size = new System.Drawing.Size(225, 17);
+            this.valLpfResonance.TabIndex = 13;
+            this.valLpfResonance.Value = 0.5F;
+            this.valLpfResonance.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
-            // valueSlider16
+            // label40
             // 
-            this.valueSlider16.BackColor = System.Drawing.Color.PaleGreen;
-            this.valueSlider16.Location = new System.Drawing.Point(100, 58);
-            this.valueSlider16.Margin = new System.Windows.Forms.Padding(1);
-            this.valueSlider16.MaxValue = 1F;
-            this.valueSlider16.MinValue = 0F;
-            this.valueSlider16.Name = "valueSlider16";
-            this.valueSlider16.Precision = 3;
-            this.valueSlider16.Size = new System.Drawing.Size(225, 17);
-            this.valueSlider16.TabIndex = 15;
-            this.valueSlider16.Value = 0.5F;
-            this.valueSlider16.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(1, 40);
+            this.label40.Margin = new System.Windows.Forms.Padding(1);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(97, 17);
+            this.label40.TabIndex = 14;
+            this.label40.Text = "LPF Resonance";
+            this.label40.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // valHpfCutoff
             // 
-            this.valHpfCutoff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valHpfCutoff.Location = new System.Drawing.Point(1, 59);
+            this.valHpfCutoff.BackColor = System.Drawing.Color.PaleGreen;
+            this.valHpfCutoff.Location = new System.Drawing.Point(100, 58);
             this.valHpfCutoff.Margin = new System.Windows.Forms.Padding(1);
+            this.valHpfCutoff.MaxValue = 1F;
+            this.valHpfCutoff.MinValue = 0F;
             this.valHpfCutoff.Name = "valHpfCutoff";
-            this.valHpfCutoff.Size = new System.Drawing.Size(97, 17);
-            this.valHpfCutoff.TabIndex = 16;
-            this.valHpfCutoff.Text = "HPF Cutoff";
-            this.valHpfCutoff.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.valHpfCutoff.Precision = 3;
+            this.valHpfCutoff.Size = new System.Drawing.Size(225, 17);
+            this.valHpfCutoff.TabIndex = 15;
+            this.valHpfCutoff.Value = 0.5F;
+            this.valHpfCutoff.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
             // 
-            // valueSlider18
+            // label22
             // 
-            this.valueSlider18.BackColor = System.Drawing.Color.PaleGreen;
-            this.valueSlider18.Location = new System.Drawing.Point(100, 77);
-            this.valueSlider18.Margin = new System.Windows.Forms.Padding(1);
-            this.valueSlider18.MaxValue = 1F;
-            this.valueSlider18.MinValue = 0F;
-            this.valueSlider18.Name = "valueSlider18";
-            this.valueSlider18.Precision = 3;
-            this.valueSlider18.Size = new System.Drawing.Size(225, 17);
-            this.valueSlider18.TabIndex = 17;
-            this.valueSlider18.Value = 0.5F;
-            this.valueSlider18.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(1, 59);
+            this.label22.Margin = new System.Windows.Forms.Padding(1);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(97, 17);
+            this.label22.TabIndex = 16;
+            this.label22.Text = "HPF Cutoff";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // valHpfSweep
             // 
-            this.valHpfSweep.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valHpfSweep.Location = new System.Drawing.Point(1, 78);
+            this.valHpfSweep.BackColor = System.Drawing.Color.PaleGreen;
+            this.valHpfSweep.Location = new System.Drawing.Point(100, 77);
             this.valHpfSweep.Margin = new System.Windows.Forms.Padding(1);
+            this.valHpfSweep.MaxValue = 1F;
+            this.valHpfSweep.MinValue = 0F;
             this.valHpfSweep.Name = "valHpfSweep";
-            this.valHpfSweep.Size = new System.Drawing.Size(97, 17);
-            this.valHpfSweep.TabIndex = 18;
-            this.valHpfSweep.Text = "HPF Sweep";
-            this.valHpfSweep.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.valHpfSweep.Precision = 3;
+            this.valHpfSweep.Size = new System.Drawing.Size(225, 17);
+            this.valHpfSweep.TabIndex = 17;
+            this.valHpfSweep.Value = 0.5F;
+            this.valHpfSweep.ValueUpdated += new nsfxr.UI.ValueSlider.ValueUpdatedEvent(this.inputValueUpdated);
+            // 
+            // label23
+            // 
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(1, 78);
+            this.label23.Margin = new System.Windows.Forms.Padding(1);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(97, 17);
+            this.label23.TabIndex = 18;
+            this.label23.Text = "HPF Sweep";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel6
             // 
@@ -857,18 +857,18 @@
         private ValueSlider valSustainPunch;
         private ValueSlider valDecayTime;
         private ValueSlider valChangeSpeed;
-        private ValueSlider calChangeAmount;
+        private ValueSlider valChangeAmount;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label valLpfCutoff;
-        private ValueSlider valLowPassCutoff;
-        private ValueSlider valueSlider14;
-        private System.Windows.Forms.Label valLpfSweep;
-        private ValueSlider valueSlider15;
-        private System.Windows.Forms.Label valLpfResonance;
-        private ValueSlider valueSlider16;
-        private System.Windows.Forms.Label valHpfCutoff;
-        private ValueSlider valueSlider18;
-        private System.Windows.Forms.Label valHpfSweep;
+        private System.Windows.Forms.Label label43;
+        private ValueSlider valLpfCutoff;
+        private ValueSlider valLpfSweep;
+        private System.Windows.Forms.Label label41;
+        private ValueSlider valLpfResonance;
+        private System.Windows.Forms.Label label40;
+        private ValueSlider valHpfCutoff;
+        private System.Windows.Forms.Label label22;
+        private ValueSlider valHpfSweep;
+        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Panel panel6;
         private ValueSlider valDutySweep;
         private ValueSlider valSquareDuty;

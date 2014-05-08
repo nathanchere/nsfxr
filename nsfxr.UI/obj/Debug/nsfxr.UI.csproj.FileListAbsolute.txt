@@ -9,3 +9,6 @@ D:\Source\usfxr\nsfxr.UI\obj\Debug\nsfxr.UI.csproj.GenerateResource.Cache
 D:\Source\usfxr\nsfxr.UI\obj\Debug\nsfxr.UI.exe
 D:\Source\usfxr\nsfxr.UI\obj\Debug\nsfxr.UI.pdb
 D:\Source\usfxr\nsfxr.UI\obj\Debug\nsfxr.UI.ValueSlider.resources
+D:\Source\usfxr\nsfxr.UI\bin\Debug\fmodex.dll
+D:\Source\usfxr\nsfxr.UI\bin\Debug\nsfxr.dll
+D:\Source\usfxr\nsfxr.UI\bin\Debug\nsfxr.pdb
