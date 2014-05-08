@@ -14,6 +14,38 @@ namespace nsfxr.UI
         public frmMain()
         {
             InitializeComponent();
+            BindParams(SynthParams.Preset.Default());
+        }
+
+        private void BindParams(SynthParams value)
+        {
+            //value.WaveShape = 0, //TODO: input for wave shape
+
+            valAttackTime.Value = value.AttackTime;
+            valChangeAmount.Value = value.ChangeAmount;
+            valChangeSpeed.Value = value.ChangeSpeed;            
+            valDecayTime.Value = value.DecayTime;
+            valDeltaSlide.Value = value.DeltaSlide;
+            valDutySweep.Value = value.DutySweep;
+            valHpfCutoff.Value = value.HighPassFilterCutoff;
+            valHpfSweep.Value = value.HighPassFilterCutoffSweep;
+            valLpfCutoff.Value = value.LowPassFilterCutoff;
+            valLpfSweep.Value = value.LowPassFilterCutoffSweep;
+            valLpfResonance.Value = value.LowPassFilterResonance;
+            valVolume.Value = value.MasterVolume;
+            valMinFrequency.Value = value.MinFrequency;
+            valPhaserOffset.Value = value.PhaserOffset;
+            valPhaserSweep.Value = value.PhaserSweep;
+            valRepeatSpeed.Value = value.RepeatSpeed;
+            valSlide.Value = value.Slide;
+            valSquareDuty.Value = value.SquareDuty;
+            valStartFrequency.Value = value.StartFrequency;
+            valSustainPunch.Value = value.SustainPunch;
+            valSustainTime.Value = value.SustainTime;
+            valVibratoDepth.Value = value.VibratoDepth;
+            valVibratoSpeed.Value = value.VibratoSpeed;
+
+            txtSerailized.Text = value.Serialize();
         }
 
         private void inputValueUpdated(object sender, EventArgs args)
@@ -55,6 +87,41 @@ namespace nsfxr.UI
         {
             txtSerailized.SelectionStart = 0;
             txtSerailized.SelectionLength = txtSerailized.TextLength;
+        }
+
+        private void btnPresetCoin_Click(object sender, EventArgs e)
+        {
+            BindParams(SynthParams.Preset.Coin());
+        }
+
+        private void btnPresetLaser_Click(object sender, EventArgs e)
+        {
+            BindParams(SynthParams.Preset.Laser());
+        }
+
+        private void btnPresetExplosion_Click(object sender, EventArgs e)
+        {
+            BindParams(SynthParams.Preset.Explosion());
+        }
+
+        private void btnPresetPowerup_Click(object sender, EventArgs e)
+        {
+            BindParams(SynthParams.Preset.Powerup());
+        }
+
+        private void btnPresetHit_Click(object sender, EventArgs e)
+        {
+            BindParams(SynthParams.Preset.PlayerHurt());
+        }
+
+        private void btnPresetJump_Click(object sender, EventArgs e)
+        {
+            BindParams(SynthParams.Preset.Jump());
+        }
+
+        private void btnPresetMenuBlip_Click(object sender, EventArgs e)
+        {
+            BindParams(SynthParams.Preset.MenuBlip());
         }
     }
 }
