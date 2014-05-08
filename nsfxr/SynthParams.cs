@@ -222,10 +222,10 @@ namespace nsfxr
             if (GetRandom.Float() < 0.5f) ChangeAmount += GetRandom.Float(-mutation, mutation);
         }       
         
-        public string Serialize(SynthParams input)
+        public string Serialize()
         {
             var result = new StringBuilder();
-            result.Append((int)input.WaveShape);
+            result.Append((int)WaveShape);
             result.Append(",");
             result.Append(AttackTime.ToString("0.0000"));
             result.Append(",");
