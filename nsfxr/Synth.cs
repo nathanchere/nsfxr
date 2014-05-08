@@ -176,21 +176,25 @@ namespace nsfxr
             float[] buffer = null;
             bool _finished = false;
 
-            for (int i = 0; i < buffer.Length; i++) {
-                if (_finished)
-                    return buffer;
+            for (int i = 0; i < buffer.Length; i++)
+            {
+                if (_finished) return buffer;
 
                 // Repeats every _repeatLimit times, partially resetting the sound parameters
-                if (sfxParams.RepeatLimit > 0) {
-                    if (++_repeatTime >= sfxParams.RepeatLimit) {
+                if (sfxParams.RepeatLimit > 0)
+                {
+                    if (++_repeatTime >= sfxParams.RepeatLimit)
+                    {
                         _repeatTime = 0;
                         Reset(false);
                     }
                 }
 
                 // If _changeLimit is reached, shifts the pitch
-                if (_changeLimit != 0) {
-                    if (++_changeTime >= _changeLimit) {
+                if (_changeLimit != 0)
+                {
+                    if (++_changeTime >= _changeLimit)
+                    {
                         _changeLimit = 0;
                         _period *= sfxParams.ChangeAmount;
                     }
@@ -201,31 +205,27 @@ namespace nsfxr
                 _period *= sfxParams.Slide;
 
                 // Checks for frequency getting too low, and stops the sound if a minFrequency was set
-                if (_period > _maxPeriod) {
+                if (_period > _maxPeriod)
+                {
                     _period = _maxPeriod;
-                    if (sfxParams.MinFrequency > 0)
-                        _finished = true;
+                    if (sfxParams.MinFrequency > 0) _finished = true;
                 }
 
                 _periodTemp = _period;
 
-                // Applies the vibrato effect
-                if (sfxParams.IsVibratoEnabled) {
+                if (sfxParams.IsVibratoEnabled)
+                {
                     _vibratoPhase += sfxParams.VibratoSpeed;
                     _periodTemp = _period * (float)(1.0f + Math.Sin(_vibratoPhase) * sfxParams.VibratoDepth);
                 }
 
-                _periodTemp = (int)_periodTemp;
-                if (_periodTemp < 8)
-                    _periodTemp = 8;
-
-                // Sweeps the square duty
-                if (sfxParams.WaveShape == SynthParams.WaveShapeEnum.Square) {
+                _periodTemp = Math.Max((int)_periodTemp,8);
+                
+                if (sfxParams.WaveShape == SynthParams.WaveShapeEnum.Square)
+                {
                     sfxParams.SquareDuty += sfxParams.DutySweep;
-                    if (sfxParams.SquareDuty < 0.0)
-                        sfxParams.SquareDuty = 0.0f;
-                    if (sfxParams.SquareDuty > 0.5)
-                        sfxParams.SquareDuty = 0.5f;
+                    if (sfxParams.SquareDuty < 0.0) sfxParams.SquareDuty = 0.0f;
+                    if (sfxParams.SquareDuty > 0.5) sfxParams.SquareDuty = 0.5f;
                 }
 
                 // Moves through the different stages of the volume envelope
